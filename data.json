@@ -6,8 +6,7 @@
     "recent_dynamic": [
         {
             "topic": "健康",
-            "topic_avatar": "https://pic4.zhimg.com/8aa11b633_m.jpg",
-            "question": "如何改掉晚睡强迫症？",
+            "topic_avatar": "/static/images/8aa11b633_m.jpg", "question": "如何改掉晚睡强迫症？",
             "answer": {
                 "user": {
                     "username": "招商银行信用卡客服中心",
@@ -21,7 +20,7 @@
         },
         {
             "topic": "健身",
-            "topic_avatar": "https://pic4.zhimg.com/5bda61313f8e3767edaa6134941e207b_m.jpg",
+            "topic_avatar": "/static/images/5bda61313f8e3767edaa6134941e207b_m.jpg",
             "question": "女生如何锻炼出漂亮的腿型",
             "answer": {
                 "user": {
@@ -36,7 +35,7 @@
         },
         {
             "topic": "游戏",
-            "topic_avatar": "https://pic4.zhimg.com/fb89e0ea3_m.jpg",
+            "topic_avatar": "/static/images/fb89e0ea3_m.jpg",
             "question": "王者荣耀玩得不错，LOL却玩得不好，这是为什么呢？",
             "answer": {
                 "user": {
@@ -51,7 +50,7 @@
         },
         {
             "topic": "设计",
-            "topic_avatar": "https://pic1.zhimg.com/e8b840284350f4a2d01ea6869926bfcc_m.jpg",
+            "topic_avatar": "/static/images/e8b840284350f4a2d01ea6869926bfcc_m.jpg",
             "question": "有哪些外行人看来很蠢的设计实际上却是精妙无比？",
             "answer": {
                 "user": {
@@ -66,7 +65,7 @@
         },
         {
             "topic": "自然科学",
-            "topic_avatar": "https://pic3.zhimg.com/2bd2e49d3f849155376393085edc1d9e_m.jpg",
+            "topic_avatar": "/static/images/2bd2e49d3f849155376393085edc1d9e_m.jpg",
             "question": "有哪些外行人看来很蠢的设计实际上却是精妙无比？",
             "answer": {
                 "user": {
@@ -81,7 +80,7 @@
         },
         {
             "topic": "生活",
-            "topic_avatar": "https://pic4.zhimg.com/d5aed1527_m.jpg",
+            "topic_avatar": "/static/images/d5aed1527_m.jpg",
             "question": "你读过的最让人心酸的句子有哪些？",
             "answer": {
                 "user": {
@@ -96,7 +95,7 @@
         },
         {
             "topic": "设计",
-            "topic_avatar": "https://pic1.zhimg.com/e8b840284350f4a2d01ea6869926bfcc_m.jpg",
+            "topic_avatar": "/static/images/e8b840284350f4a2d01ea6869926bfcc_m.jpg",
             "question": "室内设计的未来在哪?",
             "answer": {
                 "user": {
@@ -111,7 +110,7 @@
         },
         {
             "topic": "音乐",
-            "topic_avatar": "https://pic1.zhimg.com/7396bb858_m.jpg",
+            "topic_avatar": "/static/images/7396bb858_m.jpg",
             "question": "有哪些小众的歌手仅凭一首歌就足以惊艳到你的？",
             "answer": {
                 "user": {
@@ -126,7 +125,7 @@
         },
         {
             "topic": "互联网",
-            "topic_avatar": "https://pic4.zhimg.com/f07808da5625fef3607f8b75b770349f_m.jpg",
+            "topic_avatar": "/static/images/f07808da5625fef3607f8b75b770349f_m.jpg",
             "question": "如何利用网上的聊天室赚钱？",
             "answer": {
                 "user": {
@@ -141,7 +140,7 @@
         },
         {
             "topic": "生活",
-            "topic_avatar": "https://pic4.zhimg.com/d5aed1527_m.jpg",
+            "topic_avatar": "/static/images/d5aed1527_m.jpg",
             "question": "为什么人明明寂寞得不行，却不想将就？",
             "answer": {
                 "user": {
@@ -156,7 +155,7 @@
         },
         {
             "topic": "音乐",
-            "topic_avatar": "https://pic1.zhimg.com/7396bb858_m.jpg",
+            "topic_avatar": "/static/images/7396bb858_m.jpg",
             "question": "动画《我为歌狂》中那些演唱者、乐队后来有什么消息？",
             "answer": {
                 "user": {
@@ -171,7 +170,7 @@
         },
         {
             "topic": "经济学",
-            "topic_avatar": "https://pic4.zhimg.com/30ffc337a555a56877aebdab9c5042f7_m.jpg",
+            "topic_avatar": "/static/images/30ffc337a555a56877aebdab9c5042f7_m.jpg",
             "question": "闹灾荒的时候，和珅在给灾民的米汤里撒了一把沙子， 这其中包含着什么经济学原理？",
             "answer": {
                 "user": {
@@ -187,30 +186,30 @@
     ],
     "youknow_live": [
         {
-            "avatar": "https://pic1.zhimg.com/03dd04fecd8378b3193ec9723ca2f678_s.jpg",
+            "avatar": "/static/images/03dd04fecd8378b3193ec9723ca2f678_s.jpg",
             "value": "独立保函相关法律问题"
         },
         {
-            "avatar": "https://pic3.zhimg.com/v2-409e1d415709e611bbb0d0bda64cb8a2_s.jpg",
+            "avatar": "/static/images/v2-409e1d415709e611bbb0d0bda64cb8a2_s.jpg",
             "value": "Autodesk Dynamo 小技巧解析 B"
         },
         {
-            "avatar": "https://pic4.zhimg.com/v2-729b1b6c2138576a87b4846bdb543b7b_s.jpg",
+            "avatar": "/static/images/v2-729b1b6c2138576a87b4846bdb543b7b_s.jpg",
             "value": "KATA，到底应该怎么练？"
         }
     ],
     "youknow_circle_desk": [
         {
-            "avatar": "https://pic2.zhimg.com/v2-4b627048c9bc0f962aae11430bb3ac69_s.jpg",
+            "avatar": "/static/images/v2-4b627048c9bc0f962aae11430bb3ac69_s.jpg",
             "value": "人工智能 · 机器感知",
             "end": 4
         },
         {
-            "avatar": "https://pic2.zhimg.com/v2-4b627048c9bc0f962aae11430bb3ac69_s.jpg",
+            "avatar": "/static/images/v2-4b627048c9bc0f962aae11430bb3ac69_s.jpg",
             "value": "创意者经济"
         },
         {
-            "avatar": "https://pic4.zhimg.com/v2-17bc6c52ff49a936913a99733cc37793_s.jpg",
+            "avatar": "/static/images/v2-17bc6c52ff49a936913a99733cc37793_s.jpg",
             "value": "好好开车 · 购车指南"
         }
     ]

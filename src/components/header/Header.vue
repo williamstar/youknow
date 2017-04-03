@@ -7,7 +7,7 @@
         <button class="search-btn"><i class="sprite"></i></button>
       </div>
       <div class="nav">
-        <router-link to="index" class="nav-item" active-class="active">首页</router-link>
+        <router-link to="/" class="nav-item" active-class="active">首页</router-link>
         <router-link to="topic" class="nav-item" active-class="active">话题</router-link>
         <router-link to="discovery" class="nav-item" active-class="active">发现</router-link>
         <span class="nav-item">消息</span>
@@ -64,6 +64,12 @@
           display: inline-block;
           vertical-align: top;
           width: 367px;
+          @media screen and (max-width: 960px) {
+            width: 260px;
+          }
+          @media screen and (max-width: 840px) {
+            width: 180px;
+          }
           padding: 7px;
           border: 0px;
           border-radius: 3px 0 0 3px;
