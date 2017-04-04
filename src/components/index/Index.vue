@@ -180,6 +180,7 @@
     margin: 25px auto 0;
     @media screen and (max-width: 960px) {
       width: auto;
+      margin: 25px 4px;
     }
     .content-wrapper {
       float: left;
@@ -193,17 +194,14 @@
         }
         .func-bar-wrapper {
           position: relative;
-          display: flex;
           margin-bottom: 30px;
           font-size: 0;
           .avatar {
-            flex: 0 0 38px;
+            float: left;
           }
           .func-bar-content {
-            display: inline-block;
-            flex: 1;
             height: 48px;
-            margin-left: 22px;
+            margin-left: 58px;
             border: 1px solid #f0f0f0;
             border-radius: 3px;
             background: #fafafa;
