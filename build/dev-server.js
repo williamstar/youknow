@@ -34,7 +34,12 @@ router.get('/user', (req, res) => {
 router.get('/recentdynamic', (req, res) => {
   res.json({
     status: 'success',
-    data: data.recent_dynamic
+    data: {
+      recent_dynamic: data.recent_dynamic,
+      youknow_live: data.youknow_live,
+      youknow_circledesk: data.youknow_circledesk,
+      youknow_bookstore: data.youknow_bookstore
+    }
   });
 })
 app.use('/api', router);

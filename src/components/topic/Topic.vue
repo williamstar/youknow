@@ -6,6 +6,9 @@
 
 <script>
 export default {
+  created() {
+    document.title = '你乎 - 话题广场';
+  },
   name: 'app',
 };
 </script>

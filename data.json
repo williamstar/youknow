@@ -198,7 +198,7 @@
             "value": "KATA，到底应该怎么练？"
         }
     ],
-    "youknow_circle_desk": [
+    "youknow_circledesk": [
         {
             "avatar": "/static/images/v2-4b627048c9bc0f962aae11430bb3ac69_s.jpg",
             "value": "人工智能 · 机器感知",
@@ -212,5 +212,19 @@
             "avatar": "/static/images/v2-17bc6c52ff49a936913a99733cc37793_s.jpg",
             "value": "好好开车 · 购车指南"
         }
+    ],
+    "youknow_bookstore": [
+      {
+        "avatar": "/static/images/weekly.65279d61.png",
+        "value": "走，带你轻松户外游"
+      },
+      {
+        "avatar": "/static/images/hour.3d371c99.png",
+        "value": "设计一个家：你的第一本装修指南"
+      },
+      {
+        "avatar":"/static/images/nacl.656ec1c4.png",
+        "value": "刑事辩护指导书"
+      }
     ]
 }
