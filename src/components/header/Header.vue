@@ -4,7 +4,7 @@
       <div class="logo"></div>
       <div class="search-wrapper">
         <input class="search" type="text" placeholder="搜索你感兴趣的内容...">
-        <button class="search-btn"><i class="sprite"></i></button>
+        <button class="search-btn"><i class="sprite-search"></i></button>
       </div>
       <div class="nav">
         <router-link to="/" class="nav-item" active-class="active" exact>首页</router-link>
@@ -32,6 +32,8 @@
 
 <style lang="scss" scoped>
   @import '../../common/scss/color';
+  @import '../../common/scss/mixin';
+
   .header {
     height: 46px;
     max-width: 100%;
@@ -87,6 +89,12 @@
           padding: 8px 11px;
           font-size: 14px;
           background: linear-gradient(to bottom, #0e7bef, #0d73da);
+          .sprite-search {
+            display: block;
+            width: 15px;
+            height: 15px;
+            @include icon("/static/images/sprites.auto.2bb79a7e.png", -82px, 0);
+          }
         }
       }
       .nav {

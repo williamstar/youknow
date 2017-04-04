@@ -1,6 +1,5 @@
-@mixin icon($url, $wsize, $hsize, $positionx, $positiony) {
-  position: relative;
-  width: $wsize;
-  height: $hsize;
-  background: url($url) $wsize $hsize no-repeat;
+@mixin icon($url, $x, $y) {
+  background-position: $x $y ;
+  background-image: url($url);
+  background-repeat: no-repeat;
 }
