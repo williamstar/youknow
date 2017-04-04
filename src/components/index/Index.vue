@@ -7,20 +7,20 @@
           <div class="func-bar-content">
             <ul class="fun-bar">
               <li class="func-item">
-                <a href="#">提问</a>
+                <a href="#"><i class="sprite sprite-question"></i>提问</a>
               </li>
               <li class="func-item">
-                <a href="#">回答</a></li>
+                <a href="#"><i class="sprite sprite-answer"></i>回答</a></li>
               <li class="func-item">
-                <a href="#">写文章</a>
+                <a href="#"><i class="sprite sprite-edit"></i>写文章</a>
               </li>
             </ul>
             <span class="draft">草稿</span>
           </div>
         </div>
         <div class="list-title">
-          <span class="recent">最近动态</span>
-          <a class="config">设置</a>
+          <span class="recent"><i class="sprite-recent"></i><span class="value">最近动态</span></span>
+          <a class="config"><i class="sprite-config"></i><span class="value">设置</span></a>
         </div>
         <div class="dynamics">
           <div v-for="dynamic in dynamics" class="dynamic-wrapper">
@@ -64,37 +64,33 @@
         <div class="self-dynamic">
           <ul>
             <li>
-              <a href="#"><span class="text-value">我的收藏</span></a>
+              <a href="#"><i class="sprite sprite-favorite"></i>我的收藏</a>
             </li>
             <li>
-              <a href="#"><span class="text-value">我关注的问题</span></a>
+              <a href="#"><i class="sprite sprite-focus-question"></i>我关注的问题</a>
             </li>
             <li>
-              <a href="#"><span class="text-value">邀请我回答的问题</span></a>
+              <a href="#"><i class="sprite sprite-invite-question"></i>邀请我回答的问题</a>
             </li>
           </ul>
         </div>
         <div class="public-status">
           <ul>
             <li>
-              <a href="#"><span class="text-value">公共编辑动态</span></a>
+              <a href="#"><i class="sprite sprite-public-status"></i>公共编辑动态</a>
             </li>
             <li>
-              <a href="#"><span class="text-value">社区服务中心</span></a>
+              <a href="#"><i class="sprite sprite-community"></i>社区服务中心</a>
             </li>
             <li>
-              <a href="#"><span class="text-value">版权服务中心</span></a>
+              <a href="#"><i class="sprite sprite-copyright"></i>版权服务中心</a>
             </li>
           </ul>
         </div>
       </div>
       <div class="special-column column">
         <h3 class="column-title">你乎专栏</h3>
-        <a href="#">
-          <span class="text-value">
-                        专栏・发现
-                        </span>
-        </a>
+        <a href="#"><i class="sprite-discovery"></i>专栏・发现</a>
       </div>
       <div class="youknow-live column">
         <h3 class="column-title">
@@ -174,6 +170,7 @@
 
 <style lang="scss" scoped>
   @import '../../common/scss/color';
+  @import '../../common/scss/mixin';
   .index {
     position: relative;
     width: 960px;
@@ -216,8 +213,32 @@
                 color: #6c829f;
                 a {
                   color: $df-graylblue;
+                  .sprite {
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 24px;
+                    height: 24px;
+                    &.sprite-question {
+                      @include icon("/static/images/sprites.auto.fb3fda39.png", -150px, -30px);
+                    }
+                    &.sprite-answer {
+                      @include icon("/static/images/sprites.auto.fb3fda39.png", -100px, -30px);
+                    }
+                    &.sprite-edit {
+                      @include icon("/static/images/sprites.auto.fb3fda39.png", -123px, -56px);
+                    }
+                  }
                   &:hover {
                     color: $df-ddblue;
+                    .sprite-question {
+                      @include icon("/static/images/sprites.auto.fb3fda39.png", -124px, -30px);
+                    }
+                    .sprite-answer {
+                      @include icon("/static/images/sprites.auto.fb3fda39.png", -100px, -56px);
+                    }
+                    .sprite-edit {
+                      @include icon("/static/images/sprites.auto.fb3fda39.png", -175px, -30px);
+                    }
                   }
                 }
               }
@@ -243,12 +264,35 @@
             font-size: 14px;
             font-weight: 700;
             color: $df-mdrak;
+            .value {
+              display: inline-block;
+              vertical-align: top;
+            }
+            .sprite-recent {
+              display: inline-block;
+              vertical-align: -2px;
+              margin-right: 7px;
+              width: 16px;
+              height: 16px;
+              @include icon("/static/images/icon_set.png", -71px, -86px);
+            }
           }
           .config {
             float: right;
             font-size: 13px;
             color: $df-lgray;
             cursor: pointer;
+            .value {
+              vertical-align: top;
+            }
+            .sprite-config {
+              display: inline-block;
+              vertical-align: -3px;
+              margin-right: 2px;
+              width: 16px;
+              height: 16px;
+              @include icon("/static/images/icon_set.png", -86px, -146px);
+            }
             &:hover {
               color: $df-graydblue;
               text-decoration: underline;
@@ -361,16 +405,79 @@
         display: block;
         height: 28px;
         line-height: 28px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         color: $df-lgray;
+        .sprite-discovery {
+          display: inline-block;
+          vertical-align: top;
+          margin-right: 10px;
+          width: 25px;
+          height: 25px;
+          @include icon("/static/images/sprites.auto.a740548f.png", -26px, 0);
+        }
+        .sprite {
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          margin-right: 4px;
+          &.sprite-favorite {
+            vertical-align: -2px;
+            @include icon("/static/images/icon_set.png", -167px, -4px);
+          }
+          &.sprite-focus-question {
+            vertical-align: -2px;
+            @include icon("/static/images/icon_set.png", -183px, -4px);
+          }
+          &.sprite-invite-question {
+            vertical-align: -2px;
+            @include icon("/static/images/icon_set.png", -198px, -4px);
+          }
+          &.sprite-public-status {
+            vertical-align: -2px;
+            @include icon("/static/images/icon_set.png", -265px, -4px);
+          }
+          &.sprite-community {
+            vertical-align: -2px;
+            @include icon("/static/images/icons_a9b07ecead.261e7c3b.png", -23px, -41px);
+          }
+          &.sprite-copyright {
+            vertical-align: -2px;
+            @include icon("/static/images/copyright.f77ea167.svg", 0, 0);
+          }
+        }
         &:hover {
           color: $df-ddblue;
           background: $df-llblue;
-        }
-        .text-value {
-          margin-left: 10px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          .sprite-favorite {
+            vertical-align: -2px;
+            @include icon("/static/images/icon_set.png", -167px, -24px);
+          }
+          .sprite-focus-question {
+            vertical-align: -2px;
+            @include icon("/static/images/icon_set.png", -183px, -24px);
+          }
+          .sprite-invite-question {
+            vertical-align: -2px;
+            @include icon("/static/images/icon_set.png", -198px, -24px);
+          }
+          .sprite-public-status {
+            vertical-align: -2px;
+            @include icon("/static/images/icon_set.png", -265px, -24px);
+          }
+          .sprite-community {
+            vertical-align: -2px;
+            @include icon("/static/images/icons_a9b07ecead.261e7c3b.png", -67px, -39px);
+          }
+          .sprite-copyright {
+            vertical-align: -2px;
+            @include icon("/static/images/copyright__hover.07ae8f44.svg", 0, 0);
+          }
+          .sprite-copyright {
+            vertical-align: -2px;
+            @include icon("/static/images/copyright__hover.07ae8f44.svg", 0, 0);
+          }
         }
       }
       li {
