@@ -226,7 +226,7 @@
             }
             .draft {
               float: right;
-              margin-right: 15px;
+              margin-right: 20px;
               font-size: 14px;
               cursor: pointer;
               line-height: 48px;
