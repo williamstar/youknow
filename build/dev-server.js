@@ -29,7 +29,7 @@ router.get('/user', (req, res) => {
     status: 'success',
     data: data.user
   });
-})
+});
 
 router.get('/recentdynamic', (req, res) => {
   res.json({
@@ -41,7 +41,31 @@ router.get('/recentdynamic', (req, res) => {
       youknow_bookstore: data.youknow_bookstore
     }
   });
+});
+
+router.get('/focus_topics', (req, res) => {
+  let topic_list = data.focus_topics.map(val => {
+    for (let i = 0; i < data.all_topics.length; i += 1) {
+      if (data.all_topics[i].id === val + '' ) {
+        return data.all_topics[i];
+      }
+    }
+  });
+  let recommend_topics = data.all_topics.filter(val => {
+    return data.focus_topics.indexOf(parseInt(val.id)) === -1;
+  }).filter(val => {
+    return Math.random() > 0.5;
+  });
+  res.json({
+    status: 'success',
+    data: {
+      focus_list: topic_list,
+      recent_dynamics: data.recent_dynamic,
+      recommend_topics: recommend_topics
+    }
+  })
 })
+
 app.use('/api', router);
 
 var compiler = webpack(webpackConfig)
