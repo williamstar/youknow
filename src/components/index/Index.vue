@@ -143,6 +143,9 @@
         youknow_bookstore: [],
       };
     },
+    activated() {
+      document.title = '你乎';
+    },
     filters: {
       chop(string) {
         let nstr = '';
@@ -154,7 +157,6 @@
       },
     },
     created() {
-      document.title = '你乎';
       this.$http.get('/api/recentdynamic').then((res) => {
         res = res.body;
         if (res.status === OK) {

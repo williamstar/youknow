@@ -6,7 +6,9 @@
 
 <script>
 export default {
-
+  activated() {
+    document.title = '发现 - 知乎';
+  },
 };
 </script>
 

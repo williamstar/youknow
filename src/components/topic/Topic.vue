@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  created() {
-    document.title = '你乎 - 话题广场';
+  activated() {
+    document.title = '话题动态 - 你乎';
   },
   name: 'app',
 };
