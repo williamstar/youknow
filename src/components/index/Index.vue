@@ -24,10 +24,7 @@
         </div>
         <div class="dynamics">
           <div v-for="dynamic in dynamics" class="dynamic-wrapper">
-            <div class="sidebar">
-              <img :src="dynamic.topic_avatar" class="dynamic-avatar" width="38" height="38" :alt="dynamic.topic">
-              <a class="votes">{{dynamic.answer.vote_num}}</a>
-            </div>
+            <img :src="dynamic.topic_avatar" class="dynamic-avatar" width="38" height="38" :alt="dynamic.topic">
             <div class="dynamic-content">
               <div class="topic">
                 来自话题: <a href="#">{{dynamic.topic}}</a>
@@ -35,25 +32,7 @@
               <div class="question">
                 {{dynamic.question}}
               </div>
-              <div class="answer-wrapper">
-                <div class="author">
-                  <span class="username" :class="{'light':dynamic.answer.user.username === '匿名用户' }"><a href="#">{{dynamic.answer.user.username}}&nbsp;</a></span>
-                  <span class="brief-desc" v-if="dynamic.answer.user.brief_desc">{{dynamic.answer.user.brief_desc}}</span>
-                </div>
-                <div class="answer">
-                  {{dynamic.answer.value | chop }}
-                </div>
-              </div>
-              <div class="footer-panel">
-                <a href="#">关注问题</a>
-                <a href="#">{{dynamic.answer.comment_num}}条评论</a>
-                <a href="#">分享</a>
-                <a href="#">感谢</a>
-                <a href="#">收藏</a>
-                <a href="#">没有帮助</a>
-                <a href="#">举报</a>
-                <a href="#">作者保留权利</a>
-              </div>
+              <answer :answer="dynamic.answer"></answer>
             </div>
           </div>
         </div>
@@ -127,9 +106,22 @@
 </template>
 
 <script type="text/javascript">
+  import answer from '@/components/answer/Answer';
+
   const OK = 'success';
 
   export default {
+    created() {
+      this.$http.get('/api/recentdynamic').then((res) => {
+        res = res.body;
+        if (res.status === OK) {
+          this.dynamics = res.data.recent_dynamic;
+          this.youknow_live = res.data.youknow_live;
+          this.youknow_circledesk = res.data.youknow_circledesk;
+          this.youknow_bookstore = res.data.youknow_bookstore;
+        }
+      });
+    },
     props: {
       user: {
         type: Object,
@@ -146,26 +138,8 @@
     activated() {
       document.title = '你乎';
     },
-    filters: {
-      chop(string) {
-        let nstr = '';
-        let maxLength = 100 + Math.floor(Math.random() * 20);
-        for (let i = 0; i < maxLength; i += 1) {
-          nstr += string[i];
-        }
-        return `${nstr}...`;
-      },
-    },
-    created() {
-      this.$http.get('/api/recentdynamic').then((res) => {
-        res = res.body;
-        if (res.status === OK) {
-          this.dynamics = res.data.recent_dynamic;
-          this.youknow_live = res.data.youknow_live;
-          this.youknow_circledesk = res.data.youknow_circledesk;
-          this.youknow_bookstore = res.data.youknow_bookstore;
-        }
-      });
+    components: {
+      Answer: answer,
     },
   };
 </script>
@@ -186,8 +160,7 @@
       width: 100%;
       .content {
         display: inline-block;
-        margin-right: 320px;
-        margin-left: 2px;
+        margin-right: 328px;
         @media screen and (max-width: 960px) {
           margin-right: 280px;
         }
@@ -306,31 +279,9 @@
           .dynamic-wrapper {
             margin-top: 10px;
             border-bottom: 1px solid #eee;
-            .sidebar {
+            .dynamic-avatar {
               position: absolute;
-              width: 38px;
-              font-size: 0;
-              .dynamic-avatar {
-                cursor: pointer;
-              }
-              .votes {
-                display: inline-block;
-                margin-top: 4px;
-                height: 24px;
-                width: 38px;
-                border-radius: 3px;
-                line-height: 24px;
-                text-align: center;
-                font-size: 13px;
-                font-weight: 500;
-                color: $df-graydblue;
-                cursor: pointer;
-                background: #eff6fa;
-                &:hover {
-                  background: $df-graydblue;
-                  color: #fff;
-                }
-              }
+              cursor: pointer;
             }
             .dynamic-content {
               display: inline-block;
@@ -349,48 +300,8 @@
               }
               .question {
                 font-weight: 700;
-                font-size: 14px;
-                color: $df-ddblue;
-              }
-              .answer-wrapper {
-                margin-bottom: 2px;
-                .author {
-                  font-size: 0;
-                  color: $df-dark;
-                  .username {
-                    font-size: 13px;
-                    font-weight: 700;
-                    a {
-                      &:hover {
-                        color: inherit;
-                      }
-                    }
-                    &.light {
-                      font-weight: 400;
-                    }
-                  }
-                  .brief-desc {
-                    font-size: 13px;
-                    color: $df-lgray;
-                    &:before {
-                      content: " , ";
-                      color: $df-dark;
-                      font-size: 13px;
-                    }
-                  }
-                }
-                .answer {
-                  font-size: 13px;
-                  cursor: pointer;
-                }
-              }
-              .footer-panel {
-                margin-bottom: 10px;
                 font-size: 13px;
-                color: $df-lgray;
-                span {
-                  margin-left: 4px;
-                }
+                color: $df-ddblue;
               }
             }
           }
