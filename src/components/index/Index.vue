@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="list-title">
-          <span class="recent"><i class="sprite-recent"></i><span class="value">最近动态</span></span>
+          <span class="recent"><i class="sprite-recent"></i><span class="value">最新动态</span></span>
           <a class="config"><i class="sprite-config"></i><span class="value">设置</span></a>
         </div>
         <div class="dynamics">
@@ -29,9 +29,9 @@
               <div class="topic">
                 来自话题: <a href="#">{{dynamic.topic}}</a>
               </div>
-              <div class="question">
-                {{dynamic.question}}
-              </div>
+              <h2 class="question">
+                <a href="#">{{dynamic.question}}</a>
+              </h2>
               <answer :answer="dynamic.answer"></answer>
             </div>
           </div>
@@ -312,8 +312,6 @@
       display: inline-block;
       width: 270px;
       margin-left: -270px;
-      vertical-align: top;
-      box-sizing: content-box;
       a {
         display: block;
         height: 28px;
