@@ -1,13 +1,13 @@
 <template>
   <div class="topic-list">
-    <a v-for="(topic, index) in focusTopics" :class="{'dark': topic.id === currentTopic.id}" href="#" @click.prevent="$emit('switch', index)" class="topic-block">{{topic.value}}</a>
+    <a v-for="(topic, index) in topics" :class="{'dark': topic.id === currentTopic.id}" href="#" @click.prevent="$emit('switch', index)" class="topic-block">{{topic.value}}</a>
   </div>
 </template>
 
 <script>
   export default {
     props: {
-      focusTopics: {
+      topics: {
         type: Array,
       },
       currentTopic: {

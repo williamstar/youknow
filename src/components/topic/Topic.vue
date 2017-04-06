@@ -6,7 +6,7 @@
           <span class="title"><i class="sprite-recent"></i>已关注的话题动态</span>
           <span class="current-topic-num">共关注{{focus_topics.length}}主题</span>
         </div>
-        <topic-list :focus-topics="focus_topics" :current-topic="currentTopic" @switch="switchTopic"></topic-list>
+        <topic-list :topics="focus_topics" :current-topic="currentTopic" @switch="switchTopic"></topic-list>
       </div>
       <div class="topic-dynamic">
         <div class="dynamic-header">
