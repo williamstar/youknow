@@ -6,13 +6,11 @@
           <span class="title"><i class="sprite-recent"></i>已关注的话题动态</span>
           <span class="current-topic-num">共关注{{focus_topics.length}}主题</span>
         </div>
-        <div class="topic-list">
-          <a v-for="(topic, index) in focus_topics" :class="{'dark': topic.id === current_topic.id}" href="#" @click.stop.prevent="switchTopic(index)" class="topic-block">{{topic.value}}</a>
-        </div>
+        <topic-list :focus-topics="focus_topics" :current-topic="currentTopic" @switch="switchTopic"></topic-list>
       </div>
       <div class="topic-dynamic">
         <div class="dynamic-header">
-          <span class="current-topic"><img :src="current_topic.avatar" class="current-avatar" width="40" height="40" :alt="current_topic.value"><a href="#" class="current-topic-value">{{current_topic.value}}</a></span>
+          <span class="current-topic"><img :src="currentTopic.avatar" class="current-avatar" width="40" height="40" :alt="currentTopic.value"><a href="#" class="current-topic-value">{{currentTopic.value}}</a></span>
           <span class="sort"><a class="hot-sort" :class="{'selected-sort': 'hot-sort' !== current_sort }" href="#" data-sort="hot-sort" @click.stop.prevent="switchSort($event)">热度排序</a> | <a class="time-sort" :class="{'selected-sort': 'time-sort' !== current_sort }" href="#" data-sort="time-sort" @click.stop.prevent="switchSort($event)">时间排序</a></span>
         </div>
         <div class="dynamics">
@@ -48,6 +46,7 @@
 
 <script type="text/javascript">
   import answer from '@/components/answer/Answer';
+  import topiclist from '@/components/topicList/TopicList';
 
   const OK = 'success';
 
@@ -56,7 +55,7 @@
       return {
         recommend_topics: [],
         focus_topics: [],
-        current_topic: {},
+        currentTopic: {},
         current_sort: 'hot-sort',
         all_dynamics: [],
       };
@@ -68,7 +67,7 @@
           this.recommend_topics = res.data.recommend_topics;
           this.focus_topics = res.data.focus_list;
           this.all_dynamics = res.data.recent_dynamics;
-          this.current_topic = this.focus_topics[0];
+          this.currentTopic = this.focus_topics[0];
         }
       });
     },
@@ -78,7 +77,7 @@
     computed: {
       selectedDynamics() {
         let seletedDynamics = this.all_dynamics.filter(dynamic =>
-          dynamic.topic === this.current_topic.value, this);
+          dynamic.topic === this.currentTopic.value, this);
         if (this.current_sort === 'hot-sort') {
           seletedDynamics.sort((a, b) =>
             b.answer.vote_num - a.answer.vote_num);
@@ -94,11 +93,12 @@
         this.current_sort = e.currentTarget.dataset.sort;
       },
       switchTopic(index) {
-        this.current_topic = this.focus_topics[index];
+        this.currentTopic = this.focus_topics[index];
       },
     },
     components: {
       Answer: answer,
+      TopicList: topiclist,
     },
   };
 </script>
@@ -138,26 +138,7 @@
             color: $df-lgray;
           }
         }
-        .topic-list {
-          padding: 18px 0 9px;
-          border-bottom: 1px solid #eee;
-          .topic-block {
-            display: inline-block;
-            padding: 0 10px;
-            margin: 0 10px 10px 0;
-            &:first-chlid {
-              margin-left: 0;
-            }
-            color: $df-dblue;
-            border: 1px solid #daecf5;
-            border-radius: 30px;
-            &:hover,
-            &.dark {
-              color: #fff;
-              background: $df-ddblue;
-            }
-          }
-        }
+
       }
       .topic-dynamic {
         margin-top: 16px;
