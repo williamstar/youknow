@@ -22,7 +22,9 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 var data = require('../data.json');
+var topics = require('../Topics.json')
 var router = express.Router();
+let mainTopics = topics.mainTopics;
 
 router.get('/user', (req, res) => {
   res.json({
@@ -43,10 +45,31 @@ router.get('/recentdynamic', (req, res) => {
   });
 });
 
+router.get('/maintopic/:id/subtopics/', (req, res) => {
+  let id = req.params['id'];
+  res.json({
+    status: 'success',
+    data: {
+      sub_topics: topics.topics.filter(topic => topic.fid === id)
+    }
+  });
+});
+
+router.get('/topics', (req, res) => {
+  return res.json({
+    status: 'success',
+    data: {
+      focus_num: 18,
+      main_topics: mainTopics,
+      sub_topics: topics.topics.filter(topic => topic.fid === mainTopics[0].id)
+    }
+  });
+});
+
 router.get('/focus_topics', (req, res) => {
   let topic_list = data.focus_topics.map(val => {
     for (let i = 0; i < data.all_topics.length; i += 1) {
-      if (data.all_topics[i].id === val + '' ) {
+      if (data.all_topics[i].id === val + '') {
         return data.all_topics[i];
       }
     }
@@ -63,8 +86,8 @@ router.get('/focus_topics', (req, res) => {
       recent_dynamics: data.recent_dynamic,
       recommend_topics: recommend_topics
     }
-  })
-})
+  });
+});
 
 app.use('/api', router);
 
