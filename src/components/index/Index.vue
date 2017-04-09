@@ -24,7 +24,7 @@
         </div>
         <div class="dynamics">
           <div v-for="dynamic in dynamics" class="dynamic-wrapper">
-            <img :src="dynamic.topic_avatar" class="dynamic-avatar" width="38" height="38" :alt="dynamic.topic">
+            <img :src="dynamic.avatarLocalPath" class="dynamic-avatar" width="38" height="38" :alt="dynamic.topic">
             <div class="dynamic-content">
               <div class="topic">
                 来自话题: <a href="#">{{dynamic.topic}}</a>
@@ -77,7 +77,7 @@
         </h3>
         <ul>
           <li v-for="live in youknow_live">
-            <a href="#"><img :src="live.avatar" alt="live.value"><span class="text-value">{{live.value}}</span></a>
+            <a href="#"><img :src="live.avatarLocalPath" alt="live.value"><span class="text-value">{{live.value}}</span></a>
           </li>
         </ul>
       </div>
@@ -85,7 +85,7 @@
         <h3 class="column-title">知乎圆桌</h3>
         <ul>
           <li v-for="circle in youknow_circledesk">
-            <a href="#"><img :src="circle.avatar" alt="circle.value"><span class="text-value">{{circle.value}}</span>
+            <a href="#"><img :src="circle.avatarLocalPath" alt="circle.value"><span class="text-value">{{circle.value}}</span>
               <span v-if="circle.end" class="final-time">还有{{circle.end}}天结束</span>
             </a>
           </li>
@@ -97,7 +97,7 @@
         </h3>
         <ul>
           <li v-for="book in youknow_bookstore">
-            <a href="#"><img :src="book.avatar" alt=""><span class="text-value">{{book.value}}</span></a>
+            <a href="#"><img :src="book.avatarLocalPath" alt=""><span class="text-value">{{book.value}}</span></a>
           </li>
         </ul>
       </div>
@@ -238,7 +238,7 @@
           .recent {
             font-size: 14px;
             font-weight: 700;
-            color: $df-mdrak;
+            color: $df-mdark;
             .value {
               display: inline-block;
               vertical-align: top;
@@ -416,8 +416,12 @@
           height: 25px;
           line-height: 25px;
           padding: 5px;
+          img {
+            margin-right: 8px;
+          }
           .text-value {
             display: inline-block;
+            vertical-align: top;
           }
           .final-time {
             display: inline-block;

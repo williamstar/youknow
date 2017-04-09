@@ -41,5 +41,6 @@ module.exports = {
     'no-unused-vars': 0,
     'prefer-const': 0,
     'no-underscore-dangle': 0,
+    'no-func-names': 0,
   }
 }

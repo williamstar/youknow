@@ -20,12 +20,16 @@
 <style lang="scss" scoped>
   @import '../../common/scss/color';
   .topic-list {
-    padding: 18px 0 9px;
+    width: 100%;
+    padding: 18px 0 9px 8px;
     border-bottom: 1px solid #eee;
     .topic-block {
       display: inline-block;
       padding: 0 10px;
       margin: 0 10px 10px 0;
+      &:last-child {
+        margin:0 0 10px 0;
+      }
       &:first-chlid {
         margin-left: 0;
       }

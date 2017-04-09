@@ -22,9 +22,10 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 var data = require('../data.json');
-var topics = require('../Topics.json')
+var dtopics = require('../topicsMixup.json')
 var router = express.Router();
-let mainTopics = topics.mainTopics;
+var mylib = require('./lib.js');
+let mainTypes = dtopics.mainTypes;
 
 router.get('/user', (req, res) => {
   res.json({
@@ -45,23 +46,44 @@ router.get('/recentdynamic', (req, res) => {
   });
 });
 
-router.get('/maintopic/:id/subtopics/', (req, res) => {
+router.get('/maintypes/:id/topics/', (req, res) => {
   let id = req.params['id'];
+  let topics = mylib.filterSubTopics(dtopics.topics, id);
   res.json({
     status: 'success',
     data: {
-      sub_topics: topics.topics.filter(topic => topic.fid === id)
+      topics: topics
     }
   });
 });
 
-router.get('/topics', (req, res) => {
+router.get('/maintypes', (req, res) => {
+  let topics = mylib.filterSubTopics(dtopics.topics, mainTypes[0].id);
+  let allTopics = dtopics.topics;
+  let selectedTopics = [];
+  for (let i = 0; i < 3; i += 1) {
+    const index = Math.floor(Math.random() * allTopics.length);
+    let cntTopic = allTopics[index];
+    let obj = {};
+    let extractKeys = ['value', 'focusNum', 'avatarLocalPath', 'id', 'hotQuestion'];
+    extractKeys.forEach((key) => {
+      if (key === 'hotQuestion') {
+        obj[key] = cntTopic['dynamics'][0]['question'];
+      }
+      else {
+        obj[key] = cntTopic[key];
+      }
+    })
+    selectedTopics.push(obj);
+  }
+
   return res.json({
     status: 'success',
     data: {
       focus_num: 18,
-      main_topics: mainTopics,
-      sub_topics: topics.topics.filter(topic => topic.fid === mainTopics[0].id)
+      mainTypes: mainTypes,
+      topics: topics,
+      selectedTopics: selectedTopics,
     }
   });
 });
