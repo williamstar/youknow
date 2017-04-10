@@ -35,6 +35,11 @@
   @import '../../common/scss/mixin';
 
   .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
     height: 46px;
     max-width: 100%;
     background: linear-gradient(to bottom, #086ed5, #055db5);
