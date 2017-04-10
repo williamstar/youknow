@@ -110,6 +110,10 @@ export default {
 @import '../../common/scss/color';
 .uheader {
   border-bottom: 1px solid rgba(30, 35, 42, .06);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   .inner-header {
     position: relative;
     display: flex;
@@ -117,6 +121,9 @@ export default {
     margin: 0 auto;
     width: 1000px;
     height: 53px;
+    .logo-wrapper {
+      cursor: pointer;
+    }
     &:after {
       content: '';
       position: absolute;
@@ -196,7 +203,7 @@ export default {
       }
       .question {
         margin-left: 16px;
-        padding: 0 14px;
+        padding: 1px 14px;
         border: 1px solid #0f88eb;
         border-radius: 3px;
         line-height: 30px;
