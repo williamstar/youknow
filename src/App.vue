@@ -1,14 +1,15 @@
 <template>
   <div id="app">
     <my-header :user="user"></my-header>
-    <keep-alive>
+    <!--<keep-alive>
       <router-view :user="user"></router-view>
-    </keep-alive>
+    </keep-alive>-->
   </div>
 </template>
 
 <script type="text/javascript">
 import header from '@/components/header/Header';
+import uheader from '@/components/header/UHeader';
 
 const OK = 'success';
 
@@ -28,7 +29,7 @@ export default {
   },
   name: 'app',
   components: {
-    MyHeader: header,
+    MyHeader: uheader,
   },
 };
 </script>

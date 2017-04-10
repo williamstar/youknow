@@ -1,5 +1,31 @@
-html, body {
-  font-size: 13px;
-  line-height: 1.7;
+html,
+body {
+    font-size: 13px;
+    line-height: 1.7;
 }
 
+::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #afbdcf;
+}
+
+::-moz-placeholder {
+    font-size: 14px;
+    color: #afbdcf;
+}
+
+
+/* firefox 19+ */
+
+:-ms-input-placeholder {
+    font-size: 14px;
+    color: #afbdcf;
+}
+
+
+/* ie */
+
+input:-moz-placeholder {
+    font-size: 14px;
+    color: #afbdcf;
+}
