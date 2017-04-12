@@ -146,6 +146,8 @@ export default {
       }
     }
     .search-box-wrapper {
+      position: relative;
+      width: 400px;
       .search-bar {
         position: relative;
         display: inline-block;
@@ -202,6 +204,8 @@ export default {
         }
       }
       .question {
+        position: absolute;
+        right: 0;
         margin-left: 16px;
         padding: 1px 14px;
         border: 1px solid #0f88eb;
