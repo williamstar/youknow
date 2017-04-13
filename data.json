@@ -1,10 +1,32 @@
 {
   "user": {
     "user_name": "王玉龙",
-    "user_avatar": "/static/images/user_avatar.jpg"
+    "avatar": "/static/images/avatar.jpg",
+    "cover": "/static/images/cover.jpg",
+    "avatarX": "/static/images/avatar_x.jpg",
+    "briefDesc": "我是软件小菜鸟",
+    "Address": ["福建厦门"],
+    "currentJob": "计算机软件",
+    "career": [],
+    "educations": [],
+    "desc": "",
+    "gender": "m",
+    "dynamics": [],
+    "answers": [],
+    "shares": [],
+    "questions": [],
+    "collections": [],
+    "focus": {
+      "focusPeople": [],
+      "followerPeople": [],
+      "focusTopic": [],
+      "focusCollection": [],
+      "focusProblem": [],
+      "focusSpecColumnNum": [],
+      "exploreNum": 151
+    }
   },
-  "recent_dynamic": [
-    {
+  "recent_dynamic": [{
       "topic": "健康",
       "avatarLocalPath": "/static/images/8aa11b633_m.jpg",
       "question": "如何改掉晚睡强迫症？",
@@ -185,8 +207,7 @@
       }
     }
   ],
-  "youknow_live": [
-    {
+  "youknow_live": [{
       "avatarLocalPath": "/static/images/03dd04fecd8378b3193ec9723ca2f678_s.jpg",
       "value": "独立保函相关法律问题"
     },
@@ -199,8 +220,7 @@
       "value": "KATA，到底应该怎么练？"
     }
   ],
-  "youknow_circledesk": [
-    {
+  "youknow_circledesk": [{
       "avatarLocalPath": "/static/images/v2-4b627048c9bc0f962aae11430bb3ac69_s.jpg",
       "value": "人工智能 · 机器感知",
       "end": 4
@@ -214,8 +234,7 @@
       "value": "好好开车 · 购车指南"
     }
   ],
-  "youknow_bookstore": [
-    {
+  "youknow_bookstore": [{
       "avatarLocalPath": "/static/images/weekly.65279d61.png",
       "value": "走，带你轻松户外游"
     },
@@ -248,8 +267,7 @@
     17,
     18
   ],
-  "all_topics": [
-    {
+  "all_topics": [{
       "id": "1",
       "value": "音乐",
       "desc": "音乐，广义而言，指精心组织声音，并将其排布在时间和空间上的艺术类型。",
