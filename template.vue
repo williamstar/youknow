@@ -1,17 +1,16 @@
 <template>
   <div>
-  
+
   </div>
 </template>
 
-<script>
-  export default {
-  
-  
-  
-  };
+<script type="text/javascript">
+export default {
+
+
+};
 </script>
 
 <style lang="scss" scoped>
-  
+
 </style>

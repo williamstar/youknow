@@ -4,6 +4,7 @@ import Index from '@/components/index/Index';
 import Topic from '@/components/topic/Topic';
 import Discovery from '@/components/discovery/Discovery';
 import Topics from '@/components/topics/Topics';
+import UserPage from '@/components/UserPage/UserPage';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/topics',
       name: 'topics',
       component: Topics,
+    },
+    {
+      path: '/self',
+      name: 'self',
+      component: UserPage,
     },
   ],
 });

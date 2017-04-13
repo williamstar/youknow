@@ -23,7 +23,7 @@
           <span class="nav-item">消息</span>
         </div>
         <div class="user-wrapper">
-          <img :src="user.user_avatar"
+          <img :src="user.avatar"
                width="27"
                height="27"
                class="avatar"><span class="username">{{user.user_name}}</span>

@@ -3,7 +3,7 @@
     <div class="content-wrapper clearfix">
       <div class="content">
         <div class="func-bar-wrapper">
-          <img :src="user.user_avatar" width="38" height="38" class="avatar" alt="用户头像">
+          <img :src="user.avatar" width="38" height="38" class="avatar" alt="用户头像">
           <div class="func-bar-content">
             <ul class="fun-bar">
               <li class="func-item">

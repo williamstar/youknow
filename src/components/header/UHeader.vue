@@ -16,12 +16,18 @@
         </svg>
       </a>
       <nav class="navigation">
-        <a href="#"
-           class="nav-item">首页</a>
-        <a href="#"
-           class="nav-item">发现</a>
-        <a href="#"
-           class="nav-item">话题</a>
+        <router-link to="/"
+                     class="nav-item">
+          首页
+        </router-link>
+        <router-link to="/discovery"
+                     class="nav-item">
+          发现
+        </router-link>
+        <router-link to="/topics"
+                     class="nav-item">
+          话题
+        </router-link>
       </nav>
 
       <div class="search-box-wrapper">
@@ -80,7 +86,10 @@
             </g>
           </svg>
         </div>
-        <span class="user"><img :src="user.user_avatar" width="30" height="30" alt="用户头像"></span>
+        <router-link class="user" to="/self"><img :src="user.avatar"
+               width="30"
+               height="30"
+               alt="用户头像"></router-link>
       </div>
     </div>
     <div class="inner-bottom"
