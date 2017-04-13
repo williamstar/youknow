@@ -1,7 +1,7 @@
 <template>
   <div class="uheader">
-
-    <div class="inner-header">
+    <div class="inner-header"
+         :class="{'lift-up': switchHeader}">
       <a class="logo-wrapper">
         <svg viewBox="0 0 200 91"
              class="Icon Icon--logo"
@@ -28,11 +28,13 @@
         <div class="search-bar"
              :class="{'focus': searchFocus}">
           <input type="text"
-                 class="search-box" v-model="search"
+                 class="search-box"
+                 v-model="search"
                  @focus="toggleFocus"
                  @blur="toggleFocus"
                  placeholder="搜索你感兴趣的内容...">
-          <button class="sprite-magnifier" :class="{'has-value': search.length > 0}">
+          <button class="sprite-magnifier"
+                  :class="{'has-value': search.length > 0}">
             <svg viewBox="0 0 16 16"
                  class="Icon Icon--search"
                  width="16"
@@ -81,6 +83,11 @@
         <span class="user"><img :src="user.user_avatar" width="30" height="30" alt="用户头像"></span>
       </div>
     </div>
+    <div class="inner-bottom"
+         :class="{'lift-up': switchHeader}">
+      <slot>
+      </slot>
+    </div>
   </div>
 </template>
 
@@ -95,7 +102,17 @@ export default {
     return {
       searchFocus: false,
       search: '',
+      switchHeader: false,
     };
+  },
+  created() {
+    window.addEventListener('scroll', (e) => {
+      if (window.scrollY >= 100) {
+        this.switchHeader = true;
+      } else {
+        this.switchHeader = false;
+      }
+    });
   },
   methods: {
     toggleFocus() {
@@ -109,11 +126,15 @@ export default {
 @import '../../common/scss/mixin';
 @import '../../common/scss/color';
 .uheader {
-  border-bottom: 1px solid rgba(30, 35, 42, .06);
   position: fixed;
+  overflow: hidden;
+  z-index: 9999;
   top: 0;
   left: 0;
   right: 0;
+  height: 53px;
+  background: #fff;
+  border-bottom: 1px solid rgba(30, 35, 42, .06);
   .inner-header {
     position: relative;
     display: flex;
@@ -121,6 +142,10 @@ export default {
     margin: 0 auto;
     width: 1000px;
     height: 53px;
+    transition: transform .3s ease;
+    &.lift-up {
+      transform: translateY(-100%);
+    }
     .logo-wrapper {
       cursor: pointer;
     }
@@ -242,6 +267,14 @@ export default {
         cursor: pointer;
         padding-right: 10px;
       }
+    }
+  }
+  .inner-bottom {
+    height: 53px;
+    background: #f0f;
+    transition: transform .3s ease;
+    &.lift-up {
+      transform: translateY(-100%);
     }
   }
 }
