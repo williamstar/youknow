@@ -141,9 +141,10 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  height: 53px;
+  height: 52px;
   background: #fff;
   border-bottom: 1px solid rgba(30, 35, 42, .06);
+  box-shadow: 0 1px 3px 0 rgba(0,34,77,.05);
   .inner-header {
     position: relative;
     display: flex;

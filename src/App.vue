@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     headerStyle() {
-      return this.header === 'uHeader' ? 'old-version' : 'new-version';
+      return this.header === 'nHeader' ? 'old-version' : 'new-version';
     },
   },
   components: {
