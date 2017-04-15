@@ -1,7 +1,4 @@
-var data = require('../data.json');
-var dtopics = require('../topicsMixup.json')
-var mylib = require('./lib.js');
-let mainTypes = dtopics.mainTypes;
+
 
 module.exports = function (router) {
 

@@ -5,7 +5,7 @@
     "cover": "/static/images/cover.jpg",
     "avatarX": "/static/images/avatar_x.jpg",
     "briefDesc": "我是软件小菜鸟",
-    "Address": ["福建厦门"],
+    "address": ["福建厦门", "美国"],
     "currentJob": "计算机软件",
     "career": [],
     "educations": [],
