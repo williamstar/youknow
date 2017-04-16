@@ -1,12 +1,12 @@
 <template>
-  <div class="user-page-wrapper">
-    <div class="user-page">
-      <div class="user-data">
+  <div class="detail-page-wrapper">
+    <div class="detail-page">
+      <div class="detail-data">
         <div class="cover-wrapper">
-          <img :src="user.cover"
+          <img :src="detail.cover"
                width="998"
                height="240"
-               alt="user cover"
+               alt="detail cover"
                class="cover">
           <button class="edit-cover">
             <svg viewBox="0 0 20 16"
@@ -23,15 +23,15 @@
             </svg>编辑图片
           </button>
         </div>
-        <div class="user-main-wrapper">
-          <div class="user-main">
+        <div class="detail-main-wrapper">
+          <div class="detail-main">
             <div class="img-wrapper"><img alt="用户照片"
                    width="160"
                    height="160"
-                   :src="user.avatarX"></div>
+                   :src="detail.avatarX"></div>
             <div class="detail">
-              <div class="user-header"><span class="username">{{user.userName}}</span><span class="brief-desc">{{user.briefDesc}}</span></div>
-              <div class="user-content">
+              <div class="detail-header"><span class="detailname">{{user.userName}}</span><span class="brief-desc">{{detail.briefDesc}}</span></div>
+              <div class="detail-content">
                 <div class="brief-intro"
                      v-if="isBrief">
                   <div class="item current-job">
@@ -45,10 +45,10 @@
                         <path d="M15 3.998v-2C14.86.89 13.98 0 13 0H7C5.822 0 5.016.89 5 2v2l-3.02-.002c-1.098 0-1.97.89-1.97 2L0 16c0 1.11.882 2 1.98 2h16.033c1.1 0 1.98-.89 1.987-2V6c-.007-1.113-.884-2.002-1.982-2.002H15zM7 4V2.5s-.004-.5.5-.5h5c.5 0 .5.5.5.5V4H7z"></path>
                       </g>
                     </svg>
-                    {{user.currentJob}}
+                    {{detail.currentJob}}
                   </div>
                   <div class="item sex">
-                    <div v-if="user.gender === 'm'">
+                    <div v-if="detail.gender === 'm'">
                       <svg width="14"
                            height="16"
                            viewBox="0 0 14 14"
@@ -81,12 +81,12 @@
                 <div class="full-intro"
                      v-else>
                   <div class="item address"
-                       v-if="user.address.length > 0">
-                    <span class="label">居住地</span><span class="value">{{user.address | formateAddress}}</span>
+                       v-if="detail.address.length > 0">
+                    <span class="label">居住地</span><span class="value">{{detail.address | formateAddress}}</span>
                   </div>
                   <div class="item current-job">
                     <span class="label">所在行业</span>
-                    <span class="value">{{user.currentJob}}</span>
+                    <span class="value">{{detail.currentJob}}</span>
                   </div>
                 </div>
                 <div class="content-footer">
@@ -114,20 +114,74 @@
           </div>
         </div>
       </div>
-      <div class="user-interactive">
+      <div class="detail-interactive">
         <div class="main-interactive">
-          <nav class="interactive-header">
-            <router-link  to="/self/activities">动态</router-link>
-            <router-link  to="/self/answers">回答</router-link>
-            <router-link  to="/self/pins">分享</router-link>
-            <router-link  to="/self/asks">提问</router-link>
-            <router-link  to="/self/collections">收藏</router-link>
-            <router-link  to="/self/following">关注</router-link>
-          </nav>
+          <ul class="interactive-header">
+            <li>
+              <router-link to="/self/activities">动态</router-link>
+            </li>
+            <li>
+              <router-link to="/self/answers">回答</router-link>
+            </li>
+            <li>
+              <router-link to="/self/pins">分享</router-link>
+            </li>
+            <li>
+              <router-link to="/self/asks">提问</router-link>
+            </li>
+            <li>
+              <router-link to="/self/collections">收藏</router-link>
+            </li>
+            <li>
+              <router-link to="/self/following" :class="{'router-link-active': $route.fullPath.indexOf('followers') !== -1}">关注</router-link>
+            </li>
+          </ul>
           <router-view></router-view>
         </div>
         <div class="focus-part">
-
+          <div class="self-achievement">
+            <div class="title">
+              个人成就
+            </div>
+            <div class="achievements-wrapper">
+              <div class="achievement"
+                   v-for="achievement in detail.achievements">
+                <svg width="16"
+                     height="16"
+                     viewBox="0 0 16 16"
+                     aria-hidden="true"
+                     style="height: 16px; width: 16px;">
+                  <title></title>
+                  <g>
+                    <path d="M8 15.5C3.858 15.5.5 12.142.5 8 .5 3.858 3.858.5 8 .5c4.142 0 7.5 3.358 7.5 7.5 0 4.142-3.358 7.5-7.5 7.5zm3.032-11.643c-.22-.214-.574-.208-.79.013L5.1 9.173 6.778 10.8l5.142-5.303c.215-.222.21-.575-.01-.79l-.878-.85zm-6.77 7.107L4 12l1.028-.293.955-.27L4.503 10l-.242.964z"
+                          fill-rule="evenodd"></path>
+                  </g>
+                </svg><a href="#">{{achievement}}</a>
+              </div>
+            </div>
+          </div>
+          <div class="focus-status">
+            <router-link to="following"
+                         class="focus-item">关注了
+              <div class="value"
+                   v-if="detail.focus">{{detail.focus.people.length}}</div>
+            </router-link>
+            <router-link to="followers"
+                         class="focus-item">关注者
+              <div class="value"
+                   v-if="detail.focus">{{detail.focus.follower.length}}</div>
+            </router-link>
+          </div>
+          <ul class="other-focus">
+            <li><a href="#">关注的话题<span v-if="detail.focus">{{detail.focus.topics.length}}</span></a></li>
+            <li><a href="#">关注的专栏<span v-if="detail.focus">{{detail.focus.specColumn.length}}</span></a></li>
+            <li><a href="#">关注的问题<span v-if="detail.focus">{{detail.focus.problems.length}}</span></a></li>
+            <li><a href="#">关注的收藏夹<span v-if="detail.focus">{{detail.focus.collections.length}}</span></a></li>
+          </ul>
+          <div class="explored-status">
+            个人主页被浏览 {{detail.exploredTimes}}次
+          </div>
+          <div class="subfix-bar"></div>
         </div>
       </div>
     </div>
@@ -135,6 +189,8 @@
 </template>
 
 <script type="text/javascript">
+const OK = 'success';
+
 export default {
   props: {
     user: {
@@ -144,7 +200,18 @@ export default {
   data() {
     return {
       isBrief: true,
+      detail: {
+
+      },
     };
+  },
+  created() {
+    this.$http.get('/api/userdetail').then((res) => {
+      res = res.body;
+      if (res.status === OK) {
+        this.detail = res.data;
+      }
+    });
   },
   methods: {
     toggleBrief() {
@@ -163,17 +230,17 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../common/scss/color';
-.user-page-wrapper {
+.detail-page-wrapper {
   background: #f7f8fa;
   svg {
     vertical-align: text-bottom;
     fill: currentColor;
   }
-  .user-page {
+  .detail-page {
     margin: 0 auto;
     padding-top: 10px;
     width: 998px;
-    .user-data {
+    .detail-data {
       background: #fff;
       border: 1px solid #e7eaf1;
       .cover-wrapper {
@@ -200,10 +267,10 @@ export default {
           }
         }
       }
-      .user-main-wrapper {
+      .detail-main-wrapper {
         position: relative;
         background: #fff;
-        .user-main {
+        .detail-main {
           position: relative;
           margin: 0 24px 24px;
           .img-wrapper {
@@ -219,9 +286,9 @@ export default {
           .detail {
             padding: 16px 0 0 32px;
             margin-left: 164px;
-            .user-header {
+            .detail-header {
               margin-bottom: 16px;
-              .username {
+              .detailname {
                 font-size: 26px;
                 font-weight: 500;
                 line-height: 30px;
@@ -233,7 +300,7 @@ export default {
                 white-space: nowrap;
               }
             }
-            .user-content {
+            .detail-content {
               position: relative;
               padding: 10px 0 0;
               transition: all .3s ease;
@@ -302,6 +369,125 @@ export default {
               }
             }
           }
+        }
+      }
+    }
+    .detail-interactive {
+      margin-top: 10px;
+      .main-interactive {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 4px;
+        position: relative;
+        width: 692px;
+        border: 1px solid #e7eaf1;
+        background: #fff;
+        .interactive-header {
+          border-bottom: 1px solid #f0f2f7;
+          font-size: 0;
+          li {
+            display: inline-block;
+            font-size: 16px;
+            padding: 0 20px;
+            a {
+              display: block;
+              padding: 14px 0;
+              &.router-link-active {
+                font-weight: 700;
+                border-bottom: 3px solid $n-blue;
+              }
+            }
+          }
+        }
+      }
+      .focus-part {
+        display: inline-block;
+        width: 296px;
+        .self-achievement {
+          border: 1px solid #e7eaf1;
+          background: #fff;
+          color: #555;
+          .title {
+            overflow: hidden;
+            padding: 0 14px;
+            height: 50px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            line-height: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            border-bottom: 1px solid #e7eaf1;
+          }
+          .achievements-wrapper {
+            padding: 12px 0;
+            .achievement {
+              padding: 6px 16px;
+              font-size: 15px;
+              svg {
+                margin-right: 12px;
+                fill: #9fadc7;
+              }
+              a:hover {
+                color: #175199;
+              }
+            }
+          }
+        }
+        .focus-status {
+          display: flex;
+          margin-top: 10px;
+          padding: 16px 0;
+          height: 80px;
+          text-align: center;
+          box-sizing: border-box;
+          border: 1px solid #e7eaf1;
+          background: #fff;
+          .focus-item {
+            flex: 1;
+            color: #9fadc7;
+            .value {
+              color: #555;
+            }
+            &:hover {
+              color: #175199;
+              .value {
+                color: #175199;
+              }
+            }
+            &:first-child {
+              border-right: 1px solid #e7eaf1;
+            }
+          }
+        }
+        .other-focus {
+          margin-top: 10px;
+          border-bottom: 1px solid #f0f2f7;
+          li {
+            height: 46px;
+            line-height: 46px;
+            border-top: 1px solid #f0f2f7;
+            a {
+              display: block;
+              span {
+                float: right;
+                color: #8590a6;
+              }
+              &:hover {
+                color: #175199;
+                span {
+                  color: inherit;
+                }
+              }
+            }
+          }
+        }
+        .explored-status {
+          margin-top: 6px;
+          padding: 10px 0;
+          font-size: 14px;
+          line-height: 1.8;
+          border-bottom: 1px solid #f0f2f7;
+          color: #8590a6;
         }
       }
     }

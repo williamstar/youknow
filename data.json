@@ -1,7 +1,9 @@
 {
   "user": {
     "userName": "王玉龙",
-    "avatar": "/static/images/avatar.jpg",
+    "avatar": "/static/images/avatar.jpg"
+  },
+  "user_detail": {
     "cover": "/static/images/cover.jpg",
     "avatarX": "/static/images/avatar_x.jpg",
     "briefDesc": "我是软件小菜鸟",
@@ -12,18 +14,23 @@
     "desc": "",
     "gender": "m",
     "dynamics": [],
+    "achievements": ["参与 3 次公共编辑"],
     "answers": [],
-    "shares": [],
+    "pins": {
+      "myShare": [],
+      "myArticle": [],
+      "myColumn": []
+    },
     "questions": [],
     "collections": [],
+    "exploredTimes": 151,
     "focus": {
-      "focusPeople": [],
-      "followerPeople": [],
-      "focusTopic": [],
-      "focusCollection": [],
-      "focusProblem": [],
-      "focusSpecColumnNum": [],
-      "exploreNum": 151
+      "people": [],
+      "follower": [],
+      "topics": [],
+      "collections": [],
+      "problems": [],
+      "specColumn": []
     }
   },
   "recent_dynamic": [{

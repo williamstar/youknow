@@ -1,6 +1,8 @@
 <template>
   <div>
-    动态
+    <div class="title">
+      我的动态
+    </div>
   </div>
 </template>
 

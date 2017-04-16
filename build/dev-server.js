@@ -12,8 +12,8 @@ var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
 
-var data = require('../data.json');
 var dtopics = require('../topicsMixup.json')
+var data = require('../data.json');
 var mylib = require('./lib');
 let mainTypes = dtopics.mainTypes;
 
@@ -27,6 +27,7 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
 // 在这里注册api router 方便调用各种函数
 var router = express.Router();
 // 获取用户的一些信息
@@ -36,6 +37,15 @@ router.get('/user', (req, res) => {
     data: data.user
   });
 });
+
+//用户详细信息
+router.get('/userdetail', (req, res) => {
+  res.json({
+    status: 'success',
+    data: data.user_detail
+  });
+});
+
 // 获取最近动态
 router.get('/recentdynamic', (req, res) => {
   res.json({

@@ -37,6 +37,11 @@ export default new Router({
       component: UserPage,
       children: [
         {
+          path: '',
+          redirect: 'activities',
+          component: Activities,
+        },
+        {
           path: 'activities',
           component: Activities,
         },
@@ -59,6 +64,12 @@ export default new Router({
         {
           path: 'following',
           component: Following,
+          activeClass: 'light',
+        },
+        {
+          path: 'followers',
+          component: Following,
+          activeClass: 'light',
         },
       ],
     },

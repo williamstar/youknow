@@ -9,6 +9,15 @@ import './common/scss/index.scss';
 Vue.config.productionTip = false;
 Vue.use(VueResource);
 
+Vue.config.errorHandler = (err, vm, info) => {
+  // handle error
+  // `info` is a Vue-specific error info, e.g. which lifecycle hook
+  // the error was found in. Only available in 2.2.0+
+  console.log(err);
+  console.log(vm);
+  console.log(info);
+};
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
