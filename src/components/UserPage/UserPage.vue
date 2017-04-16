@@ -231,7 +231,6 @@ export default {
 <style lang="scss" scoped>
 @import '../../common/scss/color';
 .detail-page-wrapper {
-  background: #f7f8fa;
   svg {
     vertical-align: text-bottom;
     fill: currentColor;
@@ -240,6 +239,7 @@ export default {
     margin: 0 auto;
     padding-top: 10px;
     width: 998px;
+    min-height: 100vh;
     .detail-data {
       background: #fff;
       border: 1px solid #e7eaf1;
@@ -373,7 +373,7 @@ export default {
       }
     }
     .detail-interactive {
-      margin-top: 10px;
+      margin: 10px 0;
       .main-interactive {
         display: inline-block;
         vertical-align: top;
