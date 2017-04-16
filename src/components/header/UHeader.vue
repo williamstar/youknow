@@ -2,7 +2,7 @@
   <div class="uheader">
     <div class="inner-header"
          :class="{'lift-up': switchHeader}">
-      <a class="logo-wrapper">
+      <router-link to="/" class="logo-wrapper">
         <svg viewBox="0 0 200 91"
              class="Icon Icon--logo"
              width="64"
@@ -14,7 +14,7 @@
                   fill-rule="evenodd"></path>
           </g>
         </svg>
-      </a>
+      </router-link>
       <nav class="navigation">
         <router-link to="/"
                      class="nav-item">
@@ -86,7 +86,7 @@
             </g>
           </svg>
         </div>
-        <router-link class="user" to="/self"><img :src="user.avatar"
+        <router-link class="user" to="/self/activities"><img :src="user.avatar"
                width="30"
                height="30"
                alt="用户头像"></router-link>
