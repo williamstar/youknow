@@ -136,7 +136,7 @@
               <router-link to="/self/following" :class="{'router-link-active': $route.fullPath.indexOf('followers') !== -1}">关注</router-link>
             </li>
           </ul>
-          <router-view></router-view>
+          <router-view :user="user" :detail="detail"></router-view>
         </div>
         <div class="focus-part">
           <div class="self-achievement">
