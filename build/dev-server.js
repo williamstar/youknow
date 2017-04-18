@@ -45,6 +45,26 @@ router.get('/userdetail', (req, res) => {
     data: data.user_detail
   });
 });
+// 随机给出2个主题，10个动态
+router.get('/fake_answers_or_questions', (req, res) => {
+  let tids = [];
+  let topics = dtopics.topics;
+  let tsize = topics.length;
+  dynamics = [];
+  while(tids.length <= 2) {
+    let idx = Math.floor(Math.random() * tsize);
+    if (!tids.some(x => x === idx)) {
+      dynamics = dynamics.concat(topics[idx]['dynamics']);
+      tids.push(idx);
+    }
+  }
+
+  res.json({
+    status: 'success',
+    data: dynamics
+  })
+})
+
 
 // 获取最近动态
 router.get('/recentdynamic', (req, res) => {
