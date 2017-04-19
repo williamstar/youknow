@@ -34,8 +34,7 @@
             </div>
             <div class="answer-content">
               <span v-if="!briefControll[index]"
-                    class="brief-answer" v-html="dynamic.answer.value"><button v-if="!briefControll[index]"class="expand-answer"@click="toggleAnswer(index)">阅读全文</button>
-                  </span>
+                    class="brief-answer">{{ dynamic.answer.value | chop }}<button v-if="!briefControll[index]"class="expand-answer"@click="toggleAnswer(index)">阅读全文</button></span>
               <span v-else
                     class="full-answer">{{dynamic.answer}}</span>
 
@@ -162,7 +161,7 @@ export default {
     },
   },
   filters: {
-    chop: chop(100),
+    chop: chop(200),
   },
 };
 </script>
@@ -192,8 +191,12 @@ export default {
     }
   }
   .dynamics {
-    padding: 16px 0;
     .dynamic {
+      padding: 16px 0;
+      border-bottom: 1px solid #f0f2f7;
+      &:last-child {
+        border: none;
+      }
       .question-value {
         margin-top: -6px;
         line-height: 1.6;
@@ -224,9 +227,11 @@ export default {
           font-size: 15px;
           line-height: 25px;
           word-break: break-word;
-          cursor: pointer;
-          &:hover {
-            color: #6f6f6f;
+          .brief-answer {
+            cursor: pointer;
+            &:hover {
+              color: #6f6f6f;
+            }
           }
           .expand-answer {
             margin-left: 4px;
