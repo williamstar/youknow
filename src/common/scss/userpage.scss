@@ -1,0 +1,23 @@
+@import 'color';
+.item {
+    &:before {
+        margin: 0 5px;
+        content: "\B7";
+    } //对第一个修改样式
+    &:first-child {
+        &:before {
+            display: none;
+        }
+    }
+    margin-top: 5px;
+    color: $n-lgray;
+    font-size: 14px;
+}
+
+//较大的标题
+.max-title {
+  line-height: 1.6;
+  font-size: 20px;
+  font-weight: 400;
+  color: #333333;
+}

@@ -1,11 +1,19 @@
+@import 'color';
+@mixin border-bottom($color: $n-llgray, $height: 1px) {
+    border-bottom: $height solid $n-llgray;
+    &:last-child {
+        border: none;
+    }
+}
+
 @mixin icon($url, $x, $y) {
-  background-position: $x $y ;
-  background-image: url($url);
-  background-repeat: no-repeat;
+    background-position: $x $y;
+    background-image: url($url);
+    background-repeat: no-repeat;
 }
 
 @mixin bold-title($height) {
-  height: $height;
-  line-height: $height;
-  font-weight: 700;
+    height: $height;
+    line-height: $height;
+    font-weight: 700;
 }

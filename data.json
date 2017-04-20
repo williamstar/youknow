@@ -23,13 +23,13 @@
     },
     "questions": [],
     "collections": [{
-        "name": "前端开发",
+        "val": "前端开发",
         "updateTime": "2017-4-20",
         "itemNum": 20,
         "followingNum": 30
       },
       {
-        "name": "数据",
+        "val": "数据",
         "updateTime": "2017-4-16",
         "itemNum": 1,
         "followingNum": 200
