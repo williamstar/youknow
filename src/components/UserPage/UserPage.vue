@@ -230,6 +230,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../common/scss/color';
+@import '../../common/scss/mixin';
 .detail-page-module {
   svg {
     vertical-align: text-bottom;
@@ -383,7 +384,7 @@ export default {
         border: 1px solid #e7eaf1;
         background: #fff;
         .interactive-header {
-          border-bottom: 1px solid #f0f2f7;
+          @include border-bottom;
           font-size: 0;
           li {
             display: inline-block;
@@ -416,7 +417,7 @@ export default {
             line-height: 50px;
             font-size: 15px;
             font-weight: 500;
-            border-bottom: 1px solid #e7eaf1;
+            @include border-bottom(#e7eaf1);
           }
           .achievements-wrapper {
             padding: 12px 0;
@@ -461,7 +462,7 @@ export default {
         }
         .other-focus {
           margin-top: 10px;
-          border-bottom: 1px solid #f0f2f7;
+          @include border-bottom;
           li {
             height: 46px;
             line-height: 46px;
@@ -486,7 +487,7 @@ export default {
           padding: 10px 0;
           font-size: 14px;
           line-height: 1.8;
-          border-bottom: 1px solid #f0f2f7;
+          @include border-bottom;
           color: #8590a6;
         }
       }

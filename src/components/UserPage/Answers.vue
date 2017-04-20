@@ -167,6 +167,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../common/scss/mixin';
+
 .answer-module {
   margin: 0 20px;
   .title {
@@ -174,7 +176,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    border-bottom: 1px solid #f0f2f7;
+    @include border-bottom;
     .main-header {
       font-weight: 700;
       font-size: 15px;
@@ -193,7 +195,7 @@ export default {
   .dynamics {
     .dynamic {
       padding: 16px 0;
-      border-bottom: 1px solid #f0f2f7;
+      @include border-bottom;
       &:last-child {
         border: none;
       }
