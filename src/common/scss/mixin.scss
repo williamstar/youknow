@@ -3,3 +3,9 @@
   background-image: url($url);
   background-repeat: no-repeat;
 }
+
+@mixin bold-title($height) {
+  height: $height;
+  line-height: $height;
+  font-weight: 700;
+}

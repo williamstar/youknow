@@ -1,5 +1,5 @@
 <template>
-  <div class="detail-page-wrapper">
+  <div class="detail-page-module">
     <div class="detail-page">
       <div class="detail-data">
         <div class="cover-wrapper">
@@ -230,7 +230,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../common/scss/color';
-.detail-page-wrapper {
+.detail-page-module {
   svg {
     vertical-align: text-bottom;
     fill: currentColor;

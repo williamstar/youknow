@@ -1,5 +1,5 @@
 <template>
-  <div class="answer">
+  <div class="answer-module">
     <div class="title">
       <div class="main-header">我的回答</div>
       <button class="sort-by-time">
@@ -167,7 +167,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.answer {
+.answer-module {
   margin: 0 20px;
   .title {
     display: flex;
@@ -226,7 +226,7 @@ export default {
           margin-top: 9px;
           font-size: 15px;
           line-height: 25px;
-          word-break: break-word;
+          word-break: break-all;
           .brief-answer {
             cursor: pointer;
             &:hover {
