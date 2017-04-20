@@ -1,6 +1,6 @@
 <template>
-  <div>
-分享
+  <div class="column-module">
+    专栏模块
   </div>
 </template>
 

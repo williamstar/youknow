@@ -1,16 +1,22 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
 import Index from '@/components/index/Index';
 import Topic from '@/components/topic/Topic';
 import Discovery from '@/components/discovery/Discovery';
 import Topics from '@/components/topics/Topics';
-import UserPage from '@/components/UserPage/UserPage';
-import Activities from '@/components/UserPage/Activities';
-import Answers from '@/components/UserPage/Answers';
-import Pins from '@/components/UserPage/Pins';
-import Asks from '@/components/UserPage/Asks';
-import Collections from '@/components/UserPage/Collections';
-import Following from '@/components/UserPage/Following';
+// 用户模块
+import UserPage from '@/components/userpage/UserPage';
+import Activities from '@/components/userpage/Activities';
+import Answers from '@/components/userpage/Answers';
+import Asks from '@/components/userpage/Asks';
+import Collections from '@/components/userpage/Collections';
+import Following from '@/components/userpage/Following';
+import MainPins from '@/components/userpage/MainPins';
+// 分享模块下的模块
+import Pins from '@/components/userpage/pins/Pins';
+import Posts from '@/components/userpage/pins/Posts';
+import Columns from '@/components/userpage/pins/Columns';
 
 Vue.use(Router);
 
@@ -51,7 +57,21 @@ export default new Router({
         },
         {
           path: 'pins',
-          component: Pins,
+          component: MainPins,
+          children: [
+            {
+              path: '',
+              component: Pins,
+            },
+            {
+              path: 'posts',
+              component: Posts,
+            },
+            {
+              path: 'columns',
+              component: Columns,
+            },
+          ],
         },
         {
           path: 'asks',
