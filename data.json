@@ -16,10 +16,45 @@
     "dynamics": [],
     "achievements": ["参与 3 次公共编辑"],
     "answers": [],
-    "pins": {
-      "myShare": [],
-      "myArticle": [],
-      "myColumn": []
+    "pinsPart": {
+      "pins": [{
+        "author": {
+          "avatar": "/static/images/avatar.jpg",
+          "userName": "王玉龙",
+          "briefDesc": "我是软件小菜鸟"
+        },
+        "desc": "很有意思",
+        "shareThing": {
+          "type": "文章",
+          "title": "Cecil Macadam：程序员你会修电脑吗？",
+          "voteNum": 120,
+          "href": "https://zhuanlan.zhihu.com/p/26441167?utm_source=zhihu&utm_medium=social",
+          "cover": "/static/images/shareThingCover.jpg"
+        }
+      }, {
+        "author": {
+          "avatar": "/static/images/avatar.jpg",
+          "userName": "王玉龙",
+          "briefDesc": "我是软件小菜鸟"
+        },
+        "desc": "哈哈哈，太好玩了",
+        "shareThing": {
+          "type": "回答",
+          "title": "你见过最厉害的人是什么样的？",
+          "voteNum": 257,
+          "href": "https://www.zhihu.com/question/52133029/answer/157939154?utm_source=zhihu&utm_medium=social",
+          "cover": ""
+        }
+      }],
+      "posts": [{
+        "title": "如何在人生中应用好不确定性",
+        "cover": "/static/images/postCover.jpg",
+        "postImg": "/static/images/postImg",
+        "body": "人生就像冒险，每一个人都不知道自己下一秒钟面对的是什么，但是如何抓住自己眼前的机遇却至关重要。灵活的手段，跳跃的思维都是必不可少的。在面对种种不确定的情况下，做出最大的收益措施是每一个人向往的。但是真正该怎么做，知道的人却少之又少。<p>  自己也是一个傻乎乎的人，做出的选择偶尔对偶尔错，在大量的错误下，我终于收获了一点点自己对于不确定事件的应付能力了。以下分享下自己的想法。</p><ul><li><b>工作上我们对于上司和老板，本应答应大部分他们提出的工作要求，但是如果你听到你上司的想法异想天开，甚至对于组织有害的话，尽早向他委婉提出，否则最后大家都不好受。其次，我们对于他们的态度要有礼貌，尽量在他们面前表现出美好的一面，这样才能逢人遇事更加圆滑，毕竟一个人的外观也是很重要的。再次，工作要尽责，不能过于苛刻于同事，要自己做好自己分内的事情，如果你有心向同事纠正，但是同事不听，别想着如何去纠正他，除非你是个辩论家，而且他是个倾听者，否则也是大家都没好好处。</b></li><li><b>在感情上，不要明确的拒绝别人，要学会委婉。杜绝暧昧，这种时段时不断的感情很容易伤害双方。尤其是不要玩弄感情，尽量不要再一个圈子里乱搞，这样玩坏了，名声很差的，你以后不好做人。如果有真正喜欢的，不要盲目就说喜欢，拜托那真的很傻逼，一见钟情真的很少好嘛，也许只是好感度爆棚而已，好好想想是不是真的是有感觉，你到底能说出几点你喜欢她的理由？如果一点都没有，还是先当好朋友，好好想想理由去吧。</b></li><li><b>学习上，人生在于学习，无论你几岁，都应该热爱学习，并且学习的方法也应更与时俱进，这才是一个人价值的积累，放弃错误的，选择正确的，才是一个人进步的体现。</b></li></ul><br>自己一点点浅显的看法",
+        "voteNum": 399,
+        "editDate": "2017-4-21 16:56"
+      }],
+      "columns": []
     },
     "questions": [],
     "collections": [{
