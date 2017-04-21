@@ -1,5 +1,4 @@
 @import 'color';
-
 @mixin border-bottom($color: $n-llgray, $height: 1px) {
     border-bottom: $height solid $n-llgray;
     &:last-child {
@@ -14,6 +13,7 @@
 }
 
 @mixin bold-title($height) {
+    font-size: 15px;
     height: $height;
     line-height: $height;
     font-weight: 700;

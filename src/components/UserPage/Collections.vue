@@ -5,7 +5,7 @@
     </div>
     <div class="collections">
       <div v-for="collection in detail.collections"
-           class="collection">
+           class="collection list-item">
         <div class="max-title">
           {{collection.val}}
         </div>
@@ -34,7 +34,7 @@ export default {
 @import "../../common/scss/color";
 @import "../../common/scss/userpage";
 .collection-module {
-  padding: 0 16px;
+  padding: 0 20px;
   .title {
     @include bold-title(50px);
     @include border-bottom;
@@ -42,7 +42,6 @@ export default {
   .collections {
     .collection {
       @include border-bottom;
-      padding: 16px 0;
       font-size: 14px;
     }
     .func-desc {

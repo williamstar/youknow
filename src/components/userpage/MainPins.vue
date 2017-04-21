@@ -9,7 +9,8 @@
       <router-link to="/self/pins/columns"
                    class="link">我的专栏</router-link>
     </div>
-    <router-view :user="user" :detail="detail">
+    <router-view :user="user"
+                 :detail="detail">
     </router-view>
   </div>
 </template>
@@ -31,7 +32,7 @@ export default {
 @import '../../common/scss/mixin';
 
 .main-pins-module {
-  padding: 0 16px;
+  padding: 0 20px;
   .header {
     @include border-bottom;
     .link {

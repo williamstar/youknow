@@ -3,7 +3,7 @@
     <div v-if="detail.pinsPart"
          class="posts">
       <div v-for="post in detail.pinsPart.posts"
-           class="post">
+           class="post list-item">
         <div class="title">{{post.title}}</div>
         <div class="user-wrapper">
           <user-card :user="user"

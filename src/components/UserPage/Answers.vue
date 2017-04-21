@@ -19,14 +19,30 @@
     <div class="main-content">
       <div class="dynamics">
         <div v-for="(dynamic, index) in dynamics"
-             class="dynamic">
+             class="dynamic list-item">
           <h2 class="question-value">{{dynamic.question}}</h2>
           <div class="answer-wrapper">
             <user-card :user="user"
                        :brief-desc="detail.briefDesc"></user-card>
             <div class="answer-content">
               <div v-if="!briefControll[index]"
-                    class="brief-answer">{{ dynamic.answer.value | htmlToText | chop }}<button v-if="!briefControll[index]"class="read-full"@click="toggleAnswer(index)">阅读全文<svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></button></div>
+                   class="brief-answer">{{ dynamic.answer.value | htmlToText | chop }}
+                <button v-if="!briefControll[index]"
+                        class="read-full"
+                        @click="toggleAnswer(index)">阅读全文
+                  <svg viewBox="0 0 10 6"
+                       class="Icon ContentItem-arrowIcon Icon--arrow"
+                       width="10"
+                       height="16"
+                       aria-hidden="true"
+                       style="height: 16px; width: 10px;">
+                    <title></title>
+                    <g>
+                      <path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path>
+                    </g>
+                  </svg>
+                </button>
+              </div>
               <span v-else
                     class="full-answer">{{dynamic.answer}}</span>
 
@@ -191,7 +207,6 @@ export default {
   }
   .dynamics {
     .dynamic {
-      padding: 16px 0;
       @include border-bottom;
       &:last-child {
         border: none;

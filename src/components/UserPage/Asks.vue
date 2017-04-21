@@ -5,7 +5,7 @@
     </div>
     <div class="questions">
       <div v-for="question in questions"
-           class="question">
+           class="question list-item">
         <div class="max-title">
           <a href="#">{{question.question}}</a>
         </div>
@@ -52,7 +52,6 @@ export default {
   }
   .questions {
     .question {
-      padding: 16px 0;
       border-bottom: 1px solid #f0f2f7;
       .full-desc {
         display: flex;

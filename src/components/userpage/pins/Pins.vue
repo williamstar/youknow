@@ -3,7 +3,7 @@
     <div v-if="detail.pinsPart"
          class="pins">
       <div v-for="(pin, index) in detail.pinsPart.pins"
-           class="pin">
+           class="pin list-item">
         <user-card :user="user"
                    :brief-desc="detail.briefDesc"></user-card>
         <div class="content">
@@ -150,7 +150,6 @@ export default {
 @import '../../../common/scss/mixin';
 @import '../../../common/scss/userpage';
 .pin {
-  padding: 16px 0;
   @include border-bottom;
   .content {
     margin-top: 9px;

@@ -54,7 +54,23 @@
         "voteNum": 399,
         "editDate": "2017-4-21 16:56"
       }],
-      "columns": []
+      "columns": [{
+          "avatar": "/static/images/column1.jpg",
+          "title": "Arc",
+          "briefDesc": "交织着各种各种梦",
+          "publishNum": 25,
+          "totalNum": 30,
+          "followingNum": 99
+        },
+        {
+          "avatar": "/static/images/column2.jpg",
+          "title": "数据大爆炸",
+          "briefDesc": "数据的泛滥需要一个人来制止!",
+          "publishNum": 16,
+          "totalNum": 77,
+          "followingNum": 360
+        }
+      ]
     },
     "questions": [],
     "collections": [{
@@ -71,13 +87,36 @@
       }
     ],
     "exploredTimes": 151,
-    "focus": {
-      "people": [],
-      "follower": [],
+    "followingPart": {
+      "following": [{
+          "avatar": "/static/images/following1.jpg",
+          "userName": "王诺诺",
+          "briefDesc": "微信平台：misswangnuonuo",
+          "answerNum": 238,
+          "articleNum": 10,
+          "follower": 342428
+        },
+        {
+          "avatar": "/static/images/following2.jpg",
+          "userName": "尤雨溪",
+          "briefDesc": "前端开发、JavaScript、前端工程师 话题",
+          "answerNum": 306,
+          "articleNum": 9,
+          "follower": 47429
+        }
+      ],
+      "followers": [{
+        "avatar": "/static/images/follower1.jpg",
+        "userName": "tears",
+        "briefDesc": "计算机小白",
+        "answerNum": 1,
+        "articleNum": 0,
+        "follower": 0
+      }],
       "topics": [],
       "collections": [],
       "problems": [],
-      "specColumn": []
+      "columns": []
     }
   },
   "recent_dynamic": [{
