@@ -296,17 +296,23 @@ svg {
         .detail {
           padding: 16px 0 0 32px;
           margin-left: 164px;
+          line-height: 1;
+          svg {
+            margin-right: 12px;
+          }
           .detail-header {
             margin-bottom: 16px;
             .detailname {
               font-size: 26px;
               font-weight: 500;
+              font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, WenQuanYi Micro Hei, Arial sans-serif;
               line-height: 30px;
             }
             .brief-desc {
               margin-left: 12px;
               font-size: 18px;
               font-weight: 400;
+              font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, WenQuanYi Micro Hei, Arial sans-serif;
               white-space: nowrap;
             }
           }
@@ -314,6 +320,7 @@ svg {
             position: relative;
             transition: all .3s ease;
             .brief-intro {
+              height: 52px;
               .item {
                 margin-bottom: 10px;
                 &:last-child {
@@ -351,25 +358,24 @@ svg {
                 }
               }
               .toggle-detail {
-                color: #9fadc7;
+                font-size: 14px;
+                color: #8590a6;
                 cursor: pointer;
                 background: none;
-                svg {
-                  margin-right: 10px;
-                }
               }
               .button-wrapper {
                 position: absolute;
-                top: 0;
+                bottom: 0;
                 right: 0;
                 .edit-profile {
                   padding: 0 16px;
                   line-height: 32px;
-                  background: none;
+                  font-size: 14px;
                   cursor: pointer;
                   color: $n-blue;
                   border-radius: 3px;
                   border: 1px solid $n-blue;
+                  background: none;
                   &:hover {
                     background: rgba(13, 121, 209, .06);
                   }

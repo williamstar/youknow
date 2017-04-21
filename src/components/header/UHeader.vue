@@ -2,7 +2,8 @@
   <div class="uheader">
     <div class="inner-header"
          :class="{'lift-up': switchHeader}">
-      <router-link to="/" class="logo-wrapper">
+      <router-link to="/"
+                   class="logo-wrapper">
         <svg viewBox="0 0 200 91"
              class="Icon Icon--logo"
              width="64"
@@ -24,7 +25,7 @@
                      class="nav-item">
           发现
         </router-link>
-        <router-link to="/topics"
+        <router-link to="/topic"
                      class="nav-item">
           话题
         </router-link>
@@ -86,7 +87,8 @@
             </g>
           </svg>
         </div>
-        <router-link class="user" to="/self/activities"><img :src="user.avatar"
+        <router-link class="user"
+                     to="/self/activities"><img :src="user.avatar"
                width="30"
                height="30"
                alt="用户头像"></router-link>
@@ -134,6 +136,12 @@ export default {
 <style lang="scss" scoped>
 @import '../../common/scss/mixin';
 @import '../../common/scss/color';
+
+svg {
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
 .uheader {
   position: fixed;
   overflow: hidden;
@@ -144,34 +152,32 @@ export default {
   height: 52px;
   background: #fff;
   border-bottom: 1px solid rgba(30, 35, 42, .06);
-  box-shadow: 0 1px 3px 0 rgba(0,34,77,.05);
+  box-shadow: 0 1px 3px 0 rgba(0, 34, 77, .05);
+  background-clip: content-box;
   .inner-header {
     position: relative;
     display: flex;
     align-items: center;
     margin: 0 auto;
     width: 1000px;
-    height: 53px;
+    height: 52px;
     transition: transform .3s ease;
     &.lift-up {
       transform: translateY(-100%);
     }
     .logo-wrapper {
       cursor: pointer;
-    }
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      width: 1920px;
-      left: -441px;
+      font-size: 0;
     }
     .navigation {
-      display: inline-block;
-      margin: 0 27px;
+      display: flex;
+      margin: 0 18px 0 27px;
       height: 30px;
       a {
-        padding: 0 10px;
+        padding: 0 15px;
+        &:first-child {
+          padding-left: 0;
+        }
         font-size: 15px;
         line-height: 30px;
         color: $n-gray;
@@ -215,7 +221,7 @@ export default {
           right: -1px;
           top: -1px;
           border-radius: 0 3px 3px 0;
-          width: 36px;
+          width: 40px;
           height: 34px;
           padding: 0 12px;
           background-color: transparent;
@@ -246,6 +252,7 @@ export default {
         border: 1px solid #0f88eb;
         border-radius: 3px;
         line-height: 30px;
+        font-size: 14px;
         color: #fff;
         background: #0f88eb;
         border: 1px solid #0f88eb;
@@ -262,6 +269,7 @@ export default {
       align-items: center;
       justify-content: flex-end;
       flex: 1;
+      font-size: 0;
       svg {
         fill: $n-lgray;
       }
@@ -275,7 +283,6 @@ export default {
       }
       .user {
         cursor: pointer;
-        padding-right: 10px;
       }
     }
   }
