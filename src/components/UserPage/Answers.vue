@@ -22,17 +22,18 @@
              class="dynamic">
           <h2 class="question-value">{{dynamic.question}}</h2>
           <div class="answer-wrapper">
-            <user-card :user="user" :brief-desc="detail.briefDesc"></user-card>
+            <user-card :user="user"
+                       :brief-desc="detail.briefDesc"></user-card>
             <div class="answer-content">
-              <span v-if="!briefControll[index]"
-                    class="brief-answer">{{ dynamic.answer.value | chop }}<button v-if="!briefControll[index]"class="read-full"@click="toggleAnswer(index)">阅读全文<svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></button></span>
+              <div v-if="!briefControll[index]"
+                    class="brief-answer">{{ dynamic.answer.value | htmlToText | chop }}<button v-if="!briefControll[index]"class="read-full"@click="toggleAnswer(index)">阅读全文<svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></button></div>
               <span v-else
                     class="full-answer">{{dynamic.answer}}</span>
 
             </div>
             <div class="func-bar">
               <button href="#"
-                      class="func-item">
+                      class="button-item light-button">
                 <svg viewBox="0 0 20 18"
                      width="9"
                      height="16"
@@ -45,7 +46,7 @@
                 </svg>
                 {{dynamic.answer.voteNum}}</button>
               <button href="#"
-                      class="func-item">
+                      class="button-item">
                 <svg viewBox="0 0 18 18"
                      xmlns="http://www.w3.org/2000/svg"
                      width="12"
@@ -58,7 +59,7 @@
                   </g>
                 </svg>添加评论</button>
               <button href="#"
-                      class="func-item">
+                      class="button-item">
                 <svg viewBox="0 0 20 18"
                      xmlns="http://www.w3.org/2000/svg"
                      width="13"
@@ -71,7 +72,7 @@
                   </g>
                 </svg>分享</button>
               <button href="#"
-                      class="func-item">
+                      class="button-item">
                 <svg viewBox="0 0 20 20"
                      width="13"
                      height="16"
@@ -83,7 +84,7 @@
                   </g>
                 </svg>收藏</button>
               <button href="#"
-                      class="func-item">
+                      class="button-item">
                 <svg viewBox="0 0 20 20"
                      width="14"
                      height="16"
@@ -95,7 +96,7 @@
                   </g>
                 </svg>设置</button>
               <button v-if="briefControll[index]"
-                      class="func-item"
+                      class="button-item last-one"
                       @click="toggleAnswer(index)">
                 收起
                 <svg viewBox="0 0 10 6"
@@ -118,7 +119,7 @@
 </template>
 
 <script type="text/javascript">
-import { chop } from 'lib/string';
+import { chop, htmlToText } from 'lib/string';
 import usercard from '@/components/userpage/UserCard';
 
 const OK = 'success';
@@ -157,6 +158,7 @@ export default {
   },
   filters: {
     chop: chop(200),
+    htmlToText,
   },
 };
 </script>
@@ -213,45 +215,6 @@ export default {
             &:hover {
               color: #6f6f6f;
             }
-          }
-        }
-      }
-      .func-bar {
-        display: flex;
-        align-items: center;
-        margin-top: 4px;
-        height: 52px;
-        .func-item {
-          margin-left: 24px;
-          cursor: pointer;
-          color: #8590a6;
-          background: none;
-          &:hover {
-            color: #7a8599;
-          }
-          &:first-child {
-            margin-left: 0;
-            padding: 0 10px;
-            border: 1px solid #ebf3fb;
-            border-radius: 3px;
-            line-height: 32px;
-            opacity: .5;
-            color: #2d84cc;
-            background: #ebf3fb;
-            &:hover {
-              background: initial;
-            }
-          }
-          &:last-child {
-            margin-left: auto;
-            svg {
-              transform: rotate(180deg);
-            }
-          }
-          svg {
-            margin-right: 6px;
-            fill: currentColor;
-            vertical-align: text-bottom;
           }
         }
       }

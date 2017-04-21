@@ -4,8 +4,9 @@
          class="pins">
       <div v-for="(pin, index) in detail.pinsPart.pins"
            class="pin">
-        <user-card :user="user" :brief-desc="detail.briefDesc"></user-card>
-        <div class="comment">
+        <user-card :user="user"
+                   :brief-desc="detail.briefDesc"></user-card>
+        <div class="content">
           {{pin.comment}}<span class="read-full">阅读全文<svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></span>
         </div>
         <a :href="pin.shareThing.href">
@@ -26,7 +27,7 @@
         </a>
         <div class="func-bar">
           <button href="#"
-                  class="button-item">
+                  class="button-item primary-button">
             <svg viewBox="0 0 20 18"
                  xmlns="http://www.w3.org/2000/svg"
                  width="13"
@@ -151,15 +152,9 @@ export default {
 .pin {
   padding: 16px 0;
   @include border-bottom;
-  .comment {
+  .content {
     margin-top: 9px;
     margin-bottom: -5px;
-    font-size: 15px;
-    line-height: 25px;
-    cursor: pointer;
-    &:hover {
-      color: #6f6f6f;
-    }
   }
   .share-thing {
     display: flex;
@@ -190,40 +185,6 @@ export default {
         text-overflow: ellipsis;
         word-wrap: normal;
         white-space: nowrap;
-      }
-    }
-  }
-  .func-bar {
-    display: flex;
-    align-items: center;
-    margin-top: 4px;
-    height: 52px;
-    .button-item {
-      margin-left: 24px;
-      cursor: pointer;
-      color: #8590a6;
-      background: none;
-      &:hover {
-        color: #7a8599;
-      }
-      &:first-child {
-        margin-left: 0;
-        padding: 0 15px;
-        border: 1px solid #ebf3fb;
-        border-radius: 3px;
-        box-sizing: border-box;
-        line-height: 32px;
-        color: #2d84cc;
-        background: #ebf3fb;
-        &:hover {
-          background-color: #e4ebf3;
-          border-color: #e4ebf3;
-        }
-      }
-      svg {
-        margin-right: 6px;
-        fill: currentColor;
-        vertical-align: text-bottom;
       }
     }
   }

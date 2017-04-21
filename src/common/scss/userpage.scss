@@ -1,7 +1,78 @@
 @import 'color';
+
+
 svg {
-  vertical-align: text-bottom;
+    vertical-align: text-bottom;
 }
+
+// 多个button tools 的样式
+.func-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    height: 52px;
+    .button-item {
+        margin-left: 24px;
+        cursor: pointer;
+        color: #8590a6;
+        background: none;
+        &:hover {
+            color: #7a8599;
+        }
+        &:first-child {
+            margin-left: 0;
+        }
+        &.primary-button {
+            padding: 0 15px;
+            border: 1px solid #ebf3fb;
+            border-radius: 3px;
+            box-sizing: border-box;
+            line-height: 32px;
+            color: #2d84cc;
+            background: #ebf3fb;
+            &:hover {
+                background-color: #e4ebf3;
+                border-color: #e4ebf3;
+            }
+        }
+        &.light-button {
+            margin-left: 0;
+            padding: 0 10px;
+            border: 1px solid #ebf3fb;
+            border-radius: 3px;
+            line-height: 32px;
+            opacity: .5;
+            color: #2d84cc;
+            background: #ebf3fb;
+            &:hover {
+                background: initial;
+            }
+        }
+        &.last-one {
+            margin-left: auto;
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+        svg {
+            margin-right: 6px;
+            fill: currentColor;
+            vertical-align: text-bottom;
+        }
+    }
+}
+
+// 内容样式
+.content {
+    font-size: 15px;
+    line-height: 25px;
+    cursor: pointer;
+    &:hover {
+        color: #6f6f6f;
+    }
+}
+
+// 带点的标识，非button
 .item {
     &:before {
         margin: 0 5px;
@@ -17,7 +88,7 @@ svg {
     font-size: 14px;
 }
 
-//较大的标题
+// 较大的标题
 .max-title {
     line-height: 1.6;
     font-size: 20px;
@@ -25,6 +96,7 @@ svg {
     color: #333333;
 }
 
+// 阅读全文的样式
 .read-full {
     margin-left: 4px;
     color: #9fadc7;

@@ -28,8 +28,8 @@
     </div>
     <div class="extra-bar">
       <div class="topic-square-wrapper">
-        <a href="#"
-           class="topic-square-entry">进入话题广场</a>
+        <router-link to="/topics"
+           class="topic-square-entry">进入话题广场</router-link>
         <a href="#"
            class="message">来这里发现更多有趣话题</a>
       </div>
