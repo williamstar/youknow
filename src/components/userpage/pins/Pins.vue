@@ -4,16 +4,7 @@
          class="pins">
       <div v-for="(pin, index) in detail.pinsPart.pins"
            class="pin">
-        <div class="user">
-          <img :src="user.avatar"
-               width="38"
-               height="38"
-               alt="用户图片">
-          <div class="user-intro">
-            <div class="username">{{user.userName}}</div>
-            <div class="brief-desc">{{detail.briefDesc}}</div>
-          </div>
-        </div>
+        <user-card :user="user" :brief-desc="detail.briefDesc"></user-card>
         <div class="comment">
           {{pin.comment}}<span class="read-full">阅读全文<svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></span>
         </div>
@@ -121,6 +112,8 @@
 </template>
 
 <script type="text/javascript">
+import usercard from '@/components/userpage/UserCard';
+
 export default {
   props: {
     user: {
@@ -140,6 +133,9 @@ export default {
       this.briefControll[index] = !this.briefControll[index];
     },
   },
+  components: {
+    UserCard: usercard,
+  },
   filters: {
     hostname(href) {
       return /\w+:\/\/(\w+.\w+.com)/.exec(href)[1];
@@ -155,23 +151,6 @@ export default {
 .pin {
   padding: 16px 0;
   @include border-bottom;
-  .user {
-    display: flex;
-    .user-intro {
-      margin-left: 10px;
-      .username {
-        font-size: 15px;
-        line-height: 1.1;
-        font-weight: 600;
-        color: #555;
-      }
-      .brief-desc {
-        margin-top: 6px;
-        font-size: 14px;
-        line-height: 1.2;
-      }
-    }
-  }
   .comment {
     margin-top: 9px;
     margin-bottom: -5px;

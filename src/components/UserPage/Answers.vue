@@ -22,16 +22,7 @@
              class="dynamic">
           <h2 class="question-value">{{dynamic.question}}</h2>
           <div class="answer-wrapper">
-            <div class="author-intro">
-              <img :src="user.avatar"
-                   width="38"
-                   height="38"
-                   alt="用户头像">
-              <div class="text-intro">
-                <div class="username">{{user.userName}}</div>
-                <div class="brief-desc">{{detail.briefDesc}}</div>
-              </div>
-            </div>
+            <user-card :user="user" :brief-desc="detail.briefDesc"></user-card>
             <div class="answer-content">
               <span v-if="!briefControll[index]"
                     class="brief-answer">{{ dynamic.answer.value | chop }}<button v-if="!briefControll[index]"class="read-full"@click="toggleAnswer(index)">阅读全文<svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></button></span>
@@ -128,6 +119,7 @@
 
 <script type="text/javascript">
 import { chop } from 'lib/string';
+import usercard from '@/components/userpage/UserCard';
 
 const OK = 'success';
 
@@ -154,6 +146,9 @@ export default {
         this.briefControll = this.dynamics.map(_ => false);
       }
     });
+  },
+  components: {
+    UserCard: usercard,
   },
   methods: {
     toggleAnswer(index) {
@@ -208,22 +203,6 @@ export default {
       }
       .answer-wrapper {
         margin-top: 6px;
-        .author-intro {
-          display: flex;
-          .text-intro {
-            margin-left: 14px;
-            .username {
-              font-weight: 600;
-              font-size: 15px;
-              line-height: 1.1;
-            }
-            .brief-desc {
-              margin-top: 6px;
-              font-size: 14px;
-              line-height: 1.2;
-            }
-          }
-        }
         .answer-content {
           margin-top: 9px;
           font-size: 15px;

@@ -37,6 +37,7 @@ export default {
     .link {
       padding: 6px 0 7px 0;
       margin-right: 36px;
+      font-size: 15px;
     }
     .router-link-active {
       @include bold-title(50px);

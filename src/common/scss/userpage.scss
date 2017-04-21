@@ -1,4 +1,7 @@
 @import 'color';
+svg {
+  vertical-align: text-bottom;
+}
 .item {
     &:before {
         margin: 0 5px;
