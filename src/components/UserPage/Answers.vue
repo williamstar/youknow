@@ -34,7 +34,7 @@
             </div>
             <div class="answer-content">
               <span v-if="!briefControll[index]"
-                    class="brief-answer">{{ dynamic.answer.value | chop }}<button v-if="!briefControll[index]"class="expand-answer"@click="toggleAnswer(index)">阅读全文</button></span>
+                    class="brief-answer">{{ dynamic.answer.value | chop }}<button v-if="!briefControll[index]"class="read-full"@click="toggleAnswer(index)">阅读全文<svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></button></span>
               <span v-else
                     class="full-answer">{{dynamic.answer}}</span>
 
@@ -168,7 +168,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../common/scss/mixin';
-
+@import '../../common/scss/userpage';
 .answer-module {
   margin: 0 20px;
   .title {
@@ -235,12 +235,6 @@ export default {
               color: #6f6f6f;
             }
           }
-          .expand-answer {
-            margin-left: 4px;
-            color: #9fadc7;
-            background: none;
-            cursor: pointer;
-          }
         }
       }
       .func-bar {
@@ -260,6 +254,7 @@ export default {
             margin-left: 0;
             padding: 0 10px;
             border: 1px solid #ebf3fb;
+            border-radius: 3px;
             line-height: 32px;
             opacity: .5;
             color: #2d84cc;

@@ -16,8 +16,20 @@
 
 //较大的标题
 .max-title {
-  line-height: 1.6;
-  font-size: 20px;
-  font-weight: 400;
-  color: #333333;
+    line-height: 1.6;
+    font-size: 20px;
+    font-weight: 400;
+    color: #333333;
+}
+
+.read-full {
+    margin-left: 4px;
+    color: #9fadc7;
+    background: none;
+    cursor: pointer;
+    svg {
+        margin-left: 6px;
+        fill: currentColor;
+        vertical-align: text-bottom;
+    }
 }

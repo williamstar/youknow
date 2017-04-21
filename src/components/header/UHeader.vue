@@ -116,7 +116,7 @@ export default {
   },
   created() {
     window.addEventListener('scroll', (e) => {
-      if (window.scrollY >= 100) {
+      if (window.scrollY >= 1000) {
         this.switchHeader = true;
       } else {
         this.switchHeader = false;
