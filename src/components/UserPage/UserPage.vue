@@ -4,8 +4,6 @@
       <div class="detail-data">
         <div class="cover-wrapper">
           <img :src="detail.cover"
-               width="998"
-               height="240"
                alt="detail cover"
                class="cover">
           <button class="edit-cover">
@@ -20,7 +18,7 @@
                 <path d="M18.094 2H15s-1-2-2-2H7C6 0 5 2 5 2H2C0 2 0 3.967 0 3.967V14c0 2 2.036 2 2.036 2H17c3 0 3-1.983 3-1.983V4c0-2-1.906-2-1.906-2zM10 12c-1.933 0-3.5-1.567-3.5-3.5S8.067 5 10 5s3.5 1.567 3.5 3.5S11.933 12 10 12zm0 1.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm7.5-8c-.552 0-1-.448-1-1s.448-1 1-1 1 .448 1 1-.448 1-1 1z"
                       fill-rule="evenodd"></path>
               </g>
-            </svg>编辑图片
+            </svg>编辑封面图片
           </button>
         </div>
         <div class="detail-main-wrapper">
@@ -133,10 +131,12 @@
               <router-link to="/self/collections">收藏</router-link>
             </li>
             <li>
-              <router-link to="/self/following" :class="{'router-link-active': $route.fullPath.indexOf('followers') !== -1}">关注</router-link>
+              <router-link to="/self/following"
+                           :class="{'router-link-active': $route.fullPath.indexOf('followers') !== -1}">关注</router-link>
             </li>
           </ul>
-          <router-view :user="user" :detail="detail"></router-view>
+          <router-view :user="user"
+                       :detail="detail"></router-view>
         </div>
         <div class="focus-part">
           <div class="self-achievement">
@@ -205,6 +205,9 @@ export default {
       },
     };
   },
+  activated() {
+    document.title = this.user.userName;
+  },
   created() {
     this.$http.get('/api/userdetail').then((res) => {
       res = res.body;
@@ -231,140 +234,144 @@ export default {
 <style lang="scss" scoped>
 @import '../../common/scss/color';
 @import '../../common/scss/mixin';
-.detail-page-module {
-  svg {
-    vertical-align: text-bottom;
-    fill: currentColor;
-  }
-  .detail-page {
-    margin: 0 auto;
-    padding-top: 10px;
-    width: 998px;
-    min-height: 100vh;
-    .detail-data {
-      background: #fff;
-      border: 1px solid #e7eaf1;
-      .cover-wrapper {
-        position: relative;
-        height: 240px;
-        .edit-cover {
-          position: absolute;
-          top: 24px;
-          right: 24px;
-          padding: 0 16px;
-          line-height: 32px;
-          font-size: 14px;
-          color: hsla(0, 0%, 100%, .7);
-          cursor: pointer;
-          border: 1px solid #ccd8e1;
-          border-color: hsla(0, 0%, 100%, .24);
-          border-radius: 3px;
-          background: none;
-          &:hover {
-            background: hsla(0, 0%, 100%, .04);
-          }
-          svg {
-            margin-right: 6px;
-          }
+
+svg {
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.detail-page {
+  margin: 0 auto;
+  padding-top: 10px;
+  width: 1000px;
+  min-height: 100vh;
+  .detail-data {
+    background: #fff;
+    border: 1px solid #e7eaf1;
+    .cover-wrapper {
+      position: relative;
+      height: 240px;
+      .cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .edit-cover {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        padding: 0 16px;
+        line-height: 32px;
+        font-size: 14px;
+        color: hsla(0, 0%, 100%, .7);
+        cursor: pointer;
+        border: 1px solid #ccd8e1;
+        border-color: hsla(0, 0%, 100%, .24);
+        border-radius: 3px;
+        background: none;
+        &:hover {
+          background: hsla(0, 0%, 100%, .04);
+        }
+        svg {
+          margin-right: 6px;
         }
       }
-      .detail-main-wrapper {
+    }
+    .detail-main-wrapper {
+      position: relative;
+      background: #fff;
+      .detail-main {
         position: relative;
-        background: #fff;
-        .detail-main {
-          position: relative;
-          margin: 0 24px 24px;
-          .img-wrapper {
-            position: absolute;
-            top: -25px;
-            border-radius: 8px;
-            background: #fff;
-            img {
-              margin: 4px;
-              border-radius: 8px;
+        margin: 0 20px 24px;
+        .img-wrapper {
+          position: absolute;
+          top: -25px;
+          border-radius: 8px;
+          background: #fff;
+          img {
+            margin: 4px;
+            border-radius: 4px;
+          }
+        }
+        .detail {
+          padding: 16px 0 0 32px;
+          margin-left: 164px;
+          .detail-header {
+            margin-bottom: 16px;
+            .detailname {
+              font-size: 26px;
+              font-weight: 500;
+              line-height: 30px;
+            }
+            .brief-desc {
+              margin-left: 12px;
+              font-size: 18px;
+              font-weight: 400;
+              white-space: nowrap;
             }
           }
-          .detail {
-            padding: 16px 0 0 32px;
-            margin-left: 164px;
-            .detail-header {
-              margin-bottom: 16px;
-              .detailname {
-                font-size: 26px;
-                font-weight: 500;
-                line-height: 30px;
-              }
-              .brief-desc {
-                margin-left: 12px;
-                font-size: 18px;
-                font-weight: 400;
-                white-space: nowrap;
+          .detail-content {
+            position: relative;
+            transition: all .3s ease;
+            .brief-intro {
+              .item {
+                margin-bottom: 10px;
+                &:last-child {
+                  margin-bottom: 0;
+                }
+                font-size: 14px;
+                line-height: 20px;
+                svg {
+                  fill: #9fadc7;
+                  margin-right: 10px;
+                }
               }
             }
-            .detail-content {
+            .full-intro {
+              .item {
+                margin-bottom: 18px;
+                font-size: 14px;
+                line-height: 1.8;
+                color: #262626;
+                .label {
+                  margin-right: 37px;
+                }
+              }
+            }
+            .content-footer {
               position: relative;
-              padding: 10px 0 0;
-              transition: all .3s ease;
-              .brief-intro {
-                .item {
-                  margin-bottom: 10px;
-                  &:last-child {
-                    margin-bottom: 0;
-                  }
-                  font-size: 14px;
-                  line-height: 20px;
-                  svg {
-                    fill: #9fadc7;
-                    margin-right: 10px;
-                  }
+              padding-top: 8px;
+              color: #9fadc7;
+              svg {
+                // 设置svg为当前的颜色继承父亲的颜色
+                fill: currentColor;
+                &.rotate {
+                  // 旋转度数
+                  transform: rotate(180deg);
                 }
               }
-              .full-intro {
-                .item {
-                  margin-bottom: 18px;
-                  font-size: 14px;
-                  line-height: 1.8;
-                  color: #262626;
-                  .label {
-                    margin-right: 37px;
-                  }
-                }
-              }
-              .content-footer {
-                position: relative;
-                padding-top: 8px;
+              .toggle-detail {
                 color: #9fadc7;
+                cursor: pointer;
+                background: none;
                 svg {
-                  // 设置svg为当前的颜色继承父亲的颜色
-                  fill: currentColor;
-                  &.rotate {
-                    // 旋转度数
-                    transform: rotate(180deg);
-                  }
+                  margin-right: 10px;
                 }
-                .toggle-detail {
-                  color: #9fadc7;
-                  cursor: pointer;
+              }
+              .button-wrapper {
+                position: absolute;
+                top: 0;
+                right: 0;
+                .edit-profile {
+                  padding: 0 16px;
+                  line-height: 32px;
                   background: none;
-                  svg {
-                    margin-right: 10px;
-                  }
-                }
-                .button-wrapper {
-                  position: absolute;
-                  top: 0;
-                  right: 0;
-                  .edit-profile {
-                    padding: 0 16px;
-                    line-height: 32px;
-                    background: none;
-                    cursor: pointer;
-                    color: $n-blue;
-                    border-radius: 3px;
-                    border: 1px solid $n-blue;
-                    &:hover {
-                      background: rgba(13, 121, 209, .06);
-                    }
+                  cursor: pointer;
+                  color: $n-blue;
+                  border-radius: 3px;
+                  border: 1px solid $n-blue;
+                  &:hover {
+                    background: rgba(13, 121, 209, .06);
                   }
                 }
               }
@@ -373,123 +380,123 @@ export default {
         }
       }
     }
-    .detail-interactive {
-      margin: 10px 0;
-      .main-interactive {
-        display: inline-block;
-        vertical-align: top;
-        margin-right: 4px;
-        position: relative;
-        width: 692px;
+  }
+  .detail-interactive {
+    margin: 10px 0;
+    .main-interactive {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 4px;
+      position: relative;
+      width: 692px;
+      border: 1px solid #e7eaf1;
+      background: #fff;
+      .interactive-header {
+        @include border-bottom;
+        font-size: 0;
+        li {
+          display: inline-block;
+          font-size: 16px;
+          padding: 0 20px;
+          a {
+            display: block;
+            padding: 14px 0;
+            &.router-link-active {
+              font-weight: 700;
+              border-bottom: 3px solid $n-blue;
+            }
+          }
+        }
+      }
+    }
+    .focus-part {
+      display: inline-block;
+      width: 296px;
+      .self-achievement {
         border: 1px solid #e7eaf1;
         background: #fff;
-        .interactive-header {
-          @include border-bottom;
-          font-size: 0;
-          li {
-            display: inline-block;
-            font-size: 16px;
-            padding: 0 20px;
-            a {
-              display: block;
-              padding: 14px 0;
-              &.router-link-active {
-                font-weight: 700;
-                border-bottom: 3px solid $n-blue;
+        color: #555;
+        .title {
+          overflow: hidden;
+          padding: 0 14px;
+          height: 50px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          line-height: 50px;
+          font-size: 15px;
+          font-weight: 500;
+          @include border-bottom(#e7eaf1);
+        }
+        .achievements-wrapper {
+          padding: 12px 0;
+          .achievement {
+            padding: 6px 16px;
+            font-size: 15px;
+            svg {
+              margin-right: 12px;
+              fill: #9fadc7;
+            }
+            a:hover {
+              color: #175199;
+            }
+          }
+        }
+      }
+      .focus-status {
+        display: flex;
+        margin-top: 10px;
+        padding: 16px 0;
+        height: 80px;
+        text-align: center;
+        box-sizing: border-box;
+        border: 1px solid #e7eaf1;
+        background: #fff;
+        .focus-item {
+          flex: 1;
+          color: #9fadc7;
+          .value {
+            color: #555;
+          }
+          &:hover {
+            color: #175199;
+            .value {
+              color: #175199;
+            }
+          }
+          &:first-child {
+            border-right: 1px solid #e7eaf1;
+          }
+        }
+      }
+      .other-focus {
+        margin-top: 10px;
+        @include border-bottom;
+        li {
+          height: 46px;
+          line-height: 46px;
+          border-top: 1px solid #f0f2f7;
+          a {
+            display: block;
+            span {
+              float: right;
+              color: #8590a6;
+            }
+            &:hover {
+              color: #175199;
+              span {
+                color: inherit;
               }
             }
           }
         }
       }
-      .focus-part {
-        display: inline-block;
-        width: 296px;
-        .self-achievement {
-          border: 1px solid #e7eaf1;
-          background: #fff;
-          color: #555;
-          .title {
-            overflow: hidden;
-            padding: 0 14px;
-            height: 50px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            line-height: 50px;
-            font-size: 15px;
-            font-weight: 500;
-            @include border-bottom(#e7eaf1);
-          }
-          .achievements-wrapper {
-            padding: 12px 0;
-            .achievement {
-              padding: 6px 16px;
-              font-size: 15px;
-              svg {
-                margin-right: 12px;
-                fill: #9fadc7;
-              }
-              a:hover {
-                color: #175199;
-              }
-            }
-          }
-        }
-        .focus-status {
-          display: flex;
-          margin-top: 10px;
-          padding: 16px 0;
-          height: 80px;
-          text-align: center;
-          box-sizing: border-box;
-          border: 1px solid #e7eaf1;
-          background: #fff;
-          .focus-item {
-            flex: 1;
-            color: #9fadc7;
-            .value {
-              color: #555;
-            }
-            &:hover {
-              color: #175199;
-              .value {
-                color: #175199;
-              }
-            }
-            &:first-child {
-              border-right: 1px solid #e7eaf1;
-            }
-          }
-        }
-        .other-focus {
-          margin-top: 10px;
-          @include border-bottom;
-          li {
-            height: 46px;
-            line-height: 46px;
-            border-top: 1px solid #f0f2f7;
-            a {
-              display: block;
-              span {
-                float: right;
-                color: #8590a6;
-              }
-              &:hover {
-                color: #175199;
-                span {
-                  color: inherit;
-                }
-              }
-            }
-          }
-        }
-        .explored-status {
-          margin-top: 6px;
-          padding: 10px 0;
-          font-size: 14px;
-          line-height: 1.8;
-          @include border-bottom;
-          color: #8590a6;
-        }
+      .explored-status {
+        margin-top: 6px;
+        padding: 10px 0;
+        font-size: 14px;
+        line-height: 1.8;
+        @include border-bottom;
+        color: #8590a6;
       }
     }
   }
