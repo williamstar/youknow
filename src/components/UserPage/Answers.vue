@@ -2,19 +2,9 @@
   <div class="answer-module">
     <div class="title">
       <div class="main-header">我的回答</div>
-      <button class="sort-by-time">
-        按时间排序
-        <svg viewBox="0 0 8 13"
-             width="8"
-             height="16"
-             aria-hidden="true"
-             style="height: 16px; width: 8px;">
-          <title></title>
-          <g>
-            <path d="M4 11.183L1.284 8.218c-.293-.29-.77-.29-1.064 0-.293.29-.293.76 0 1.052l3.25 3.512c.292.29.768.29 1.062 0L7.78 9.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.064 0L4 11.182zM4 1.818L1.284 4.782c-.293.29-.77.29-1.064 0-.293-.29-.293-.76 0-1.052L3.47.218c.292-.29.768-.29 1.062 0L7.78 3.73c.293.29.293.76 0 1.052-.295.29-.77.29-1.064 0L4 1.82z"></path>
-          </g>
-        </svg>
-      </button>
+      <div class="switch-wrapper">
+        <switch-button :items="sorted"></switch-button>
+      </div>
     </div>
     <div class="main-content">
       <div class="dynamics">
@@ -45,7 +35,6 @@
               </div>
               <span v-else
                     class="full-answer">{{dynamic.answer}}</span>
-
             </div>
             <div class="func-bar">
               <button href="#"
@@ -136,7 +125,8 @@
 
 <script type="text/javascript">
 import { chop, htmlToText } from 'lib/string';
-import usercard from '@/components/userpage/UserCard';
+import userCard from '@/components/userpage/smallcomponents/UserCard';
+import switchButton from '@/components/userpage/smallcomponents/SwitchButton';
 
 const OK = 'success';
 
@@ -153,6 +143,7 @@ export default {
     return {
       dynamics: [],
       briefControll: [],
+      sorted: ['按时间排序', '按赞同排序'],
     };
   },
   created() {
@@ -165,7 +156,8 @@ export default {
     });
   },
   components: {
-    UserCard: usercard,
+    userCard,
+    switchButton,
   },
   methods: {
     toggleAnswer(index) {
@@ -187,22 +179,14 @@ export default {
   .title {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 50px;
     @include border-bottom;
     .main-header {
       font-weight: 700;
       font-size: 15px;
     }
-    .sort-by-time {
-      height: 40px;
-      background: none;
-      cursor: pointer;
-      svg {
-        vertical-align: text-bottom;
-        margin-left: 8px;
-        fill: #9fadc7;
-      }
+    .switch-wrapper {
+      margin-left: auto;
     }
   }
   .dynamics {
