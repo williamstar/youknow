@@ -8,6 +8,10 @@
                    class="link">我的文章</router-link>
       <router-link to="/self/pins/columns"
                    class="link">我的专栏</router-link>
+      <div class="switch-wrapper">
+        <switch-button :items="items"
+                       v-if="$route.fullPath.indexOf('posts') !== -1"></switch-button>
+      </div>
     </div>
     <router-view :user="user"
                  :detail="detail">
@@ -16,6 +20,8 @@
 </template>
 
 <script type="text/javascript">
+import switchButton from '@/components/userpage/smallcomponents/SwitchButton';
+
 export default {
   props: {
     user: {
@@ -24,6 +30,14 @@ export default {
     detail: {
       type: Object,
     },
+  },
+  data() {
+    return {
+      items: ['按时间排序', '按赞数排序'],
+    };
+  },
+  components: {
+    switchButton,
   },
 };
 </script>
@@ -34,6 +48,7 @@ export default {
 .main-pins-module {
   padding: 0 20px;
   .header {
+    display: flex;
     @include border-bottom;
     .link {
       padding: 6px 0 7px 0;
@@ -41,7 +56,10 @@ export default {
       font-size: 15px;
     }
     .router-link-active {
-      @include bold-title(50px);
+      @include bold-title;
+    }
+    .switch-wrapper {
+      margin-left: auto;
     }
   }
 }

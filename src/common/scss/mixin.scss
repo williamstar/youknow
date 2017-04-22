@@ -12,9 +12,11 @@
     background-repeat: no-repeat;
 }
 
-@mixin bold-title($height) {
+@mixin bold-title($height: -1) {
     font-size: 15px;
-    height: $height;
+    @if $height !=-1 {
+        height: $height;
+    }
     line-height: $height;
     font-weight: 700;
 }
