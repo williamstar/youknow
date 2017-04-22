@@ -113,7 +113,7 @@
 </template>
 
 <script type="text/javascript">
-import usercard from '@/components/userpage/UserCard';
+import usercard from '@/components/userpage/smallcomponents/UserCard';
 
 export default {
   props: {

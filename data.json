@@ -113,10 +113,75 @@
         "articleNum": 0,
         "follower": 0
       }],
-      "topics": [],
-      "collections": [],
-      "problems": [],
-      "columns": []
+      "topics": [{
+          "avatar": "/static/images/sciencex.jpg",
+          "title": "自然科学",
+          "answerNum": 99
+        },
+        {
+          "avatar": "/static/images/sportx.jpg",
+          "title": "体育",
+          "answerNum": 56
+        },
+        {
+          "avatar": "/static/images/internetx.jpg",
+          "title": "互联网",
+          "answerNum": 37
+        },
+        {
+          "avatar": "/static/images/economyx.jpg",
+          "title": "经济学",
+          "answerNum": 911
+        },
+        {
+          "avatar": "/static/images/culturex.jpg",
+          "title": "人文",
+          "answerNum": 399
+        },
+        {
+          "avatar": "/static/images/music.jpg",
+          "title": "音乐",
+          "answerNum": 1099
+        }
+      ],
+      "collections": [{
+          "title": "何匿?",
+          "updateDate": "2017-03-27",
+          "totalNum": 19,
+          "followerNum": 1138
+        },
+        {
+          "title": "王诺诺的收藏夹",
+          "updateDate": "2017-03-23",
+          "totalNum": 74,
+          "followerNum": 3087
+        }
+      ],
+      "problems": [{
+          "title": "进了小公司的应届程序员如何翻身进入大公司?",
+          "followerDate": "2017-04-14",
+          "totalAnswer": 180,
+          "followerNum": 4436
+        },
+        {
+          "title": "如何从web前端转型数据方向?",
+          "followerDate": "2017-04-15",
+          "totalAnswer": 0,
+          "followerNum": 1
+        },
+        {
+          "title": "大学转专业之后该如何学习?",
+          "followerDate": "2017-04-13",
+          "totalAnswer": 1,
+          "followerNum": 2
+        }
+      ],
+      "columns": [{
+        "avatar": "/static/images/fcolumn.jpg",
+        "title": "王诺诺你作业又忘带了?",
+        "totalNum": 8,
+        "followerNum": 13376
+      }]
     }
   },
   "recent_dynamic": [{
