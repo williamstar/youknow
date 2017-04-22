@@ -25,6 +25,13 @@ export default {
       type: Object,
     },
   },
+  created() {
+    for (let i = 0; i < this.suffixes.length; i += 1) {
+      if (this.$route.fullPath.indexOf(this.suffixes[i]) !== -1) {
+        this.currentIndex = i;
+      }
+    }
+  },
   data() {
     return {
       items: ['我关注的专栏', '我关注的话题', '我关注的问题', '我关注的收藏'],
