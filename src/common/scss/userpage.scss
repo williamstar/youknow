@@ -1,6 +1,5 @@
 @import 'color';
 @import 'mixin';
-
 .icon {
     fill: #9fadc7;
     vertical-align: text-bottom;
@@ -94,6 +93,10 @@
 
 // 带点的标识，非button
 .item {
+    margin-top: 5px;
+    color: $n-lgray;
+    font-size: 14px;
+    cursor: initial;
     &:before {
         margin: 0 5px;
         content: "\B7";
@@ -103,9 +106,12 @@
             display: none;
         }
     }
-    margin-top: 5px;
-    color: $n-lgray;
-    font-size: 14px;
+}
+
+.bold-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.6;
 }
 
 // 较大的标题
@@ -127,4 +133,12 @@
         fill: currentColor;
         vertical-align: text-bottom;
     }
+}
+
+// 头像
+.avatar {
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 4px;
+    cursor: pointer;
 }

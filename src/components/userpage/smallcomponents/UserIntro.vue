@@ -75,12 +75,6 @@ export default {
   display: flex;
   padding: 16px 0;
   @include border-bottom;
-  .avatar {
-    object-fit: cover;
-    margin-right: 20px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
   .user-detail {
     flex: 1;
     .user-name {
