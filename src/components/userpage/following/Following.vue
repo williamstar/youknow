@@ -1,12 +1,23 @@
 <template>
-  <div>
-    你追随的人
+  <div class="following-module">
+    <div v-if="detail.followingPart" class="followings">
+      <userIntro v-for="user in detail.followingPart.following" :user="user" :key="user.userName"></userIntro>
+    </div>
   </div>
 </template>
 
 <script type="text/javascript">
-export default {
+import userIntro from '@/components/userpage/smallcomponents/UserIntro';
 
+export default {
+  props: {
+    detail: {
+      type: Object,
+    },
+  },
+  components: {
+    userIntro,
+  },
 };
 </script>
 

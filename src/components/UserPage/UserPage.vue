@@ -113,30 +113,33 @@
         </div>
       </div>
       <div class="detail-interactive">
-        <div class="main-interactive">
-          <ul class="interactive-header">
-            <li>
-              <router-link to="/self/activities">动态</router-link>
-            </li>
-            <li>
-              <router-link to="/self/answers">回答</router-link>
-            </li>
-            <li>
-              <router-link to="/self/pins">分享</router-link>
-            </li>
-            <li>
-              <router-link to="/self/asks">提问</router-link>
-            </li>
-            <li>
-              <router-link to="/self/collections">收藏</router-link>
-            </li>
-            <li>
-              <router-link to="/self/following"
-                           :class="{'router-link-active': $route.fullPath.indexOf('followers') !== -1}">关注</router-link>
-            </li>
-          </ul>
-          <router-view :user="user"
-                       :detail="detail"></router-view>
+        <div class="main-interactive-wrapper">
+
+          <div class="main-interactive">
+            <ul class="interactive-header">
+              <li>
+                <router-link to="/self/activities">动态</router-link>
+              </li>
+              <li>
+                <router-link to="/self/answers">回答</router-link>
+              </li>
+              <li>
+                <router-link to="/self/pins">分享</router-link>
+              </li>
+              <li>
+                <router-link to="/self/asks">提问</router-link>
+              </li>
+              <li>
+                <router-link to="/self/collections">收藏</router-link>
+              </li>
+              <li>
+                <router-link to="/self/following"
+                             :class="{'router-link-active': $route.fullPath.indexOf('followers') !== -1}">关注</router-link>
+              </li>
+            </ul>
+            <router-view :user="user"
+                         :detail="detail"></router-view>
+          </div>
         </div>
         <div class="focus-part">
           <div class="self-achievement">

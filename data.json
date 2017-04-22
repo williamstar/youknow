@@ -91,6 +91,7 @@
       "following": [{
           "avatar": "/static/images/following1.jpg",
           "userName": "王诺诺",
+          "isFollowing": true,
           "briefDesc": "微信平台：misswangnuonuo",
           "answerNum": 238,
           "articleNum": 10,
@@ -99,6 +100,7 @@
         {
           "avatar": "/static/images/following2.jpg",
           "userName": "尤雨溪",
+          "isFollowing": true,
           "briefDesc": "前端开发、JavaScript、前端工程师 话题",
           "answerNum": 306,
           "articleNum": 9,
@@ -108,6 +110,7 @@
       "followers": [{
         "avatar": "/static/images/follower1.jpg",
         "userName": "tears",
+        "isFollowing": false,
         "briefDesc": "计算机小白",
         "answerNum": 1,
         "articleNum": 0,
