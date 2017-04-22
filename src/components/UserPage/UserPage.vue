@@ -389,8 +389,8 @@ svg {
   }
   .detail-interactive {
     margin: 10px 0;
+    display: flex;
     .main-interactive {
-      display: inline-block;
       vertical-align: top;
       margin-right: 4px;
       position: relative;
@@ -416,7 +416,7 @@ svg {
       }
     }
     .focus-part {
-      display: inline-block;
+      margin-left: auto;
       width: 296px;
       .self-achievement {
         border: 1px solid #e7eaf1;
