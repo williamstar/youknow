@@ -47,7 +47,7 @@ export default {
   methods: {
     selectItem(index) {
       this.currentIndex = index;
-      this.$emit('selectWhat', this.currentItem);
+      this.$emit('select-what', index);
       this.isExpand = false;
     },
     expand() {
@@ -76,12 +76,13 @@ export default {
 .switch-module {
   position: relative;
   text-align: left;
-  font-size: 14px;
   .current-item {
     z-index: 1;
     height: 40px;
     line-height: 40px;
     border: 1px solid transparent;
+    font-size: inherit;
+    font-weight: inherit;
     color: #262626;
     text-align: left;
     svg {
@@ -112,6 +113,7 @@ export default {
       padding: 0 20px;
       height: 40px;
       line-height: 40px;
+      font-size: inherit;
       white-space: nowrap;
       &:hover {
         background: #f4f8fb;

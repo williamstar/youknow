@@ -1,6 +1,6 @@
 <template>
   <div>
-关注
+    你关注的收藏
   </div>
 </template>
 
