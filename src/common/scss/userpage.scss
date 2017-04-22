@@ -79,6 +79,7 @@
 // 垂直遍历的列表
 .list-item {
     padding: 16px 0;
+    @include border-bottom;
 }
 
 // 内容样式
@@ -112,6 +113,7 @@
     font-size: 18px;
     font-weight: 700;
     line-height: 1.6;
+    cursor: pointer;
 }
 
 // 较大的标题

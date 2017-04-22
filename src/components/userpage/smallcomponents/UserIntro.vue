@@ -73,8 +73,6 @@ export default {
 
 .user-intro-module {
   display: flex;
-  padding: 16px 0;
-  @include border-bottom;
   .user-detail {
     flex: 1;
     .user-name {

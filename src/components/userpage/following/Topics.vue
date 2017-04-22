@@ -31,7 +31,6 @@ export default {
 @import '../../../common/scss/mixin';
 .topic {
   display: flex;
-  @include border-bottom;
   .content {
     &:hover {
       color: inherit;

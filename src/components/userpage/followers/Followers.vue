@@ -3,6 +3,7 @@
     <div v-if="detail.followingPart"
          class="followers">
       <user-intro v-for="user in detail.followingPart.followers"
+                  class="list-item"
                   :user="user"
                   :is-follower="isFollower"
                   :key="user.userName"></user-intro>

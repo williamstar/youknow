@@ -37,7 +37,6 @@ export default {
 
 .column {
   display: flex;
-  @include border-bottom;
   .content {
     &:hover {
       color: inherit;

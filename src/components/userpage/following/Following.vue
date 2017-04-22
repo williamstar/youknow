@@ -1,7 +1,7 @@
 <template>
   <div class="following-module">
     <div v-if="detail.followingPart" class="followings">
-      <userIntro v-for="user in detail.followingPart.following" :user="user" :key="user.userName"></userIntro>
+      <userIntro v-for="user in detail.followingPart.following" class="list-item" :user="user" :key="user.userName"></userIntro>
     </div>
   </div>
 </template>
