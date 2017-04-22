@@ -178,6 +178,15 @@ svg {
         &:first-child {
           padding-left: 0;
         }
+        font-family: Helvetica Neue,
+        Helvetica,
+        PingFang SC,
+        Hiragino Sans GB,
+        Microsoft YaHei,
+        Noto Sans CJK SC,
+        WenQuanYi Micro Hei,
+        Arial,
+        sans-serif;
         font-size: 15px;
         line-height: 30px;
         color: $n-gray;

@@ -1,4 +1,6 @@
 @import 'color';
+@import 'mixin';
+
 .icon {
     fill: #9fadc7;
     vertical-align: text-bottom;
@@ -56,6 +58,22 @@
             fill: currentColor;
             vertical-align: text-bottom;
         }
+    }
+}
+
+// 遍历列表
+.list-header {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    @include border-bottom;
+    .list-link {
+        padding: 6px 0 7px 0;
+        margin-right: 36px;
+        font-size: 15px;
+    }
+    .router-link-active {
+        @include bold-title;
     }
 }
 
