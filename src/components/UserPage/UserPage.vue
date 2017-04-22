@@ -116,21 +116,22 @@
         <div class="main-interactive-wrapper">
 
           <div class="main-interactive">
-            <ul class="interactive-header">
+            <ul class="interactive-header"
+                v-if="detail.answers">
               <li>
                 <router-link to="/self/activities">动态</router-link>
               </li>
               <li>
-                <router-link to="/self/answers">回答</router-link>
+                <router-link to="/self/answers">回答<span class="sub-text">{{detail.answers.length}}</span></router-link>
               </li>
               <li>
-                <router-link to="/self/pins">分享</router-link>
+                <router-link to="/self/pins">分享<span class="sub-text">{{ detail.pinsPart.pins.length + detail.pinsPart.posts.length}}</span></router-link>
               </li>
               <li>
-                <router-link to="/self/asks">提问</router-link>
+                <router-link to="/self/asks">提问<span class="sub-text">{{detail.questions.length}}</span></router-link>
               </li>
               <li>
-                <router-link to="/self/collections">收藏</router-link>
+                <router-link to="/self/collections">收藏<span class="sub-text">{{detail.collections.length}}</span></router-link>
               </li>
               <li>
                 <router-link to="/self/following"
@@ -167,19 +168,19 @@
             <router-link to="following"
                          class="focus-item">关注了
               <div class="value"
-                   v-if="detail.focus">{{detail.focus.people.length}}</div>
+                   v-if="detail.followingPart">{{detail.followingPart.following.length}}</div>
             </router-link>
             <router-link to="followers"
                          class="focus-item">关注者
               <div class="value"
-                   v-if="detail.focus">{{detail.focus.follower.length}}</div>
+                   v-if="detail.followingPart">{{detail.followingPart.followers.length}}</div>
             </router-link>
           </div>
           <ul class="other-focus">
-            <li><a href="#">关注的话题<span v-if="detail.focus">{{detail.focus.topics.length}}</span></a></li>
-            <li><a href="#">关注的专栏<span v-if="detail.focus">{{detail.focus.specColumn.length}}</span></a></li>
-            <li><a href="#">关注的问题<span v-if="detail.focus">{{detail.focus.problems.length}}</span></a></li>
-            <li><a href="#">关注的收藏夹<span v-if="detail.focus">{{detail.focus.collections.length}}</span></a></li>
+            <li><a href="#">关注的话题<span v-if="detail.followingPart">{{detail.followingPart.topics.length}}</span></a></li>
+            <li><a href="#">关注的专栏<span v-if="detail.followingPart">{{detail.followingPart.columns.length}}</span></a></li>
+            <li><a href="#">关注的问题<span v-if="detail.followingPart">{{detail.followingPart.questions.length}}</span></a></li>
+            <li><a href="#">关注的收藏夹<span v-if="detail.followingPart">{{detail.followingPart.collections.length}}</span></a></li>
           </ul>
           <div class="explored-status">
             个人主页被浏览 {{detail.exploredTimes}}次
@@ -413,6 +414,13 @@ svg {
             &.router-link-active {
               font-weight: 700;
               border-bottom: 3px solid $n-blue;
+            }
+            .sub-text {
+              margin-left: 6px;
+              font-size: 14px;
+              font-weight: 300;
+              line-height: 20px;
+              color: #a1aebf;
             }
           }
         }
