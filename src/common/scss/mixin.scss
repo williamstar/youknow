@@ -1,8 +1,10 @@
 @import 'color';
-@mixin border-bottom($color: $n-llgray, $height: 1px) {
+@mixin border-bottom($color: $n-llgray, $height: 1px, $is-list: true) {
     border-bottom: $height solid $n-llgray;
-    &:last-child {
-        border: none;
+    @if $is-list==true {
+        &:last-child {
+            border: none;
+        }
     }
 }
 

@@ -2,13 +2,17 @@
   <div id="app"
        :class="headerStyle">
     <component :user="user"
+               :switch-header="switchHeader"
                :is="header">
-      <user-slot v-if="which === 'userslot'"></user-slot>
+      <user-slot :user="user"
+                 :detail="detail"
+                 v-if="which === 'userslot'"></user-slot>
       <answer-slot v-else></answer-slot>
     </component>
 
     <keep-alive>
-      <router-view :user="user"></router-view>
+      <router-view :user="user"
+                   @change-header="toggleHeader"></router-view>
     </keep-alive>
   </div>
 </template>
@@ -27,7 +31,9 @@ export default {
     return {
       user: {},
       header: 'uHeader',
-      which: 'answerslot',
+      switchHeader: false,
+      which: 'userslot',
+      detail: {},
     };
   },
   created() {
@@ -37,6 +43,16 @@ export default {
         this.user = res.data;
       }
     });
+  },
+  methods: {
+    toggleHeader(header, data) {
+      this.switchHeader = !this.switchHeader;
+      if (header === 'userslot') {
+        this.detail = data;
+      } else if (header === 'answerslot') {
+        this.question = data;
+      }
+    },
   },
   computed: {
     headerStyle() {

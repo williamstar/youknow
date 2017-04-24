@@ -108,26 +108,22 @@ export default {
     user: {
       type: Object,
     },
+    switchHeader: {
+      type: Boolean,
+    },
   },
   data() {
     return {
-      searchFocus: false,
       search: '',
-      switchHeader: false,
+      searchFocus: false,
     };
-  },
-  created() {
-    window.addEventListener('scroll', (e) => {
-      if (window.scrollY >= 1000) {
-        this.switchHeader = true;
-      } else {
-        this.switchHeader = false;
-      }
-    });
   },
   methods: {
     toggleFocus() {
       this.searchFocus = !this.searchFocus;
+    },
+    toggleHeader() {
+      this.switchHeader = !this.switchHeader;
     },
   },
 };
@@ -296,8 +292,9 @@ svg {
     }
   }
   .inner-bottom {
-    height: 53px;
-    background: #f0f;
+    width: 1000px;
+    height: 52px;
+    margin: 0 auto;
     transition: transform .3s ease;
     &.lift-up {
       transform: translateY(-100%);
