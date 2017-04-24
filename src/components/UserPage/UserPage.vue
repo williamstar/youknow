@@ -193,6 +193,12 @@ export default {
   },
   activated() {
     document.title = this.user.userName;
+    // 增加对滚动条的监听
+    document.addEventListener('scroll', this.toggleHeaderHandler);
+  },
+  deactivated() {
+    // 解除监听
+    document.removeEventListener('scroll', this.toggleHeaderHandler);
   },
   created() {
     this.$http.get('/api/userdetail').then((res) => {
@@ -200,24 +206,24 @@ export default {
       if (res.status === OK) {
         this.detail = res.data;
       }
-      document.addEventListener('scroll', (e) => {
-        if (window.scrollY > this.$refs.detailHook.offsetTop) {
-          if (!this.switchHeader) {
-            this.$emit('change-header', 'userslot', this.detail);
-            this.switchHeader = true;
-          }
-        } else {
-          if (this.switchHeader) {
-            this.$emit('change-header', 'userslot', this.detail);
-            this.switchHeader = false;
-          }
-        }
-      });
     });
   },
   methods: {
     toggleBrief() {
       this.isBrief = !this.isBrief;
+    },
+    toggleHeaderHandler() {
+      if (window.scrollY > this.$refs.detailHook.offsetTop) {
+        if (!this.switchHeader) {
+          this.$emit('change-header', 'userslot', this.detail);
+          this.switchHeader = true;
+        }
+      } else {
+        if (this.switchHeader) {
+          this.$emit('change-header', 'userslot', this.detail);
+          this.switchHeader = false;
+        }
+      }
     },
   },
   filters: {
