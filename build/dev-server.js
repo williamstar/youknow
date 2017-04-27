@@ -34,15 +34,19 @@ var router = express.Router();
 router.get('/user', (req, res) => {
   res.json({
     status: 'success',
-    data: data.user
+    data:
+    {
+      "userName": data.userInfo.userName,
+      "avatar": data.userInfo.avatar,
+    },
   });
 });
 
 //用户详细信息
-router.get('/userdetail', (req, res) => {
+router.get('/userinfo', (req, res) => {
   res.json({
     status: 'success',
-    data: data.user_detail
+    data: data.userInfo
   });
 });
 // 随机给出2个主题，10个动态
@@ -51,7 +55,7 @@ router.get('/fake_answers_or_questions', (req, res) => {
   let topics = dtopics.topics;
   let tsize = topics.length;
   dynamics = [];
-  while(tids.length <= 2) {
+  while (tids.length <= 2) {
     let idx = Math.floor(Math.random() * tsize);
     if (!tids.some(x => x === idx)) {
       dynamics = dynamics.concat(topics[idx]['dynamics']);
@@ -156,7 +160,7 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-  log: () => {}
+  log: () => { }
 })
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {

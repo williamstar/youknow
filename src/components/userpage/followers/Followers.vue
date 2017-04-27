@@ -12,7 +12,7 @@
 </template>
 
 <script type="text/javascript">
-import userIntro from '@/components/userpage/smallcomponents/UserIntro';
+import userIntro from '@/components/userpage/following/smallcomponents/UserIntro';
 
 export default {
   props: {

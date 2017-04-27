@@ -1,20 +1,14 @@
 <template>
   <div class="main-pins-module">
     <div class="list-header">
-      <router-link to="/self/pins/"
-                   class="list-link"
-                   exact>我的分享</router-link>
-      <router-link to="/self/pins/posts"
-                   class="list-link">我的文章</router-link>
-      <router-link to="/self/pins/columns"
-                   class="list-link">我的专栏</router-link>
+      <router-link to="/self/pins/" class="list-link" exact>我的分享</router-link>
+      <router-link to="/self/pins/posts" class="list-link">我的文章</router-link>
+      <router-link to="/self/pins/columns" class="list-link">我的专栏</router-link>
       <div class="switch-wrapper">
-        <switch-button :items="items"
-                       v-if="$route.fullPath.indexOf('posts') !== -1"></switch-button>
+        <switch-button :items="items" v-if="$route.fullPath.indexOf('posts') !== -1"></switch-button>
       </div>
     </div>
-    <router-view :user="user"
-                 :detail="detail">
+    <router-view :user-info="detail">
     </router-view>
   </div>
 </template>
@@ -24,9 +18,6 @@ import switchButton from '@/components/userpage/smallcomponents/SwitchButton';
 
 export default {
   props: {
-    user: {
-      type: Object,
-    },
     detail: {
       type: Object,
     },

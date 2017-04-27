@@ -68,8 +68,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../common/scss/userpage';
-@import '../../../common/scss/mixin';
+@import '../../../../common/scss/userpage';
+@import '../../../../common/scss/mixin';
 
 .user-intro-module {
   display: flex;

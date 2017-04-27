@@ -14,10 +14,7 @@ import Collections from '@/components/userpage/Collections';
 import MainFollowing from '@/components/userpage/MainFollowing';
 import MainPins from '@/components/userpage/MainPins';
 // 分享模块下的模块
-import Pins from '@/components/userpage/pins/Pins';
-import Posts from '@/components/userpage/pins/Posts';
-import Columns from '@/components/userpage/pins/Columns';
-
+import switchComponent from '@/components/userpage/pins/SwitchComponent';
 // 关注模块下
 import Following from '@/components/userpage/following/Following';
 import Fcollections from '@/components/userpage/following/Collections';
@@ -70,15 +67,15 @@ export default new Router({
           children: [
             {
               path: '',
-              component: Pins,
+              component: switchComponent,
             },
             {
               path: 'posts',
-              component: Posts,
+              component: switchComponent,
             },
             {
               path: 'columns',
-              component: Columns,
+              component: switchComponent,
             },
           ],
         },
