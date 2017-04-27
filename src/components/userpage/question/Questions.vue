@@ -4,22 +4,15 @@
       我的提问
     </div>
     <div class="questions">
-      <div v-for="question in questions"
-           class="question list-item">
-        <div class="max-title">
-          <a href="#">{{question.question}}</a>
-        </div>
-        <div class="full-desc">
-          <span class="item">2017-04-15</span>
-          <span class="item">0个回答</span>
-          <span class="item">0个关注</span>
-        </div>
-      </div>
+      <question v-for="question in questions" :question="question" class="list-item" :key="question.title">
+      </question>
     </div>
   </div>
 </template>
 
 <script type="text/javascript">
+import Question from './Question';
+
 const OK = 'success';
 
 export default {
@@ -36,27 +29,21 @@ export default {
       }
     });
   },
-
+  components: {
+    Question,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '../../common/scss/userpage';
-@import '../../common/scss/mixin';
+@import '../../../common/scss/userpage';
+@import '../../../common/scss/mixin';
 .ask-module {
   padding: 0 20px;
   .title {
     @include bold-title(50px);
     @include border-bottom;
     color: #262626;
-  }
-  .questions {
-    .question {
-      border-bottom: 1px solid #f0f2f7;
-      .full-desc {
-        display: flex;
-      }
-    }
   }
 }
 </style>

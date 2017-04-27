@@ -8,9 +8,9 @@ import Topics from '@/components/topics/Topics';
 // 用户模块
 import UserPage from '@/components/userpage/UserPage';
 import Activities from '@/components/userpage/Activities';
-import Answers from '@/components/userpage/Answers';
-import Asks from '@/components/userpage/Asks';
-import Collections from '@/components/userpage/Collections';
+import Answers from '@/components/userpage/answer/Answers';
+import Questions from '@/components/userpage/question/Questions';
+import Collections from '@/components/userpage/collection/Collections';
 import MainFollowing from '@/components/userpage/MainFollowing';
 import MainPins from '@/components/userpage/MainPins';
 // 分享模块下的切换模块
@@ -75,7 +75,7 @@ export default new Router({
         },
         {
           path: 'asks',
-          component: Asks,
+          component: Questions,
         },
         {
           path: 'collections',

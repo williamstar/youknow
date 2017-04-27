@@ -31,7 +31,6 @@ export default {
 <style lang="scss" scoped>
 @import '../../../common/scss/userpage';
 @import '../../../common/scss/mixin';
-
 .column {
   display: flex;
   .content {
