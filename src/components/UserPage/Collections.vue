@@ -4,7 +4,7 @@
       我的收藏
     </div>
     <div class="collections">
-      <div v-for="collection in detail.collections"
+      <div v-for="collection in userInfo.collections"
            class="collection list-item">
         <div class="max-title">
           {{collection.val}}
@@ -22,7 +22,7 @@
 <script type="text/javascript">
 export default {
   props: {
-    detail: {
+    userInfo: {
       type: Object,
     },
   },

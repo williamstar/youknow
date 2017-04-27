@@ -1,5 +1,5 @@
 <template>
-  <div class="post list-item">
+  <div class="post">
     <div class="title">{{data.title}}</div>
     <div class="user-wrapper">
       <user-card :user="user"></user-card>

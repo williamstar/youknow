@@ -1,18 +1,12 @@
 <template>
-  <div id="app"
-       :class="headerStyle">
-    <component :user="user"
-               :switch-header="switchHeader"
-               :is="header">
-      <user-slot :user="user"
-                 :detail="detail"
-                 v-if="which === 'userslot'"></user-slot>
+  <div id="app" :class="headerStyle">
+    <component :user="user" :switch-header="switchHeader" :is="header">
+      <user-slot :user-info="userInfo" v-if="which === 'userslot'"></user-slot>
       <answer-slot v-else></answer-slot>
     </component>
 
     <keep-alive>
-      <router-view :user="user"
-                   @change-header="toggleHeader"></router-view>
+      <router-view :user="user" @change-header="toggleHeader"></router-view>
     </keep-alive>
   </div>
 </template>
@@ -33,7 +27,7 @@ export default {
       header: 'uHeader',
       switchHeader: false,
       which: 'userslot',
-      detail: {},
+      userInfo: {},
     };
   },
   created() {
@@ -48,7 +42,7 @@ export default {
     toggleHeader(header, data) {
       this.switchHeader = !this.switchHeader;
       if (header === 'userslot') {
-        this.detail = data;
+        this.userInfo = data;
       } else if (header === 'answerslot') {
         this.question = data;
       }

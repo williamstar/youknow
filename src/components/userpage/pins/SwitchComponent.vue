@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <div v-if="userInfo.pinsPart">
-      <component v-for="data in userInfo.pinsPart[`${currentComponent}s`]" :is="currentComponent" :data="data" :user="userCard" :key="key(data)" class="list-item"></component>
-    </div>
+  <div v-if="userInfo.pinsPart">
+    <component v-for="data in userInfo.pinsPart[`${currentComponent}s`]" :is="currentComponent" :data="data" :user="userCard" :key="key(data)" class="list-item"></component>
   </div>
 </template>
 

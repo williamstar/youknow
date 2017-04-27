@@ -1,5 +1,5 @@
 <template>
-  <div class="column list-item">
+  <div class="column">
     <img :src="data.avatar" class="avatar" width="60" height="60" alt="专栏图片">
     <div class="content">
       <div class="title">{{data.title}}</div>

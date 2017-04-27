@@ -1,12 +1,8 @@
 <template>
   <!--备忘录，button样式重叠userpage中的edit-profile-->
   <div class="user-slot-module">
-    <img :src="user.avatar"
-         width="38"
-         height="38"
-         alt="用户头像">
-
-    <nav-link :detail="detail"></nav-link>
+    <img :src="userInfo.avatar" width="38" height="38" alt="用户头像">
+    <nav-link :user-info="userInfo"></nav-link>
     <div class="button-wrapper">
       <router-link to="/self/edit">
         <button class="edit-profile">编辑用户资料</button>
@@ -20,10 +16,7 @@ import navLink from '@/components/userpage/smallcomponents/NavLink';
 
 export default {
   props: {
-    detail: {
-      type: Object,
-    },
-    user: {
+    userInfo: {
       type: Object,
     },
   },

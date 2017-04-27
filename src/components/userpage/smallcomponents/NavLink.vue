@@ -1,25 +1,23 @@
 <template>
   <div>
-    <ul class="interactive-header"
-        v-if="detail.answers">
+    <ul class="interactive-header" v-if="userInfo.followingPart">
       <li>
         <router-link to="/self/activities">动态</router-link>
       </li>
       <li>
-        <router-link to="/self/answers">回答<span class="sub-text">{{detail.answers.length}}</span></router-link>
+        <router-link to="/self/answers">回答<span class="sub-text">{{userInfo.answers.length}}</span></router-link>
       </li>
       <li>
-        <router-link to="/self/pins">分享<span class="sub-text">{{ detail.pinsPart.pins.length + detail.pinsPart.posts.length}}</span></router-link>
+        <router-link to="/self/pins">分享<span class="sub-text">{{ userInfo.pinsPart.pins.length + userInfo.pinsPart.posts.length}}</span></router-link>
       </li>
       <li>
-        <router-link to="/self/asks">提问<span class="sub-text">{{detail.questions.length}}</span></router-link>
+        <router-link to="/self/asks">提问<span class="sub-text">{{userInfo.questions.length}}</span></router-link>
       </li>
       <li>
-        <router-link to="/self/collections">收藏<span class="sub-text">{{detail.collections.length}}</span></router-link>
+        <router-link to="/self/collections">收藏<span class="sub-text">{{userInfo.collections.length}}</span></router-link>
       </li>
       <li>
-        <router-link to="/self/following"
-                     :class="{'router-link-active': $route.fullPath.indexOf('followers') !== -1}">关注</router-link>
+        <router-link to="/self/following" :class="{'router-link-active': $route.fullPath.indexOf('followers') !== -1}">关注</router-link>
       </li>
     </ul>
   </div>
@@ -28,7 +26,7 @@
 <script type="text/javascript">
 export default {
   props: {
-    detail: {
+    userInfo: {
       type: Object,
     },
   },

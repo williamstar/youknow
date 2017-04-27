@@ -8,7 +8,7 @@
         <switch-button :items="items" v-if="$route.fullPath.indexOf('posts') !== -1"></switch-button>
       </div>
     </div>
-    <router-view :user-info="detail">
+    <router-view :user-info="userInfo">
     </router-view>
   </div>
 </template>
@@ -18,7 +18,7 @@ import switchButton from '@/components/userpage/smallcomponents/SwitchButton';
 
 export default {
   props: {
-    detail: {
+    userInfo: {
       type: Object,
     },
   },

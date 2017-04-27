@@ -1,6 +1,6 @@
 <template>
-  <div class="detail-page-module">
-    <div class="detail-page">
+  <div class="user-info-module">
+    <div class="user-info-page">
       <div class="detail-data">
         <div class="cover-wrapper">
           <img :src="userInfo.cover" alt="detail cover" class="cover">
@@ -80,11 +80,11 @@
           </div>
         </div>
       </div>
-      <div class="detail-interactive" ref="detailHook">
+      <div class="user-interactive" ref="detailHook">
         <div class="main-interactive-wrapper">
           <div class="main-interactive">
-            <nav-link :detail="userInfo"></nav-link>
-            <router-view :detail="userInfo"></router-view>
+            <nav-link :user-info="userInfo"></nav-link>
+            <router-view :user-info="userInfo"></router-view>
           </div>
         </div>
         <div class="focus-part">
@@ -105,7 +105,7 @@
           </div>
           <div class="focus-status">
             <router-link to="/self/following" class="focus-item">关注了
-              <div class="value" v-if="userInfo.followingPart">{{userInfo.followingPart.following.length}}</div>
+              <div class="value" v-if="userInfo.followingPart">{{userInfo.followingPart.followings.length}}</div>
             </router-link>
             <router-link to="/self/followers" class="focus-item">关注者
               <div class="value" v-if="userInfo.followingPart">{{userInfo.followingPart.followers.length}}</div>
@@ -199,7 +199,7 @@ svg {
   fill: currentColor;
 }
 
-.detail-page {
+.user-info-page {
   margin: 0 auto;
   padding-top: 10px;
   width: 1000px;
@@ -346,7 +346,7 @@ svg {
       }
     }
   }
-  .detail-interactive {
+  .user-interactive {
     margin: 10px 0;
     display: flex;
     .main-interactive {
