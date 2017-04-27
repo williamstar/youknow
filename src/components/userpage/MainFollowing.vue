@@ -12,7 +12,7 @@
                       @select-what="changeRoute"></switchButton>
       </div>
     </div>
-    <router-view :detail="detail"></router-view>
+    <router-view :user-info="userInfo"></router-view>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ import switchButton from '@/components/userpage/smallcomponents/SwitchButton';
 
 export default {
   props: {
-    detail: {
+    userInfo: {
       type: Object,
     },
   },

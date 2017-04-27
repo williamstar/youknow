@@ -1,16 +1,10 @@
 <template>
-  <div v-if="user"
-       class="user-intro-module">
-    <img :src="user.avatar"
-         class="avatar"
-         width="60"
-         height="60"
-         alt="用户头像">
+  <div v-if="user" class="user-intro-module">
+    <img :src="user.avatar" class="avatar" width="60" height="60" alt="用户头像">
     <div class="user-detail">
       <div class="user-name">
         {{user.userName}}
-        <span v-if="isFollower"
-              class="focus-status">关注了你</span>
+        <span v-if="user.isFollower" class="focus-status">关注了你</span>
       </div>
       <div class="brief-desc">
         {{user.briefDesc}}
@@ -22,18 +16,10 @@
       </div>
     </div>
     <div class="button-wrapper">
-      <button class="follow-status"
-              :class="{ 'following': user.isFollowing, 'not-following': !user.isFollowing}">
-        <div v-if="user.isFollowing"
-             @mouseover="toggleText($event)"
-             @mouseleave="toggleText($event)">已关注</div>
+      <button class="follow-status" :class="{ 'following': user.isFollowing, 'not-following': !user.isFollowing}">
+        <div v-if="user.isFollowing" @mouseover="toggleText($event)" @mouseleave="toggleText($event)">已关注</div>
         <div v-else>
-          <svg viewBox="0 0 12 12"
-               class="icon"
-               width="12"
-               height="16"
-               aria-hidden="true"
-               style="height: 16px; width: 12px;">
+          <svg viewBox="0 0 12 12" class="icon" width="12" height="16" aria-hidden="true" style="height: 16px; width: 12px;">
             <title></title>
             <g>
               <path d="M6.994 4.994s-.008-3.593 0-4C6.97-.33 4.97-.33 4.996.994c-.025 1.275 0 4 0 4H1C-.334 5-.334 7 1 7c1.332 0 3.996-.006 3.996-.006v4c0 1.346 2.004 1.346 1.998 0-.006-1.347 0-4 0-4S9.658 7 10.997 7c1.338 0 1.338-2-.007-2.006H6.994z"></path>
@@ -47,11 +33,13 @@
 <script type="text/javascript">
 export default {
   props: {
-    user: {
+    data: {
       type: Object,
     },
-    isFollower: {
-      type: Boolean,
+  },
+  computed: {
+    user() {
+      return this.data;
     },
   },
   methods: {

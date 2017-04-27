@@ -13,16 +13,10 @@ import Asks from '@/components/userpage/Asks';
 import Collections from '@/components/userpage/Collections';
 import MainFollowing from '@/components/userpage/MainFollowing';
 import MainPins from '@/components/userpage/MainPins';
-// 分享模块下的模块
-import switchComponent from '@/components/userpage/pins/SwitchComponent';
-// 关注模块下
-import Following from '@/components/userpage/following/Following';
-import Fcollections from '@/components/userpage/following/Collections';
-import Ftopics from '@/components/userpage/following/Topics';
-import Fquestions from '@/components/userpage/following/Questions';
-import Fcolumns from '@/components/userpage/following/Columns';
-
-import Followers from '@/components/userpage/followers/Followers';
+// 分享模块下的切换模块
+import pswitchComponent from '@/components/userpage/pins/SwitchComponent';
+// 关注模块下的切换
+import fswitchComponent from '@/components/userpage/following/SwitchComponent';
 
 Vue.use(Router);
 
@@ -67,15 +61,15 @@ export default new Router({
           children: [
             {
               path: '',
-              component: switchComponent,
+              component: pswitchComponent,
             },
             {
               path: 'posts',
-              component: switchComponent,
+              component: pswitchComponent,
             },
             {
               path: 'columns',
-              component: switchComponent,
+              component: pswitchComponent,
             },
           ],
         },
@@ -94,23 +88,23 @@ export default new Router({
           children: [
             {
               path: '',
-              component: Following,
+              component: fswitchComponent,
             },
             {
               path: 'topics',
-              component: Ftopics,
+              component: fswitchComponent,
             },
             {
               path: 'collections',
-              component: Fcollections,
+              component: fswitchComponent,
             },
             {
               path: 'columns',
-              component: Fcolumns,
+              component: fswitchComponent,
             },
             {
               path: 'questions',
-              component: Fquestions,
+              component: fswitchComponent,
             },
           ],
         },
@@ -121,7 +115,7 @@ export default new Router({
           children: [
             {
               path: '',
-              component: Followers,
+              component: fswitchComponent,
             },
           ],
         },
