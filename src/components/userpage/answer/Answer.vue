@@ -1,10 +1,10 @@
 <template>
-  <div class="dynamic">
-    <h2 class="question-value">{{dynamic.question}}</h2>
+  <div class="answer">
+    <h2 class="question-value">{{answer.question}}</h2>
     <div class="answer-wrapper">
       <user-card :user="user"></user-card>
       <div class="answer-content">
-        <div v-if="!isExpand" class="brief-answer">{{ dynamic.answer.value | htmlToText | chop }}
+        <div v-if="!isExpand" class="brief-answer">{{ answer.value | htmlToText | chop }}
           <button v-if="!isExpand" class="read-full" @click="toggleExpand()">阅读全文
             <svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
               <title></title>
@@ -14,7 +14,7 @@
             </svg>
           </button>
         </div>
-        <span v-else class="full-answer">{{dynamic.answer.value}}</span>
+        <span v-else class="full-answer">{{answer.value}}</span>
       </div>
       <div class="func-bar">
         <button href="#" class="button-item light-button">
@@ -24,7 +24,7 @@
               <path d="M0 15.243c0-.326.088-.533.236-.896l7.98-13.204C8.57.57 9.086 0 10 0s1.43.57 1.784 1.143l7.98 13.204c.15.363.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H1.955c-1.08 0-1.955-.517-1.955-1.9z"></path>
             </g>
           </svg>
-          {{dynamic.answer.voteNum}}</button>
+          {{answer.voteNum}}</button>
         <button href="#" class="button-item">
           <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="12" height="16" aria-hidden="true" style="height: 16px; width: 12px;">
             <title></title>
@@ -73,7 +73,7 @@ import { chop, htmlToText } from 'lib/string';
 
 export default {
   props: {
-    dynamic: {
+    answer: {
       type: Object,
     },
     user: {
@@ -104,7 +104,7 @@ export default {
 @import '../../../common/scss/mixin';
 @import '../../../common/scss/userpage';
 
-.dynamic {
+.answer {
   @include border-bottom;
   &:last-child {
     border: none;

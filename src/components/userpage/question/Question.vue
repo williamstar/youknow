@@ -1,12 +1,12 @@
 <template>
   <div class="question">
     <div class="max-title">
-      <a href="#">{{question.question}}</a>
+      <a href="#">{{question.title}}</a>
     </div>
     <div class="full-desc">
-      <span class="item">2017-04-15</span>
-      <span class="item">0个回答</span>
-      <span class="item">0个关注</span>
+      <span class="item">{{question.answerDate}}</span>
+      <span class="item">{{question.answerNum}}个回答</span>
+      <span class="item">{{question.followerNum}}个关注</span>
     </div>
   </div>
 </template>

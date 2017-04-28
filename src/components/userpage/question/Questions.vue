@@ -4,7 +4,7 @@
       我的提问
     </div>
     <div class="questions">
-      <question v-for="question in questions" :question="question" class="list-item" :key="question.title">
+      <question v-for="question in userInfo.questions" :question="question" class="list-item" :key="question.title">
       </question>
     </div>
   </div>
@@ -16,18 +16,15 @@ import Question from './Question';
 const OK = 'success';
 
 export default {
+  props: {
+    userInfo: {
+      type: Object,
+    },
+  },
   data() {
     return {
       questions: [],
     };
-  },
-  created() {
-    this.$http.get('/api/fake_answers_or_questions').then((res) => {
-      res = res.body;
-      if (res.status === OK) {
-        this.questions = res.data;
-      }
-    });
   },
   components: {
     Question,

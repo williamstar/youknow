@@ -6,11 +6,9 @@
         <switch-button :items="sorted"></switch-button>
       </div>
     </div>
-    <div class="main-content">
-      <div class="dynamics">
-        <answer v-for="dynamic in dynamics" :dynamic="dynamic" :user="userCard" :key="dynamic.question"class="list-item">
-        </answer>
-      </div>
+    <div >
+      <answer v-for="answer in userInfo.answers" :answer="answer" :user="userCard" :key="answer.question"class="list-item">
+      </answer>
     </div>
   </div>
 </template>
@@ -29,18 +27,8 @@ export default {
   },
   data() {
     return {
-      dynamics: [],
       sorted: ['按时间排序', '按赞同排序'],
     };
-  },
-  created() {
-    this.$http.get('/api/fake_answers_or_questions').then((res) => {
-      res = res.body;
-      if (res.status === OK) {
-        this.dynamics = res.data;
-        this.briefControll = this.dynamics.map(_ => false);
-      }
-    });
   },
   components: {
     switchButton,
