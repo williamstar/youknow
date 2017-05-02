@@ -4,6 +4,7 @@
     <div class="answer-wrapper">
       <user-card :user="user"></user-card>
       <div class="answer-content">
+        <img v-if="answer.avatar" :src="answer.avatar" width="190" height="105" alt="答案问题" class="avatar">
         <div v-if="!isExpand" class="brief-answer">{{ answer.value | htmlToText | chop }}
           <button v-if="!isExpand" class="read-full" @click="toggleExpand()">阅读全文
             <svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
@@ -73,7 +74,7 @@ import { chop, htmlToText } from 'lib/string';
 
 export default {
   props: {
-    answer: {
+    data: {
       type: Object,
     },
     user: {
@@ -85,6 +86,11 @@ export default {
       isExpand: false,
     };
   },
+  computed: {
+    answer() {
+      return this.data;
+    },
+  },
   methods: {
     toggleExpand() {
       this.isExpand = !this.isExpand;
@@ -94,7 +100,7 @@ export default {
     userCard,
   },
   filters: {
-    chop: chop(200),
+    chop: chop(80),
     htmlToText,
   },
 };
@@ -119,6 +125,11 @@ export default {
   .answer-wrapper {
     margin-top: 6px;
     .answer-content {
+      display: flex;
+      img {
+        flex: 0 0 190px;
+        margin-bottom: 4px;
+      }
       margin-top: 9px;
       font-size: 15px;
       line-height: 25px;

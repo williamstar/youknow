@@ -4,7 +4,7 @@
       我的收藏
     </div>
     <div>
-      <collection v-for="collection in userInfo.collections" :collection="collection" :key="collection.title"
+      <collection v-for="collection in userInfo.collections" :data="collection" :key="collection.title"
            class="collection list-item">
       </collection>
     </div>

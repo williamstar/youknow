@@ -1,9 +1,10 @@
 <template>
   <div class="topic">
-    <img alt="话题图片" class="avatar" :src="topic.avatar">
+    <img alt="话题图片" class="avatar" width="60" height="60" :src="topic.avatar">
     <div class="content">
       <div class="bold-title">{{topic.title}}</div>
-      <span class="answer-num">{{topic.answerNum}} 个回答</span>
+      <span v-if="!active" class="answer-num">{{topic.answerNum}} 个回答</span>
+      <div v-else class="desc">{{topic.desc}}</div>
     </div>
   </div>
 </template>
@@ -12,6 +13,11 @@ export default {
   props: {
     data: {
       type: Object,
+    },
+    active: {
+      default() {
+        return false;
+      },
     },
   },
   computed: {
@@ -27,15 +33,25 @@ export default {
 @import '../../../common/scss/mixin';
 .topic {
   display: flex;
+  img {
+    flex: 0 0 60px;
+  }
   .content {
+    overflow: hidden;
     &:hover {
       color: inherit;
     }
-  }
-  .answer-num {
-    font-size: 14px;
-    color: #175199;
-    cursor: initial;
+    .desc {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      color: #555;
+    }
+    .answer-num {
+      font-size: 14px;
+      color: #175199;
+      cursor: initial;
+    }
   }
 }
 </style>

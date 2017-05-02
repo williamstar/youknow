@@ -7,7 +7,7 @@
       </div>
     </div>
     <div >
-      <answer v-for="answer in userInfo.answers" :answer="answer" :user="userCard" :key="answer.question"class="list-item">
+      <answer v-for="answer in userInfo.answers" :data="answer" :user="userCard" :key="answer.question"class="list-item">
       </answer>
     </div>
   </div>

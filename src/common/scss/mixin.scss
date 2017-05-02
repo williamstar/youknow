@@ -14,8 +14,8 @@
     background-repeat: no-repeat;
 }
 
-@mixin bold-title($height: -1) {
-    font-size: 15px;
+@mixin bold-title($height: -1, $font-size: 15px) {
+    font-size: $font-size;
     @if $height !=-1 {
         height: $height;
     }

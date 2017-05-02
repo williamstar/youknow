@@ -15,8 +15,13 @@
 
 export default {
   props: {
-    collection: {
+    data: {
       type: Object,
+    },
+  },
+  computed: {
+    collection() {
+      return this.data;
     },
   },
 };
@@ -24,11 +29,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../common/scss/userpage";
-.collection {
-  @include border-bottom;
-  font-size: 14px;
-}
-
 .func-desc {
   margin-top: 6px;
 }

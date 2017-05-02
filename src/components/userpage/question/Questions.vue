@@ -4,7 +4,7 @@
       我的提问
     </div>
     <div class="questions">
-      <question v-for="question in userInfo.questions" :question="question" class="list-item" :key="question.title">
+      <question v-for="question in userInfo.questions" :data="question" class="list-item" :key="question.title">
       </question>
     </div>
   </div>

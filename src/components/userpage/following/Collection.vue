@@ -1,7 +1,7 @@
 <template>
   <div class="collection">
     <div class="bold-title">{{collection.title}}</div>
-    <div>
+    <div v-if="!active">
       <span class="item">{{collection.updateDate}} 更新</span>
       <span class="item">{{collection.totalNum}} 条内容</span>
       <span class="item">{{collection.followerNum}} 人关注</span>
@@ -15,6 +15,12 @@ export default {
     data: {
       type: Object,
     },
+    active: {
+      type: Boolean,
+      default() {
+        return false;
+      },
+    },
   },
   computed: {
     collection() {
@@ -26,5 +32,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../../common/scss/userpage';
-@import '../../../common/scss/mixin';
 </style>
