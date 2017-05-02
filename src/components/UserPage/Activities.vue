@@ -8,7 +8,7 @@
         <div class="express">
           {{item.behave}}
         </div>
-        <component :is="componentName(item)" :data="item[item.type]" :active="true" :user="userCard"></component>
+        <component :is="componentName(item)" :data="item[item.type]" :active="true" :author="item[item.type].author" :self="self()"></component>
       </div>
     </div>
   </div>
@@ -36,19 +36,6 @@ export default {
     return {
     };
   },
-  computed: {
-    userCard() {
-      let data = {};
-      if (this.userInfo) {
-        data = {
-          userName: this.userInfo.userName,
-          avatar: this.userInfo.avatar,
-          briefDesc: this.userInfo.briefDesc,
-        };
-      }
-      return data;
-    },
-  },
   methods: {
     componentName(obj) {
       // 当类型是关注子组件下的时候，需要修改组件的名字
@@ -56,6 +43,13 @@ export default {
         return `f${obj.type.toUpperCase().slice(0, 1) + obj.type.slice(1)}`;
       }
       return obj.type;
+    },
+    self() {
+      return {
+        userName: this.userInfo.userName,
+        avatar: this.userInfo.avatar,
+        briefDesc: this.userInfo.briefDesc,
+      };
     },
   },
   components: {

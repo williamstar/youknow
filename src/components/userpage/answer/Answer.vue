@@ -2,74 +2,32 @@
   <div class="answer">
     <h2 class="question-value">{{answer.question}}</h2>
     <div class="answer-wrapper">
-      <user-card :user="user"></user-card>
+      <user-card :user="author || self"></user-card>
       <div class="answer-content">
-        <img v-if="answer.avatar" :src="answer.avatar" width="190" height="105" alt="答案问题" class="avatar">
-        <div v-if="!isExpand" class="brief-answer">{{ answer.value | htmlToText | chop }}
-          <button v-if="!isExpand" class="read-full" @click="toggleExpand()">阅读全文
-            <svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
-              <title></title>
-              <g>
-                <path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path>
-              </g>
-            </svg>
-          </button>
+        <div v-if="!isExpand" class="brief-answer">
+          <img v-if="answer.avatar" :src="answer.avatar" width="190" height="105" alt="答案问题" class="avatar">
+          <div>{{ answer.value | htmlToText | chop }}
+            <button v-if="!isExpand" class="read-full" @click="toggleExpand()">阅读全文
+              <svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
+                <title></title>
+                <g>
+                  <path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path>
+                </g>
+              </svg>
+            </button>
+          </div>
         </div>
         <span v-else class="full-answer">{{answer.value}}</span>
       </div>
-      <div class="func-bar">
-        <button href="#" class="button-item light-button">
-          <svg viewBox="0 0 20 18" width="9" height="16" aria-hidden="true" style="height: 16px; width: 9px;">
-            <title></title>
-            <g>
-              <path d="M0 15.243c0-.326.088-.533.236-.896l7.98-13.204C8.57.57 9.086 0 10 0s1.43.57 1.784 1.143l7.98 13.204c.15.363.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H1.955c-1.08 0-1.955-.517-1.955-1.9z"></path>
-            </g>
-          </svg>
-          {{answer.voteNum}}</button>
-        <button href="#" class="button-item">
-          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="12" height="16" aria-hidden="true" style="height: 16px; width: 12px;">
-            <title></title>
-            <g>
-              <path d="M7.24 16.313c-.272-.047-.553.026-.77.2-1.106.813-2.406 1.324-3.77 1.482-.16.017-.313-.06-.394-.197-.082-.136-.077-.308.012-.44.528-.656.906-1.42 1.11-2.237.04-.222-.046-.45-.226-.588C1.212 13.052.027 10.73 0 8.25 0 3.7 4.03 0 9 0s9 3.7 9 8.25-4.373 9.108-10.76 8.063z"></path>
-            </g>
-          </svg>添加评论</button>
-        <button href="#" class="button-item">
-          <svg viewBox="0 0 20 18" xmlns="http://www.w3.org/2000/svg" width="13" height="16" aria-hidden="true" style="height: 16px; width: 13px;">
-            <title></title>
-            <g>
-              <path d="M.93 3.89C-.135 4.13-.343 5.56.614 6.098L5.89 9.005l8.168-4.776c.25-.128.477.197.273.388L7.05 10.66l.926 5.953c.18 1.084 1.593 1.376 2.182.456l9.644-15.243c.584-.892-.212-2.03-1.234-1.796L.93 3.89z"></path>
-            </g>
-          </svg>分享</button>
-        <button href="#" class="button-item">
-          <svg viewBox="0 0 20 20" width="13" height="16" aria-hidden="true" style="height: 16px; width: 13px;">
-            <title></title>
-            <g>
-              <path d="M3.515 17.64l.918-5.355-3.89-3.792c-.926-.902-.64-1.784.64-1.97L6.56 5.74 8.964.87c.572-1.16 1.5-1.16 2.072 0l2.404 4.87 5.377.783c1.28.186 1.566 1.068.64 1.97l-3.89 3.793.918 5.354c.22 1.274-.532 1.82-1.676 1.218L10 16.33l-4.808 2.528c-1.145.602-1.896.056-1.677-1.218z"></path>
-            </g>
-          </svg>收藏</button>
-        <button href="#" class="button-item">
-          <svg viewBox="0 0 20 20" width="14" height="16" aria-hidden="true" style="height: 16px; width: 14px;">
-            <title></title>
-            <g>
-              <path d="M18.868 15.185c-.164.096-.315.137-.452.137-.123 0-1.397-.26-1.617-.233-1.355.013-1.782 1.275-1.836 1.74-.055.454 0 .893.19 1.304.138.29.125.577-.067.85-.863.893-2.165 1.016-2.357 1.016-.123 0-.247-.055-.356-.15-.11-.097-.685-1.14-1.07-1.47-1.303-.954-2.246-.328-2.63 0-.397.33-.67.7-.835 1.126-.07.18-.18.302-.33.37-1.354.426-2.918-.92-3.014-1.056-.082-.11-.123-.22-.123-.356-.014-.138.383-1.276.342-1.688-.342-1.9-1.836-1.687-2.096-1.673-.303.014-.604.068-.92.178-.205.056-.396.03-.588-.054-.888-.462-1.137-2.332-1.11-2.51.055-.315.192-.52.438-.604.425-.164.81-.452 1.15-.85.932-1.262.344-2.25 0-2.634-.34-.356-.725-.645-1.15-.81-.137-.04-.233-.15-.328-.315C-.27 6.07.724 4.95.978 4.733c.255-.22.6-.055.723 0 .426.164.878.22 1.344.15C4.7 4.636 4.784 3.14 4.81 2.908c.015-.247-.11-1.29-.136-1.4-.027-.123-.014-.22.027-.315C5.318.178 7.073 0 7.223 0c.178 0 .33.055.44.178.108.124.63 1.11 1 1.4.398.338 1.582.83 2.588.013.398-.273.96-1.288 1.083-1.412.123-.123.26-.178.384-.178 1.56 0 2.33 1.03 2.438 1.22.083.124.096.248.07.37-.03.152-.33 1.153-.262 1.606.366 1.537 1.384 1.742 1.89 1.783.494.027 1.645-.357 1.81-.344.164.014.315.083.424.206.535.31.85 1.715.905 2.14.027.233-.014.44-.11.562-.11.138-1.165.714-1.48 1.112-.855.982-.342 2.25-.068 2.606.26.37 1.22.905 1.288.96.15.137.26.302.315.494.146 1.413-.89 2.387-1.07 2.47zm-8.905-.535c.644 0 1.246-.123 1.822-.356.575-.248 1.082-.59 1.493-1.016.425-.425.754-.92 1-1.495.247-.562.357-1.18.357-1.81 0-.66-.11-1.262-.356-1.825-.248-.562-.577-1.056-1.002-1.48-.41-.427-.918-.756-1.493-1.003-.576-.233-1.178-.357-1.822-.357-.644 0-1.247.124-1.81.357-.56.247-1.067.576-1.478 1.002-.425.425-.768.92-1 1.48-.247.564-.37 1.167-.37 1.826 0 .644.123 1.248.37 1.81.232.563.575 1.07 1 1.495.424.426.917.768 1.48 1.016.56.233 1.164.356 1.808.356z"></path>
-            </g>
-          </svg>设置</button>
-        <button v-if="isExpand" class="button-item last-one" @click="toggleExpand()">
-          收起
-          <svg viewBox="0 0 10 6" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
-            <title></title>
-            <g>
-              <path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path>
-            </g>
-          </svg>
-        </button>
-      </div>
+      <component :is="whichBar()" :is-expand="isExpand" :answer="answer" @lift-up="toggleExpand"></component>
     </div>
   </div>
 </template>
 
 <script type="text/javascript">
 import userCard from '@/components/userpage/smallcomponents/UserCard';
+import selfBar from '@/components/userpage/answer/smallcomponents/SelfBar';
+import otherBar from '@/components/userpage/answer/smallcomponents/OtherBar';
 import { chop, htmlToText } from 'lib/string';
 
 export default {
@@ -77,7 +35,10 @@ export default {
     data: {
       type: Object,
     },
-    user: {
+    author: {
+      type: Object,
+    },
+    self: {
       type: Object,
     },
   },
@@ -92,12 +53,20 @@ export default {
     },
   },
   methods: {
+    whichBar() {
+      if (!this.author || this.self === this.author) {
+        return 'selfBar';
+      }
+      return 'otherBar';
+    },
     toggleExpand() {
       this.isExpand = !this.isExpand;
     },
   },
   components: {
     userCard,
+    otherBar,
+    selfBar,
   },
   filters: {
     chop: chop(80),
@@ -107,9 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../common/scss/mixin';
 @import '../../../common/scss/userpage';
-
 .answer {
   @include border-bottom;
   &:last-child {
@@ -125,16 +92,16 @@ export default {
   .answer-wrapper {
     margin-top: 6px;
     .answer-content {
-      display: flex;
-      img {
-        flex: 0 0 190px;
-        margin-bottom: 4px;
-      }
       margin-top: 9px;
       font-size: 15px;
       line-height: 25px;
       word-break: break-all;
       .brief-answer {
+        display: flex;
+        img {
+          flex: 0 0 190px;
+          margin-bottom: 4px;
+        }
         cursor: pointer;
         &:hover {
           color: #6f6f6f;

@@ -6,8 +6,8 @@
         <switch-button :items="sorted"></switch-button>
       </div>
     </div>
-    <div >
-      <answer v-for="answer in userInfo.answers" :data="answer" :user="userCard" :key="answer.question"class="list-item">
+    <div v-if="userInfo.answers">
+      <answer v-for="answer in userInfo.answers" :data="answer" :self="self()" :key="answer.question" class="list-item">
       </answer>
     </div>
   </div>
@@ -34,17 +34,13 @@ export default {
     switchButton,
     Answer,
   },
-  computed: {
-    userCard() {
-      let data = {};
-      if (this.userInfo) {
-        data = {
-          userName: this.userInfo.userName,
-          avatar: this.userInfo.avatar,
-          briefDesc: this.userInfo.briefDesc,
-        };
-      }
-      return data;
+  methods: {
+    self() {
+      return {
+        userName: this.userInfo.userName,
+        avatar: this.userInfo.avatar,
+        briefDesc: this.userInfo.briefDesc,
+      };
     },
   },
 };
