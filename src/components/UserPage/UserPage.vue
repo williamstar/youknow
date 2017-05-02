@@ -112,10 +112,18 @@
             </router-link>
           </div>
           <ul class="other-focus">
-            <li><a href="#">关注的话题<span v-if="userInfo.followingPart">{{userInfo.followingPart.topics.length}}</span></a></li>
-            <li><a href="#">关注的专栏<span v-if="userInfo.followingPart">{{userInfo.followingPart.columns.length}}</span></a></li>
-            <li><a href="#">关注的问题<span v-if="userInfo.followingPart">{{userInfo.followingPart.questions.length}}</span></a></li>
-            <li><a href="#">关注的收藏夹<span v-if="userInfo.followingPart">{{userInfo.followingPart.collections.length}}</span></a></li>
+            <li>
+              <router-link to="/self/following/topics">关注的话题<span v-if="userInfo.followingPart">{{userInfo.followingPart.topics.length}}</span></router-link>
+            </li>
+            <li>
+              <router-link to="/self/following/columns">关注的专栏<span v-if="userInfo.followingPart">{{userInfo.followingPart.columns.length}}</span></router-link>
+            </li>
+            <li>
+              <router-link to="/self/following/questions">关注的问题<span v-if="userInfo.followingPart">{{userInfo.followingPart.questions.length}}</span></router-link>
+            </li>
+            <li>
+              <router-link to="/self/following/collections">关注的收藏夹<span v-if="userInfo.followingPart">{{userInfo.followingPart.collections.length}}</span></router-link>
+            </li>
           </ul>
           <div class="explored-status">
             个人主页被浏览 {{userInfo.exploredTimes}}次
