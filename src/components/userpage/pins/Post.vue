@@ -1,14 +1,14 @@
 <template>
   <div class="post">
-    <div class="title">{{data.title}}</div>
+    <div class="title">{{post.title}}</div>
     <div class="user-wrapper">
       <user-card :user="user"></user-card>
     </div>
     <a href="#" class="post-content">
-      <img :src="data.cover" v-if="data.cover && !isExpand" class="cover" width="190" height="105" alt="文章封面">
+      <img :src="post.cover" v-if="post.cover && !isExpand" class="cover" width="190" height="105" alt="文章封面">
       <div class="content">
-        <span v-if="!isExpand" class="brief-text">{{data.body | htmlToText | chop}}</span>
-        <span v-else class="rich-text">{{data.body}}</span>
+        <span v-if="!isExpand" class="brief-text">{{post.body | htmlToText | chop}}</span>
+        <span v-else class="rich-text">{{post.body}}</span>
         <button v-if="!isExpand" class="read-full" @click.prevent="toggleExpand">阅读全文
           <svg viewBox="0 0 10 6" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
             <title></title>
@@ -26,7 +26,7 @@
           <g>
             <path d="M.718 7.024c-.718 0-.718.63-.718.63l.996 9.693c0 .703.718.65.718.65h1.45c.916 0 .847-.65.847-.65V7.793c-.09-.88-.853-.79-.846-.79l-2.446.02zm11.727-.05S13.2 5.396 13.6 2.89C13.765.03 11.55-.6 10.565.53c-1.014 1.232 0 2.056-4.45 5.83C5.336 6.965 5 8.01 5 8.997v6.998c-.016 1.104.49 2 1.99 2h7.586c2.097 0 2.86-1.416 2.86-1.416s2.178-5.402 2.346-5.91c1.047-3.516-1.95-3.704-1.95-3.704l-5.387.007z"></path>
           </g>
-        </svg>{{data.voteNum}}
+        </svg>{{post.voteNum}}
       </button>
       <button class="button-item">
         <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="12" height="16" aria-hidden="true" style="height: 16px; width: 12px;">
@@ -82,6 +82,11 @@ export default {
     return {
       isExpand: false,
     };
+  },
+  computed: {
+    post() {
+      return this.data;
+    },
   },
   methods: {
     toggleExpand() {

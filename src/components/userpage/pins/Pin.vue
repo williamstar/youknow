@@ -1,16 +1,16 @@
 <template>
-  <div class="pin">
+  <div v-if="pin" class="pin">
     <user-card :user="user"></user-card>
     <div class="content">
-      {{data.comment}}<span v-if="!isExpand" class="read-full" @click="toggleExpand">阅读全文<svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></span>
+      {{pin.comment}}<span v-if="!isExpand" class="read-full" @click="toggleExpand">阅读全文<svg viewBox="0 0 10 6" class="Icon ContentItem-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg></span>
     </div>
-    <a :href="data.shareThing.href">
+    <a :href="pin.href">
       <div class="share-thing">
-        <img v-if="data.shareThing.cover" class="share-cover" :src="data.shareThing.cover" height="90" width="90" alt="分享封面">
+        <img v-if="pin.cover" class="share-cover" :src="pin.cover" height="90" width="90" alt="分享封面">
         <div class="main-content">
-          <span class="title">{{data.shareThing.title}}</span>
+          <span class="title">{{pin.title}}</span>
           <div class="other-feature">
-            <span>{{data.shareThing.href | hostname}}</span>
+            <span>{{pin.href | hostname}}</span>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
             <path d="M.718 7.024c-.718 0-.718.63-.718.63l.996 9.693c0 .703.718.65.718.65h1.45c.916 0 .847-.65.847-.65V7.793c-.09-.88-.853-.79-.846-.79l-2.446.02zm11.727-.05S13.2 5.396 13.6 2.89C13.765.03 11.55-.6 10.565.53c-1.014 1.232 0 2.056-4.45 5.83C5.336 6.965 5 8.01 5 8.997v6.998c-.016 1.104.49 2 1.99 2h7.586c2.097 0 2.86-1.416 2.86-1.416s2.178-5.402 2.346-5.91c1.047-3.516-1.95-3.704-1.95-3.704l-5.387.007z"></path>
           </g>
         </svg>
-        {{data.shareThing.voteNum}}</button>
+        {{pin.voteNum}}</button>
       <button href="#" class="button-item">
         <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="12" height="16" aria-hidden="true" style="height: 16px; width: 12px;">
           <title></title>
@@ -81,6 +81,11 @@ export default {
     return {
       isExpand: false,
     };
+  },
+  computed: {
+    pin() {
+      return this.data;
+    },
   },
   methods: {
     toggleExpand() {

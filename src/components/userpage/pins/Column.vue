@@ -1,14 +1,14 @@
 <template>
   <div class="column">
-    <img :src="data.avatar" class="avatar" width="60" height="60" alt="专栏图片">
+    <img :src="column.avatar" class="avatar" width="60" height="60" alt="专栏图片">
     <div class="content">
-      <div class="title">{{data.title}}</div>
+      <div class="title">{{column.title}}</div>
       <div class="column-meta">
-        <div class="brief-desc">{{data.briefDesc}}</div>
+        <div class="brief-desc">{{column.briefDesc}}</div>
         <div class="status">
-          <span class="item">发表{{data.publishNum}}篇文章</span>
-          <span class="item">共篇{{data.totalNum}}文章</span>
-          <span class="item">{{data.followingNum}}人关注</span>
+          <span class="item">发表{{column.publishNum}}篇文章</span>
+          <span class="item">共篇{{column.totalNum}}文章</span>
+          <span class="item">{{column.followingNum}}人关注</span>
         </div>
       </div>
     </div>
@@ -20,6 +20,11 @@ export default {
   props: {
     data: {
       type: Object,
+    },
+  },
+  computed: {
+    column() {
+      return this.data;
     },
   },
 };
