@@ -59,7 +59,7 @@
 export default {
   props: {
     isExpand: {
-      type: Object,
+      type: Boolean,
     },
     answer: {
       type: Object,

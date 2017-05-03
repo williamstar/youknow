@@ -23,9 +23,6 @@ export default {
       },
     },
   },
-  created() {
-    console.log(this.$parent);
-  },
   computed: {
     question() {
       return this.data;
