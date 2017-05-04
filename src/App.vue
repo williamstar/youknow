@@ -64,29 +64,38 @@ export default {
       }
     },
     toggleWindow(selector) {
-      if (selector === 'notification') {
-        this.notification = true;
-      } else if (selector === 'message') {
-        this.message = true;
-      } else {
-        this.userList = true;
+      let open = true;
+      if (this.notification || this.message || this.userList) {
+        open = false;
       }
-      this.$nextTick(() => {
-        // 下一次更新才能检查元素
-        let index = 0;
-        let wrapper = document.querySelector('.bounce-window-wrapper');
-        let buttonPosition = document.querySelector(`.${selector}-button`);
-        let buttonCenter = buttonPosition.getBoundingClientRect().left +
-          (buttonPosition.clientWidth / 2);
-        wrapper.style.left = `${buttonCenter - (wrapper.clientWidth / 2)}px`;
-        debugger;
-        this.cacheNodes.push(document.querySelector(`.${selector}`));
-        while (index < this.cacheNodes.length) {
-          this.cacheNodes.push(...this.cacheNodes[index].children);
-          index += 1;
-        }
-        document.addEventListener('mousedown', this.resolveToggle);
-      });
+      if (selector === 'notification') {
+        this.notification = !this.notification;
+      } else if (selector === 'message') {
+        this.message = !this.message;
+      } else {
+        this.userList = !this.userList;
+      }
+      if (open) {
+        this.$nextTick(() => {
+          // 下一次更新才能检查元素
+          let index = 0;
+          // 设置元素位置
+          let wrapper = document.querySelector('.bounce-window-wrapper');
+          let windowButton = document.querySelector(`.${selector}-button`);
+          let buttonCenter = windowButton.getBoundingClientRect().left +
+            (windowButton.clientWidth / 2);
+          wrapper.style.left = `${buttonCenter - (wrapper.clientWidth / 2)}px`;
+
+          // 寻找元素的子节点
+          this.cacheNodes.push(document.querySelector(`.${selector}`));
+          this.cacheNodes.push(windowButton);
+          while (index < this.cacheNodes.length) {
+            this.cacheNodes.push(...this.cacheNodes[index].children);
+            index += 1;
+          }
+          document.addEventListener('mousedown', this.resolveToggle);
+        });
+      }
     },
     resolveToggle(e) {
       if (!this.cacheNodes.some(elm => elm === e.target)) {
