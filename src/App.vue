@@ -14,8 +14,8 @@
     <div v-if="message" class="bounce-window-wrapper">
       <message></message>
     </div>
-    <div v-if="userList" class="bounce-window-wrapper">
-      <notification></notification>
+    <div v-if="userList" class="bounce-window-wrapper user-list">
+      <user-list></user-list>
     </div>
   </div>
 </template>
@@ -69,13 +69,12 @@ export default {
       } else if (selector === 'message') {
         this.message = true;
       } else {
-        this.selfList = true;
+        this.userList = true;
       }
-      document.querySelector(`.${selector}`);
       this.$nextTick(() => {
-        // 下一次更新查能检查元素
+        // 下一次更新才能检查元素
         let index = 0;
-        this.cacheNodes.push(document.querySelector('.notification'));
+        this.cacheNodes.push(document.querySelector(`.${selector}`));
         while (index < this.cacheNodes.length) {
           this.cacheNodes.push(...this.cacheNodes[index].children);
           index += 1;
@@ -87,7 +86,7 @@ export default {
       if (!this.cacheNodes.some(elm => elm === e.target)) {
         this.notification = false;
         this.message = false;
-        this.selfList = false;
+        this.userList = false;
         document.removeEventListener('mousedown', this.resolveToggle);
       }
     },
@@ -122,5 +121,8 @@ export default {
   z-index: 200;
   position: fixed;
   top: 52px;
+  &.user-list {
+    top: 57px;
+  }
 }
 </style>
