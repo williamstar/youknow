@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="headerStyle">
-    <component :user="user" :switch-header="switchHeader" @toggle:notification="toggleNotification" :is="header">
+    <component :user="user" :switch-header="switchHeader" @toggle:window="toggleWindow" :is="header">
       <user-slot :user-info="userInfo" v-if="which === 'userslot'"></user-slot>
       <answer-slot v-else></answer-slot>
     </component>
@@ -8,7 +8,13 @@
     <keep-alive>
       <router-view :user="user" @change-header="toggleHeader"></router-view>
     </keep-alive>
-    <div v-show="notification" class="notification-wrapper">
+    <div v-if="notification" class="bounce-window-wrapper">
+      <notification></notification>
+    </div>
+    <div v-if="message" class="bounce-window-wrapper">
+      <message></message>
+    </div>
+    <div v-if="userList" class="bounce-window-wrapper">
       <notification></notification>
     </div>
   </div>
@@ -36,8 +42,8 @@ export default {
       userInfo: {},
       notification: false,
       message: false,
-      selfList: false,
-      notificationCacheNodes: [],
+      userList: false,
+      cacheNodes: [],
     };
   },
   created() {
@@ -57,26 +63,32 @@ export default {
         this.question = data;
       }
     },
-    toggleNotification() {
-      this.notification = true;
-      document.querySelector('.notification-button');
+    toggleWindow(selector) {
+      if (selector === 'notification') {
+        this.notification = true;
+      } else if (selector === 'message') {
+        this.message = true;
+      } else {
+        this.selfList = true;
+      }
+      document.querySelector(`.${selector}`);
       this.$nextTick(() => {
         // 下一次更新查能检查元素
-        if (this.notificationCacheNodes.length === 0) {
-          let index = 0;
-          this.notificationCacheNodes.push(document.querySelector('.notification'));
-          while (index < this.notificationCacheNodes.length) {
-            this.notificationCacheNodes.push(...this.notificationCacheNodes[index].children);
-            index += 1;
-          }
+        let index = 0;
+        this.cacheNodes.push(document.querySelector('.notification'));
+        while (index < this.cacheNodes.length) {
+          this.cacheNodes.push(...this.cacheNodes[index].children);
+          index += 1;
         }
-        document.addEventListener('mousedown', this.resolveNotification);
+        document.addEventListener('mousedown', this.resolveToggle);
       });
     },
-    resolveNotification(e) {
-      if (!this.notificationCacheNodes.some(elm => elm === e.target)) {
+    resolveToggle(e) {
+      if (!this.cacheNodes.some(elm => elm === e.target)) {
         this.notification = false;
-        document.removeEventListener('mousedown', this.resolveNotification);
+        this.message = false;
+        this.selfList = false;
+        document.removeEventListener('mousedown', this.resolveToggle);
       }
     },
   },
@@ -106,7 +118,7 @@ export default {
   padding-top: 53px;
 }
 
-.notification-wrapper {
+.bounce-window-wrapper {
   z-index: 200;
   position: fixed;
   top: 52px;

@@ -8,6 +8,15 @@
     }
 }
 
+@mixin border-top($color: $n-llgray, $height: 1px, $is-list: true) {
+    border-top: $height solid $n-llgray;
+    @if $is-list==true {
+        &:first-child {
+            border: none;
+        }
+    }
+}
+
 @mixin icon($url, $x, $y) {
     background-position: $x $y;
     background-image: url($url);

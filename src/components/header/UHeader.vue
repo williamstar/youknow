@@ -36,7 +36,7 @@
         <button class="question" :class="{'zoom': searchFocus}">提问</button>
       </div>
       <div class="personal">
-        <button class="notification-button" @click="$emit('toggle:notification')">
+        <button class="notification-button" @click="$emit('toggle:window', 'notification')">
           <svg viewBox="0 0 20 22" class="Icon Icon--news" width="20" height="20" aria-hidden="true" style="height: 20px; width: 20px;">
             <title></title>
             <g>
@@ -44,7 +44,7 @@
             </g>
           </svg>
         </button>
-        <button class="message-box-button">
+        <button class="message-box-button" @click="$emit('toggle:window', 'message')">
           <svg viewBox="0 0 20 20" class="Icon Icon--message" width="20" height="20" aria-hidden="true" style="height: 20px; width: 20px;">
             <title></title>
             <g>
@@ -53,7 +53,7 @@
             </g>
           </svg>
         </button>
-        <router-link class="user" to="/self/activities"><img :src="user.avatar" width="30" height="30" alt="用户头像"></router-link>
+        <button class="user" @click="$emit('toggle:window', 'userList')"><img :src="user.avatar" width="30" height="30" alt="用户头像"></button>
       </div>
     </div>
     <div class="inner-bottom" :class="{'lift-up': switchHeader}">
@@ -123,7 +123,6 @@ svg {
       transform: translateY(-100%);
     }
     .logo-wrapper {
-      cursor: pointer;
       font-size: 0;
     }
     .navigation {
@@ -191,7 +190,6 @@ svg {
           height: 34px;
           padding: 0 12px;
           background-color: transparent;
-          cursor: pointer;
           transition: background .3s ease;
           &.has-value {
             background: #0f88eb;
@@ -222,7 +220,6 @@ svg {
         color: #fff;
         background: #0f88eb;
         border: 1px solid #0f88eb;
-        cursor: pointer;
         transition: all .3s ease;
         &.zoom {
           opacity: 0;
@@ -240,15 +237,13 @@ svg {
         fill: $n-lgray;
       }
       .message-box-button {
-        cursor: pointer;
         margin-right: 40px;
       }
       .notification-button {
-        cursor: pointer;
         margin-right: 40px;
       }
       .user {
-        cursor: pointer;
+        font-size: 0;
       }
     }
   }
