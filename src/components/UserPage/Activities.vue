@@ -20,16 +20,16 @@
 </template>
 
 <script type="text/javascript">
-import Question from '@/components/userpage/question/Question';
-import Column from '@/components/userpage/pins/Column';
-import Pin from '@/components/userpage/pins/Pin';
-import Post from '@/components/userpage/pins/Post';
-import fCollection from '@/components/userpage/following/Collection';
-import fColumn from '@/components/userpage/following/Column';
-import fQuestion from '@/components/userpage/following/Question';
-import fTopic from '@/components/userpage/following/Topic';
-import Collection from '@/components/userpage/collection/Collection';
-import Answer from '@/components/userpage/answer/Answer';
+import Question from './question/Question';
+import Column from './pins/Column';
+import Pin from './pins/Pin';
+import Post from './pins/Post';
+import fCollection from './following/Collection';
+import fColumn from './following/Column';
+import fQuestion from './following/Question';
+import fTopic from './following/Topic';
+import Collection from './collection/Collection';
+import Answer from './answer/Answer';
 
 export default {
   props: {

@@ -136,7 +136,7 @@
 </template>
 
 <script type="text/javascript">
-import navLink from '@/components/userpage/smallcomponents/NavLink';
+import navLink from './smallcomponents/NavLink';
 
 const OK = 'success';
 

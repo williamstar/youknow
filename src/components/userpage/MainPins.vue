@@ -14,7 +14,7 @@
 </template>
 
 <script type="text/javascript">
-import switchButton from '@/components/userpage/smallcomponents/SwitchButton';
+import switchButton from './smallcomponents/SwitchButton';
 
 export default {
   props: {

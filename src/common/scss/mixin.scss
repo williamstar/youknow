@@ -22,3 +22,28 @@
     line-height: $height;
     font-weight: 700;
 }
+
+@mixin inverted-triangle($size: 10px, $brd-color: #e7eaf1, $bg-color: #fff) {
+    &:before {
+        position: absolute;
+        top: -$size;
+        left: 50%;
+        transform: translateX(-50%);
+        content: '';
+        border-bottom: $size solid $brd-color;
+        border-right: $size solid transparent;
+        border-left: $size solid transparent;
+        border-radius: 1px;
+    }
+    &:after {
+        position: absolute;
+        content: '';
+        top: -$size + 1px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom: $size solid $bg-color;
+        border-right: $size solid transparent;
+        border-left: $size solid transparent;
+        border-radius: 1px;
+    }
+}
