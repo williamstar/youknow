@@ -84,8 +84,17 @@ export default {
     },
     resolveToggle(e) {
       if (!this.cacheNodes.some(elm => elm === e.target)) {
+        this.userList = false;
         this.notification = false;
         this.message = false;
+        document.removeEventListener('mousedown', this.resolveToggle);
+      }
+    },
+  },
+  watch: {
+    // 监听路由变化，如果当前的userList打开的话，就关闭它，并移除监听器
+    $route() {
+      if (this.userList) {
         this.userList = false;
         document.removeEventListener('mousedown', this.resolveToggle);
       }
