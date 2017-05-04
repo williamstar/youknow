@@ -74,6 +74,12 @@ export default {
       this.$nextTick(() => {
         // 下一次更新才能检查元素
         let index = 0;
+        let wrapper = document.querySelector('.bounce-window-wrapper');
+        let buttonPosition = document.querySelector(`.${selector}-button`);
+        let buttonCenter = buttonPosition.getBoundingClientRect().left +
+          (buttonPosition.clientWidth / 2);
+        wrapper.style.left = `${buttonCenter - (wrapper.clientWidth / 2)}px`;
+        debugger;
         this.cacheNodes.push(document.querySelector(`.${selector}`));
         while (index < this.cacheNodes.length) {
           this.cacheNodes.push(...this.cacheNodes[index].children);

@@ -44,7 +44,7 @@
             </g>
           </svg>
         </button>
-        <button class="message-box-button" @click="$emit('toggle:window', 'message')">
+        <button class="message-button" @click="$emit('toggle:window', 'message')">
           <svg viewBox="0 0 20 20" class="Icon Icon--message" width="20" height="20" aria-hidden="true" style="height: 20px; width: 20px;">
             <title></title>
             <g>
@@ -53,7 +53,7 @@
             </g>
           </svg>
         </button>
-        <button class="user" @click="$emit('toggle:window', 'userList')"><img :src="user.avatar" width="30" height="30" alt="用户头像"></button>
+        <button class="userList-button" @click="$emit('toggle:window', 'userList')"><img :src="user.avatar" width="30" height="30" alt="用户头像"></button>
       </div>
     </div>
     <div class="inner-bottom" :class="{'lift-up': switchHeader}">
@@ -236,13 +236,13 @@ svg {
       svg {
         fill: $n-lgray;
       }
-      .message-box-button {
+      .message-button {
         margin-right: 40px;
       }
       .notification-button {
         margin-right: 40px;
       }
-      .user {
+      .userList-button {
         font-size: 0;
       }
     }
