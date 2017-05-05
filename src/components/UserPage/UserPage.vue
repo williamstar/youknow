@@ -87,25 +87,25 @@
           </div>
         </div>
         <div class="focus-status">
-          <router-link to="/self/following" class="focus-item">关注了
+          <router-link to="/self/william/following" class="focus-item">关注了
             <div class="value" v-if="userInfo.followingPart">{{userInfo.followingPart.followings.length}}</div>
           </router-link>
-          <router-link to="/self/followers" class="focus-item">关注者
+          <router-link to="/self/william/followers" class="focus-item">关注者
             <div class="value" v-if="userInfo.followingPart">{{userInfo.followingPart.followers.length}}</div>
           </router-link>
         </div>
         <ul class="other-focus">
           <li>
-            <router-link to="/self/following/topics">关注的话题<span v-if="userInfo.followingPart">{{userInfo.followingPart.topics.length}}</span></router-link>
+            <router-link to="/self/william/following/topics">关注的话题<span v-if="userInfo.followingPart">{{userInfo.followingPart.topics.length}}</span></router-link>
           </li>
           <li>
-            <router-link to="/self/following/columns">关注的专栏<span v-if="userInfo.followingPart">{{userInfo.followingPart.columns.length}}</span></router-link>
+            <router-link to="/self/william/following/columns">关注的专栏<span v-if="userInfo.followingPart">{{userInfo.followingPart.columns.length}}</span></router-link>
           </li>
           <li>
-            <router-link to="/self/following/questions">关注的问题<span v-if="userInfo.followingPart">{{userInfo.followingPart.questions.length}}</span></router-link>
+            <router-link to="/self/william/following/questions">关注的问题<span v-if="userInfo.followingPart">{{userInfo.followingPart.questions.length}}</span></router-link>
           </li>
           <li>
-            <router-link to="/self/following/collections">关注的收藏夹<span v-if="userInfo.followingPart">{{userInfo.followingPart.collections.length}}</span></router-link>
+            <router-link to="/self/william/following/collections">关注的收藏夹<span v-if="userInfo.followingPart">{{userInfo.followingPart.collections.length}}</span></router-link>
           </li>
         </ul>
         <div class="explored-status">

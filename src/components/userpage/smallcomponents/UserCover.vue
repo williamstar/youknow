@@ -13,12 +13,11 @@
         <transparent-file-elm :selector="'cover'" ref="cover"></transparent-file-elm>
       </button>
     </div>
-
     <div class="info-content">
       <div class="info-content-prover">
         <div class="img-wrapper">
           <img alt="用户照片" width="160" height="160" :src="userInfo.avatarX" class="xavatar">
-          <button class="mask" @click="changeImg('xavatar')">
+          <button class="mask" :class="{'hidden': $route.fullPath.indexOf('edit') === -1}" @click="changeImg('xavatar')">
             <div class="simulation-img">
               <div class="inner-box">
                 <svg viewBox="0 0 20 16" class="Icon UserAvatarEditor-cameraIcon Icon--camera" width="30" height="27" aria-hidden="true" style="height: 27px; width: 30px;">
@@ -37,7 +36,7 @@
         </div>
         <div class="detail">
           <div class="user-info-header"><span class="user-name">{{userInfo.userName}}</span>
-            <slot name=""><span class="brief-desc">{{userInfo.briefDesc}}</span></slot>
+            <slot name="return-link"><span class="brief-desc">{{userInfo.briefDesc}}</span></slot>
           </div>
           <slot name="body"></slot>
         </div>
@@ -127,11 +126,13 @@ svg {
           z-index: 99;
           margin: 4px;
           border-radius: 4px;
-          opacity: 0;
           width: 160px;
           height: 160px;
           background: rgba(0, 0, 0, .4);
           transition: opacity .3s ease;
+          &.hidden {
+            opacity: 0;
+          }
           &:hover {
             opacity: 1;
           }
@@ -159,6 +160,7 @@ svg {
           margin-right: 12px;
         }
         .user-info-header {
+          position: relative;
           margin-bottom: 16px;
           .user-name {
             font-size: 26px;

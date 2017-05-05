@@ -5,6 +5,7 @@ import Index from '@/components/index/Index';
 import Topic from '@/components/topic/Topic';
 import Discovery from '@/components/discovery/Discovery';
 import Topics from '@/components/topics/Topics';
+import Edit from '@/components/edit/Edit';
 // 用户模块
 import UserPage from '@/components/userpage/UserPage';
 import Activities from '@/components/userpage/Activities';
@@ -39,7 +40,11 @@ export default new Router({
       component: Topics,
     },
     {
-      path: '/self',
+      path: '/self/edit',
+      component: Edit,
+    },
+    {
+      path: '/self/william',
       component: UserPage,
       children: [
         {

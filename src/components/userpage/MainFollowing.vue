@@ -2,10 +2,10 @@
   <div class="main-following-module">
     <div class="list-header">
       <router-link class="list-link"
-                   to="/self/following"
+                   to="/self/william/following"
                    exact>我关注的人</router-link>
       <router-link class="list-link"
-                   to="/self/followers">关注我的人</router-link>
+                   to="/self/william/followers">关注我的人</router-link>
       <div class="list-link"
            :class="{'router-link-active': isLight}">
         <switchButton :items="items"
@@ -36,7 +36,7 @@ export default {
     return {
       items: ['我关注的专栏', '我关注的话题', '我关注的问题', '我关注的收藏'],
       suffixes: ['columns', 'topics', 'questions', 'collections'],
-      baseUrl: '/self/following/',
+      baseUrl: '/self/william/following/',
       currentIndex: 0,
     };
   },

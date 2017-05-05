@@ -1,6 +1,6 @@
 <template>
   <div class="userList">
-    <router-link to="/self/activities" class="button">
+    <router-link to="/self/william/activities" class="button">
       <svg viewBox="0 0 20 20" width="14" height="16" style="height: 16px; width: 14px;">
         <title></title>
         <g>
