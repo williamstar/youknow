@@ -1,4 +1,42 @@
 {
+  "notifications": {
+    "aqStatus": [
+      {
+        "userList": [
+          "可可",
+          "RaPoSpectre",
+          "姚冬"
+        ],
+        "status": "回答了",
+        "question": "进了小公司的应届程序员如何翻身进入大公司？"
+      }
+    ],
+    "followerStatus": [
+      {
+        "avatar": "/static/images/follower1.jpg",
+        "userName": "tears",
+        "briefDesc": "计算机小白"
+      }
+    ],
+    "thankStatus": [
+      {
+        "question": "大学转专业之后该如何学习？",
+        "userName": "平平淡淡"
+      }
+    ]
+  },
+  "message": [
+    {
+      "avatar": "/static/images/zhihuCover.jpg",
+      "userName": "知乎专栏",
+      "note": "王玉龙 您好，您申请的专栏已开通。若要进入专栏，您可以在网页端首页右侧点击您的专栏名称，或在浏览器中打开链接： http://zhuanlan.zhihu.com/c_93244078 想要开始写作，您可直接点击首页上方「写文章」按钮或进入专栏后点击右上角「写文章」按钮。您还可以邀请其他知友成为专栏的协作者，共同创作。知友们可以通过关注、赞赏来支持您的写作。高质量的专栏还会被收录至移动端「发现」页面的「专栏」中。请您在使用过程中注意遵守 《知乎专栏与文章管理规范（试行）》，若您遇到问题或有宝贵意见，可以随时回复本私信。希望「知乎专栏」可以为您提供一个良好的创作和交流环境。期待您的佳作。爱您的知乎专栏团队"
+    },
+    {
+      "avatar": "/static/images/zhihuCover.jpg",
+      "userName": "知乎团队",
+      "note": "王玉龙，2016 年是一个神奇的年份：小李子终于斩获小金人，英国脱欧，诺贝尔文学奖花落鲍勃迪伦，川普当选美国总统……就像阿甘说过的，生命就像一盒巧克力，结果往往出人意料。你的 2016 年又发生了哪些奇遇？点击查看「我的知乎 2016 」更多让人意想不到的数据，等待你的发现。"
+    }
+  ],
   "userInfo": {
     "userName": "王玉龙",
     "avatar": "/static/images/avatar.jpg",
@@ -235,9 +273,9 @@
         {
           "avatar": "/static/images/follower1.jpg",
           "userName": "tears",
+          "briefDesc": "计算机小白",
           "isFollowing": false,
           "isFollower": true,
-          "briefDesc": "计算机小白",
           "answerNum": 1,
           "articleNum": 0,
           "follower": 0

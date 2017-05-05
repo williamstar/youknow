@@ -27,7 +27,7 @@
       </button>
     </div>
     <div class="notification-body">
-
+      <component :is="currentBody" :data="dataMap[currentBody]"></component>
     </div>
     <div class="notification-footer">
       <button class="notification-config button">
@@ -43,19 +43,48 @@
 </template>
 
 <script type="text/javascript">
+import aqStatus from './notification/AqStatus';
+import followerStatus from './notification/FollowerStatus';
+import thankStatus from './notification/ThankStatus';
+
+const OK = 'success';
+
 export default {
   props: {
 
   },
+  created() {
+    this.getData();
+  },
   data() {
     return {
+      dataMap: {},
       currentBody: 'aq-status',
     };
   },
   methods: {
     changeBody(e) {
       this.currentBody = e.currentTarget.dataset.name;
+      if (!this.dataMap[this.currentBody]) {
+        this.getData();
+      }
     },
+    getData() {
+      this
+        .$http
+        .get(`/api/${this.currentBody}`)
+        .then((res) => {
+          res = res.body;
+          if (res.status === OK) {
+            this.$set(this.dataMap, this.currentBody, res.data);
+          }
+        });
+    },
+  },
+  components: {
+    aqStatus,
+    followerStatus,
+    thankStatus,
   },
 };
 </script>
@@ -72,7 +101,6 @@ export default {
     vertical-align: text-bottom;
   }
 }
-
 .notification {
   position: relative;
   width: 362px;
@@ -80,7 +108,6 @@ export default {
   border: 1px solid #e7eaf1;
   border-radius: 4px;
   box-shadow: 0 5px 20px rgba(0, 34, 77, .1);
-
   .notification-header {
     display: flex;
     border-bottom: 1px solid #ebeef5;
@@ -96,8 +123,7 @@ export default {
         width: 1px;
         height: 20px;
         background: #ebeef5;
-      }
-      // 最后一个元素不添加竖线
+      } // 最后一个元素不添加竖线
       &:last-child {
         &:after {
           display: none;
@@ -105,13 +131,11 @@ export default {
       }
     }
   }
-
   .notification-body {
     height: 350px;
     overflow-x: hidden;
     overflow-y: auto;
   }
-
   .notification-footer {
     display: flex;
     padding: 0 16px;
