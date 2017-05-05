@@ -4,18 +4,37 @@
       <div class="detail-data">
         <div class="cover-wrapper">
           <img :src="userInfo.cover" alt="detail cover" class="cover">
-          <button class="edit-cover">
+          <button class="edit-cover" @click="changeImg('cover')">
             <svg viewBox="0 0 20 16" class="Icon Icon--camera Icon--left" width="14" height="16" aria-hidden="true" style="height: 16px; width: 14px;">
               <title></title>
               <g>
                 <path d="M18.094 2H15s-1-2-2-2H7C6 0 5 2 5 2H2C0 2 0 3.967 0 3.967V14c0 2 2.036 2 2.036 2H17c3 0 3-1.983 3-1.983V4c0-2-1.906-2-1.906-2zM10 12c-1.933 0-3.5-1.567-3.5-3.5S8.067 5 10 5s3.5 1.567 3.5 3.5S11.933 12 10 12zm0 1.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm7.5-8c-.552 0-1-.448-1-1s.448-1 1-1 1 .448 1 1-.448 1-1 1z" fill-rule="evenodd"></path>
               </g>
             </svg>编辑封面图片
+            <transparent-file-elm :selector="'cover'" ref="cover"></transparent-file-elm>
           </button>
         </div>
         <div class="detail-main-wrapper">
           <div class="detail-main">
-            <div class="img-wrapper"><img alt="用户照片" width="160" height="160" :src="userInfo.avatarX"></div>
+            <div class="img-wrapper">
+              <img alt="用户照片" width="160" height="160" :src="userInfo.avatarX" class="xavatar">
+              <button class="mask" @click="changeImg('xavatar')">
+                <div class="simulation-img">
+                  <div class="inner-box">
+                    <svg viewBox="0 0 20 16" class="Icon UserAvatarEditor-cameraIcon Icon--camera" width="30" height="27" aria-hidden="true" style="height: 27px; width: 30px;">
+                      <title></title>
+                      <g>
+                        <path d="M18.094 2H15s-1-2-2-2H7C6 0 5 2 5 2H2C0 2 0 3.967 0 3.967V14c0 2 2.036 2 2.036 2H17c3 0 3-1.983 3-1.983V4c0-2-1.906-2-1.906-2zM10 12c-1.933 0-3.5-1.567-3.5-3.5S8.067 5 10 5s3.5 1.567 3.5 3.5S11.933 12 10 12zm0 1.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm7.5-8c-.552 0-1-.448-1-1s.448-1 1-1 1 .448 1 1-.448 1-1 1z" fill-rule="evenodd"></path>
+                      </g>
+                    </svg>
+                    <div class="text">
+                      修改我的头像
+                    </div>
+                  </div>
+                </div>
+                <transparent-file-elm :selector="'xavatar'" ref="xavatar"></transparent-file-elm>
+              </button>
+            </div>
             <div class="detail">
               <div class="detail-header"><span class="detailname">{{userInfo.userName}}</span><span class="brief-desc">{{userInfo.briefDesc}}</span></div>
               <div class="detail-content">
@@ -137,6 +156,7 @@
 
 <script type="text/javascript">
 import navLink from './smallcomponents/NavLink';
+import transparentFileElm from '../smallcomponents/TransparentFileElm';
 
 const OK = 'success';
 
@@ -184,6 +204,9 @@ export default {
         }
       }
     },
+    changeImg(ref) {
+      this.$refs[ref].open();
+    },
   },
   filters: {
     formateAddress(addressArr) {
@@ -194,6 +217,7 @@ export default {
   },
   components: {
     navLink,
+    transparentFileElm,
   },
 };
 </script>
@@ -258,6 +282,36 @@ svg {
           img {
             margin: 4px;
             border-radius: 4px;
+          }
+          .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            margin: 4px;
+            border-radius: 4px;
+            opacity: 0;
+            width: 160px;
+            height: 160px;
+            background: rgba(0, 0, 0, .4);
+            transition: opacity .3s ease;
+            &:hover {
+              opacity: 1;
+            }
+            .simulation-img {
+              display: table;
+              width: 100%;
+              height: 100%;
+              color: #fff;
+              .inner-box {
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+                svg {
+                  margin-bottom: 14px;
+                }
+              }
+            }
           }
         }
         .detail {
