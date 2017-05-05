@@ -79,6 +79,7 @@ export default {
         this.$nextTick(() => {
           // 下一次更新才能检查元素
           let index = 0;
+          this.cacheNodes.length = 0;
           // 设置元素位置
           let wrapper = document.querySelector('.bounce-window-wrapper');
           let windowButton = document.querySelector(`.${selector}-button`);

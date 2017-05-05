@@ -4,7 +4,13 @@
       我的私信
     </button>
     <div class="message-body">
-
+      <div v-for="message in messages" class="notification-item">
+        <img width="40" height="40" :src="message.avatar" alt="用户头像">
+        <div class="message-content">
+          <div class="user-name">{{message.userName}}</div>
+          <div class="note">{{message.note}}</div>
+        </div>
+      </div>
     </div>
     <div class="message-footer">
       <button class="write-personal-note button">
@@ -20,14 +26,32 @@
 </template>
 
 <script type="text/javascript">
+const OK = 'success';
+
 export default {
-
-
+  data() {
+    return {
+      messages: [],
+    };
+  },
+  created() {
+    this
+      .$http
+      .get('/api/message')
+      .then((res) => {
+        res = res.body;
+        if (res.status === OK) {
+          this.messages = res.data;
+        }
+      });
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 @import '../../common/scss/mixin';
+@import '../../common/scss/notification';
+
 .message {
   width: 360px;
   background: #fff;
@@ -42,11 +66,41 @@ export default {
     width: 100%;
     height: 48px;
     font-size: 14px;
+    box-sizing: content-box;
     color: #262626;
     @include border-bottom(#ebeef5);
   }
   .message-body {
     height: 350px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: #262626;
+    .notification-item {
+      display: flex;
+      align-items: center;
+      img {
+        flex: 0 0 40px;
+        border-radius: 3px;
+      }
+      .message-content {
+        font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, WenQuanYi Micro Hei, Arial, sans-serif;
+        margin-left: 16px;
+        line-height: 24px;
+        overflow: hidden;
+        .user-name {
+          font-size: 15px;
+        }
+        .note {
+          height: 20px;
+          line-height: 20px;
+          font-size: 14px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          color: #8590a6;
+        }
+      }
+    }
   }
   .message-footer {
     display: flex;

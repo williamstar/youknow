@@ -41,6 +41,34 @@ router.get('/user', (req, res) => {
     },
   });
 });
+// 获取答案最近的动态
+router.get('/aq-status', (req, res) => {
+  res.json({
+    status: 'success',
+    data: data.notifications.aqStatus
+  });
+})
+// 获取最近的关注的人的状态
+router.get('/follower-status', (req, res) => {
+  res.json({
+    status: 'success',
+    data: data.notifications.followerStatus
+  });
+})
+// 获取感谢人的信息
+router.get('/thank-status', (req, res) => {
+  res.json({
+    status: 'success',
+    data: data.notifications.thankStatus
+  });
+})
+// 获取最近的其他人发来的消息
+router.get('/message', (req, res) => {
+  res.json({
+    status: 'success',
+    data: data.message
+  });
+})
 
 //用户详细信息
 router.get('/userinfo', (req, res) => {
@@ -62,7 +90,6 @@ router.get('/fake_answers_or_questions', (req, res) => {
       tids.push(idx);
     }
   }
-
   res.json({
     status: 'success',
     data: dynamics
