@@ -44,12 +44,30 @@
     "avatarX": "/static/images/avatar_x.jpg",
     "briefDesc": "我是软件小菜鸟",
     "address": [
-      "福建厦门",
-      "美国"
+      {
+        "local": "美国",
+        "avatar": "/static/images/america.jpg"
+      },
+      {
+        "local": "印度",
+        "avatar": "/static/images/india.jpg"
+      }
     ],
     "currentJob": "计算机软件",
-    "career": [],
-    "educations": [],
+    "careers": [
+      {
+        "avatar": "/static/images/e82bab09c_s.jpg",
+        "companyName": "火星探测局",
+        "post": "ceo"
+      }
+    ],
+    "educations": [
+      {
+        "avatar": "/static/images/fjNormalUniversity.jpg",
+        "school": "福建师范大学",
+        "profession": "软件工程"
+      }
+    ],
     "desc": "",
     "gender": "m",
     "achievements": [

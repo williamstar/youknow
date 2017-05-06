@@ -78,9 +78,8 @@ export default {
             optionList.style.top = `${-top}px`;
             optionList.scrollTop = scrollHeight - 230;
           }
-          let rootNode = document.querySelector(`.my-select[data-id='${this.marked}']`);
           let index = 0;
-          this.nodeList.push(rootNode);
+          this.nodeList.push(optionList);
           while (index < this.nodeList.length) {
             this.nodeList.push(...this.nodeList[index].children);
             index += 1;

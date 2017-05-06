@@ -32,6 +32,11 @@ input:-moz-placeholder {
 }
 
 button {
-  cursor: pointer;
-  background: none;
+    cursor: pointer;
+    background: none;
+}
+
+svg {
+    fill: currentColor;
+    vertical-align: text-bottom;
 }
