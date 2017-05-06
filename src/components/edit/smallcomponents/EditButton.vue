@@ -40,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 .edit-button-module {
   display: inline-block;
-  opacity: 1;
+  opacity: 0;
   transition: opacity .3s ease;
   &.appear {
     opacity: 1;

@@ -1,6 +1,6 @@
 <template>
   <div class="user-info-form-module">
-    <form @mouseover="toggleEdit($event)" @mouseleave="toggleEdit($event)" data-attr="sex">
+    <form @mouseenter="toggleEdit" @mouseleave="toggleEdit" data-attr="sex">
       <label for="性别">性别</label>
       <div class="content sex">
         <span v-if="!allAttr['sex']" class="gender">{{userInfo.gender === 'm'? '男': '女'}}</span>
@@ -12,13 +12,13 @@
         <span v-if="allAttr['sex']" class="save-or-quite"><button class="button save" data-attr="sex" @click.prevent="save($event)">保存</button><button class="button quit" data-attr="sex" @click.prevent="quit($event)">取消</button></span>
       </div>
     </form>
-    <form>
+    <form @mouseenter="toggleEdit" @mouseleave="toggleEdit" data-attr="briefDesc">
       <label for="一句话介绍">一句话介绍</label>
       <div class="content brief-desc">
         <span v-if="!allAttr['briefDesc']" class="brief-desc">{{userInfo.briefDesc}}</span>
         <edit-button :all-attr="allAttr" :attr="'briefDesc'" @edit-attr="editAttr" ref="briefDescButton"></edit-button>
         <div v-if="allAttr['briefDesc']" class="input-wrapper input-brief-desc">
-          <input class="input briefDescHook" type="text" :value="userInfo.briefDesc" @focus="toggleFocus($event)" @blur="toggleFocus($event)">
+          <input class="input" type="text" v-focus :value="userInfo.briefDesc" @focus="toggleFocus($event)" @blur="toggleFocus($event)">
         </div>
         <span v-if="allAttr['briefDesc']" class="save-or-quite"><button class="button save" data-attr="briefDesc" @click.prevent="save($event)">保存</button><button class="button quit" data-attr="briefDesc" @click.prevent="quit($event)">取消</button></span>
       </div>
@@ -27,7 +27,7 @@
       <label for="居住地">居住地</label>
       <div class="content address">
         <button v-if="!allAttr['address']" class="add" @click="editAttr('address')">
-          <svg viewBox="0 0 18 18" class="Icon AddButton-icon Icon--add Icon--left" width="20" height="20" aria-hidden="true" style="height: 20px; width: 20px;">
+          <svg viewBox="0 0 18 18" width="20" height="20" aria-hidden="true" style="height: 20px; width: 20px;">
             <title></title>
             <g>
               <g fill-rule="evenodd">
@@ -39,17 +39,16 @@
         </button>
         <div v-if="allAttr['address']" class="edit-address">
           <div class="input-wrapper input-address">
-            <input class="input addressHook" type="text" @focus="toggleFocus($event)" @blur="toggleFocus($event)" placeholder="添加居住地">
+            <input class="input" v-focus type="text" @focus="toggleFocus($event)" @blur="toggleFocus($event)" placeholder="添加居住地">
           </div>
           <span v-if="allAttr['address']" class="save-or-quite inline"><button class="button save" data-attr="address" @click.prevent="save($event)">保存</button><button class="button quit" data-attr="address" @click.prevent="quit($event)">取消</button></span>
         </div>
-
         <div class="field-list">
-          <div v-for="address in userInfo.address" class="address" @dragover="resolveDropOver" @dragenter="resolveEnter" data-label="address">
+          <div v-for="address in userInfo.address" class="address" @dragover="resolveDropOver" @dragenter="resolveEnter" @mouseenter="toggleDelete" @mouseleave="toggleDelete" data-label="address">
             <div class="field-card" @dragstart="resolveDrag" draggable="true">
               <img :src="address.avatar" width="20" height="20" alt="地址图片">
               <span class="local">{{address.local}}</span>
-              <svg viewBox="0 0 14 14" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
+              <svg class="delete" viewBox="0 0 14 14" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
                 <title></title>
                 <g>
                   <path d="M8.486 7l5.208-5.207c.408-.408.405-1.072-.006-1.483-.413-.413-1.074-.413-1.482-.005L7 5.515 1.793.304C1.385-.103.72-.1.31.31-.103.724-.103 1.385.305 1.793L5.515 7l-5.21 5.207c-.407.408-.404 1.072.007 1.483.413.413 1.074.413 1.482.005L7 8.485l5.207 5.21c.408.407 1.072.404 1.483-.007.413-.413.413-1.074.005-1.482L8.485 7z"></path>
@@ -60,11 +59,11 @@
         </div>
       </div>
     </form>
-    <form>
+    <form @mouseenter="toggleEdit" @mouseleave="toggleEdit" data-attr="currectJob">
       <label for="所在行业">所在行业</label>
       <div class="content">
         <span v-if="!allAttr['currentJob']" class="currentJob">{{userInfo.currentJob}}</span>
-        <edit-button :all-attr="allAttr" :attr="'currentJob'" @edit-attr="editAttr" ref="briefDescButton"></edit-button>
+        <edit-button :all-attr="allAttr" :attr="'currentJob'" @edit-attr="editAttr" ref="currectJobButton"></edit-button>
         <my-select v-if="allAttr['currentJob']" :value-list="optionList" :option-list="optionList" :current-val="userInfo.currentJob" marked="currentJob"></my-select>
         <span v-if="allAttr['currentJob']" class="save-or-quite"><button class="button save" data-attr="currentJob" @click.prevent="save($event)">保存</button><button class="button quit" data-attr="currentJob" @click.prevent="quit($event)">取消</button></span>
       </div>
@@ -93,11 +92,11 @@
           <span class="save-or-quite inline"><button class="button save" data-attr="career" @click.prevent="save($event)">保存</button><button class="button quit" data-attr="career" @click.prevent="quit($event)">取消</button></span>
         </div>
         <div class="field-list">
-          <div v-for="career in userInfo.careers" class="career" @dragover="resolveDropOver" @dragenter="resolveEnter" data-label="career">
+          <div v-for="career in userInfo.careers" class="career" @dragover="resolveDropOver" @dragenter="resolveEnter" @mouseenter="toggleDelete" @mouseleave="toggleDelete" data-label="career">
             <div class="field-card" @dragstart="resolveDrag" draggable="true">
               <img :src="career.avatar" width="20" height="20" alt="职业图片">
               <span>{{career.companyName}}<span class="field-dot">·</span>{{career.post}}</span>
-              <svg viewBox="0 0 14 14" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
+              <svg class="delete" viewBox="0 0 14 14" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
                 <title></title>
                 <g>
                   <path d="M8.486 7l5.208-5.207c.408-.408.405-1.072-.006-1.483-.413-.413-1.074-.413-1.482-.005L7 5.515 1.793.304C1.385-.103.72-.1.31.31-.103.724-.103 1.385.305 1.793L5.515 7l-5.21 5.207c-.407.408-.404 1.072.007 1.483.413.413 1.074.413 1.482.005L7 8.485l5.207 5.21c.408.407 1.072.404 1.483-.007.413-.413.413-1.074.005-1.482L8.485 7z"></path>
@@ -132,11 +131,11 @@
           <span class="save-or-quite inline"><button class="button save" data-attr="education" @click.prevent="save($event)">保存</button><button class="button quit" data-attr="education" @click.prevent="quit($event)">取消</button></span>
         </div>
         <div class="field-list">
-          <div class="education" v-for="education in userInfo.educations" @dragover="resolveDropOver" @dragenter="resolveEnter" data-label="education">
+          <div class="education" v-for="education in userInfo.educations" @dragover="resolveDropOver" @dragenter="resolveEnter" @mouseenter="toggleDelete" @mouseleave="toggleDelete" data-label="education">
             <div class="field-card" @dragstart="resolveDrag" draggable="true">
               <img :src="education.avatar" alt="学校图片" width="20" height="20">
               <span class="school">{{education.school}}<span class="field-dot">·</span>{{education.profession}}</span>
-              <svg viewBox="0 0 14 14" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
+              <svg class="delete" viewBox="0 0 14 14" height="16" aria-hidden="true" style="height: 16px; width: 10px;">
                 <title></title>
                 <g>
                   <path d="M8.486 7l5.208-5.207c.408-.408.405-1.072-.006-1.483-.413-.413-1.074-.413-1.482-.005L7 5.515 1.793.304C1.385-.103.72-.1.31.31-.103.724-.103 1.385.305 1.793L5.515 7l-5.21 5.207c-.407.408-.404 1.072.007 1.483.413.413 1.074.413 1.482.005L7 8.485l5.207 5.21c.408.407 1.072.404 1.483-.007.413-.413.413-1.074.005-1.482L8.485 7z"></path>
@@ -147,12 +146,12 @@
         </div>
       </div>
     </form>
-    <form>
-      <label for="个人简介">个人简介</label>
+    <form @mouseenter="toggleEdit" @mouseleave="toggleEdit" data-attr="desc">
+      <label for="个人简介" data-attr="desc">个人简介</label>
       <div class="content desc">
         <span class="desc">{{userInfo.desc}}</span>
-        <edit-button :all-attr="allAttr" :attr="'desc'" @edit-attr="editAttr" ref="briefDescButton"></edit-button>
-        <textarea v-if="allAttr['desc']" class="edit-desc" cols="30" rows="3"></textarea>
+        <edit-button :all-attr="allAttr" :attr="'desc'" @edit-attr="editAttr" ref="descButton"></edit-button>
+        <textarea v-if="allAttr['desc']" v-focus class="edit-desc" cols="30" rows="3"></textarea>
         <span v-if="allAttr['desc']" class="save-or-quite"><button class="button save" data-attr="desc" @click.prevent="save($event)">保存</button><button class="button quit" data-attr="desc" @click.prevent="quit($event)">取消</button></span>
       </div>
     </form>
@@ -287,19 +286,15 @@ export default {
   methods: {
     editAttr(attr) {
       this.$set(this.allAttr, attr, true);
-      // 设置自动聚焦
-      if (attr === 'briefDesc' || attr === 'desc' || attr === 'address') {
-        this.$nextTick(() => {
-          document.querySelector(`.${attr}Hook`).focus();
-        });
-      }
     },
     resolveDropOver(e) {
+      // 对于不同
       if (e.currentTarget.dataset.label === this.cntDragNode.parentNode.dataset.label) {
         e.preventDefault();
       }
     },
     resolveEnter(e) {
+      // 对不同类的项目不允许drop下
       if (e.currentTarget.dataset.label === this.cntDragNode.parentNode.dataset.label) {
         let nparent = e.currentTarget;
         this.cntDragNode.parentNode.appendChild(e.currentTarget.children[0]);
@@ -310,25 +305,39 @@ export default {
     resolveDrag(e) {
       this.cntDragNode = e.currentTarget;
     },
-    toggleEdit(event) {
-      // let attr = event.currentTarget.dataset.attr;
-      // this.$refs[`${attr}Button`].toggleAppear();
+    toggleEdit(e) {
+      this.$refs[`${e.currentTarget.dataset.attr}Button`].toggleAppear();
     },
-    toggleFocus(event) {
-      let parentNode = event.currentTarget.parentNode;
+    toggleFocus(e) {
+      let parentNode = e.currentTarget.parentNode;
       if (parentNode.classList.contains('focus')) {
         parentNode.classList.remove('focus');
       } else {
         parentNode.classList.add('focus');
       }
     },
-    save(event) {
-      let attr = event.currentTarget.dataset.attr;
+    toggleDelete(e) {
+      let elm = e.currentTarget.querySelector('svg');
+      if (parseInt(elm.style.opacity, 10) === 1) {
+        elm.style.opacity = 0;
+      } else {
+        elm.style.opacity = 1;
+      }
+    },
+    save(e) {
+      let attr = e.currentTarget.dataset.attr;
       this.$set(this.allAttr, attr, false);
     },
-    quit(event) {
-      let attr = event.currentTarget.dataset.attr;
+    quit(e) {
+      let attr = e.currentTarget.dataset.attr;
       this.$set(this.allAttr, attr, false);
+    },
+  },
+  directives: {
+    focus: {
+      inserted(el) {
+        el.focus();
+      },
     },
   },
   components: {
@@ -399,6 +408,10 @@ export default {
     vertical-align: text-bottom;
     fill: #9fadc7;
     margin-left: auto;
+    &.delete {
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
   }
 }
 
