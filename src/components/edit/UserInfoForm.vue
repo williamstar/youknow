@@ -33,9 +33,8 @@
       <div class="content">
         <span v-if="!allAttr['currentJob']" class="currentJob">{{userInfo.currentJob}}</span>
         <edit-button :all-attr="allAttr" :attr="'currentJob'" @edit-attr="editAttr" ref="briefDescButton"></edit-button>
-        <select v-if="allAttr['currentJob']" name="" id="" class="edit-current-job">
-          <option v-for="option in optionList" :value="option" :selected="option === userInfo.currentJob"> {{option}} </option>
-        </select>
+
+        <my-select v-if="allAttr['currentJob']" :value-list="optionList" :option-list="optionList" :current-val="userInfo.currentJob" marked="currentJob"></my-select>
         <span v-if="allAttr['currentJob']" class="save-or-quite"><button class="button save" data-attr="currentJob" @click.prevent="save($event)">保存</button><button class="button quit" data-attr="currentJob" @click.prevent="quit($event)">取消</button></span>
       </div>
     </form>
@@ -61,6 +60,7 @@
 
 <script type="text/javascript">
 import editButton from './smallcomponents/EditButton';
+import mySelect from './smallcomponents/MySelect';
 
 export default {
   props: {
@@ -215,6 +215,7 @@ export default {
   },
   components: {
     editButton,
+    mySelect,
   },
 };
 </script>

@@ -46,10 +46,6 @@ export default {
 
 <style lang="scss" scoped>
 .return-link {
-  // position: absolute;
-  // transform: translateY(-50%);
-  // top: 50%;
-  // right: 0;
   float: right;
   line-height: 30px;
   font-size: 14px;
