@@ -52,13 +52,11 @@
               <span v-if="isBrief">查看详细信息</span>
               <span v-else>收起详细资料</span>
             </button>
-            <div class="button-wrapper">
+            <a href="#/self/edit" class="button-wrapper">
               <button class="edit-profile">
-                <router-link to="/self/edit">
-                  编辑个人资料
-                </router-link>
+                编辑个人资料
               </button>
-            </div>
+            </a>
           </div>
         </div>
       </user-cover>
